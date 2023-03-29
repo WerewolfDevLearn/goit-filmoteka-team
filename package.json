@@ -1,21 +1,21 @@
 {
-  "name": "parcel-project-template",
+  "name": "goit-filmoteka-team",
   "version": "2.0.0",
   "description": "",
-  "homepage": "https://goitacademy.github.io/parcel-project-template",
+  "homepage": "https://WerewolfDevLearn.github.io/goit-filmoteka-team",
   "scripts": {
     "start": "parcel src/*.html",
-    "build": "parcel build src/*.html --public-url /parcel-project-template/"
+    "build": "parcel build src/*.html --public-url /goit-filmoteka-team/"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/goitacademy/parcel-project-template.git"
+    "url": "git+https://github.com/WerewolfDevLearn/goit-filmoteka-team.git"
   },
   "keywords": [],
   "author": "Alexander Repeta <alexander.repeta@gmail.com>",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/goitacademy/parcel-project-template/issues"
+    "url": "https://github.com/WerewolfDevLearn/goit-filmoteka-team/issues"
   },
   "dependencies": {
     "modern-normalize": "^1.1.0"
