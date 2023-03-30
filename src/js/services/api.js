@@ -23,8 +23,6 @@ async function getMovieByKeyword(keyword, page) {
   } catch (error) {
     console.log(error);
   }
-
-  `https://api.themoviedb.org/3/search/movie?api_key=${apiKey}&query=${keyword}&language=en-US&page=1&include_adult=false`;
 }
 
 async function getMovieDetails(movieId) {
