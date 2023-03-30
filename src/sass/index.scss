@@ -1,2 +1,7 @@
-@import './common';
-@import './example';
+@import './base/common';
+@import './base/fonts';
+
+@import './components/header.scss';
+@import './components/galery.scss';
+@import './components/modal.scss';
+@import './components/footer.scss';
