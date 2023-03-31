@@ -86,3 +86,56 @@ pagination.on('beforeMove', loadMorePopMovies);
 pagination.on('afterMove', () => {
   window.scrollTo({ top: 0, behavior: 'smooth' });
 });
+
+
+//створення функції для відображення карток стартової сторінки + пагінація
+export async function startPage() {
+  try {
+    const movies = getPopMovies(page);
+    console.log(movies);
+
+    //розраховуємо сторінки
+    pagination.reset(movies.total_results);
+
+    const { results } = movies;
+    console.log(results);
+    results
+      .map(movie => {
+        return renderMarkup(movie);
+      })
+      .join('');
+    refs.gallery.innerHTML = markup;
+  } catch (error) {
+    console.log(error);
+  }
+}
+// function startPage() {
+//   getPopMovies(page).then(movies => {
+//     console.log(movies);
+//     pagination.reset(movies.total_results);
+
+//     const markup = movies.results
+//       .map(movie => {
+//         return renderMarkup(movie);
+//       })
+//       .join('');
+//     refs.gallery.innerHTML = markup;
+//   });
+// }
+
+//колбек для пагінації основної сторінки трен
+export async function loadMorePopMovies(event) {
+  const currentPage = event.page;
+  console.log(currentPage);
+  try {
+    getPopMovies(currentPage);
+    console.log(getPopMovies(currentPage));
+  } catch (error) {
+    console.log(error);
+  }
+}
+// function loadMorePopMovies(event) {
+//   const currentPage = event.page;
+//   console.log(currentPage);
+//   getPopMovies(currentPage);
+// }
