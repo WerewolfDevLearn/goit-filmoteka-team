@@ -1,9 +1,126 @@
-header {
-  font-size: 15px;
-  font-family: 'Roboto';
-}
+// header {
+//   font-size: 15px;
+//   font-family: 'Roboto';
+// }
 
-header img {
-  width: 15px;
-  height: 15px;
+// header img {
+//   width: 15px;
+//   height: 15px;
+// }
+
+//----------------------320----------------------
+
+.header {
+  display: block;
+  margin: auto;
+  width: 320px;
+  border-right-color: teal;
+
+  background: gray;
+}
+.header-container {
+  padding: 40px 20px 92px 20px;
+}
+.header-nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 0px;
+}
+.header-logo {
+  width: 24px;
+  height: 24px;
+  background: #fff;
+  margin-right: 112px;
+}
+.header-logo-text {
+  display: none;
+}
+.header-menu {
+  display: flex;
+  gap: 40px;
+}
+// .header-menu-list {
+
+// }
+.menu-list-name {
+  font-family: 'Roboto';
+  font-style: normal;
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 1.17;
+  display: flex;
+  align-items: center;
+  text-align: center;
+  text-transform: uppercase;
+
+  color: #ffffff;
+  letter-spacing: normal;
+}
+// .js-home-btn {
+
+// }
+// .js-my-library-btn {
+
+// }
+.blockHome {
+  margin-top: 60px;
+}
+.search {
+  background-color: transparent;
+  position: relative;
+}
+.header-search {
+  background-color: transparent;
+  border-top: none;
+  border-left: none;
+  border-right: none;
+  border-bottom: 0.5px solid #ffffff;
+  width: 280px;
+
+  font-family: 'Roboto';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 1.14;
+  display: flex;
+  align-items: center;
+  color: #ffffff;
+}
+.header-search::placeholder {
+  color: inherit;
+}
+.header-search-img {
+  position: absolute;
+  // top: 1.5;
+  right: 1.5;
+  bottom: 6;
+  background-color: black;
+  width: 12px;
+  height: 12px;
+}
+.header-search-resultNotSuccess {
+  display: none;
+}
+// .visibleFlag {
+// }
+// .header-registration-menu {
+// }
+.registration-menu-sing {
+  display: none;
+}
+.registration-menu-log {
+  display: none;
+}
+// .library-container {
+// }
+// .blockBtn {
+// }
+// .hideBtn {
+// }
+// .btn-container {
+// }
+.headerBtn {
+  //320
+  display: none;
 }
