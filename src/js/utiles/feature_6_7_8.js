@@ -1,6 +1,7 @@
+// import Pagination from 'tui-pagination';
 import Pagination from 'tui-pagination';
 import 'tui-pagination/dist/tui-pagination.css';
-import { getPopMovies } from './javascript/api';
+import moviesAPI from '../services/api';
 
 const paginationContainer = document.querySelector('#tui-pagination-container');
 
@@ -87,11 +88,10 @@ pagination.on('afterMove', () => {
   window.scrollTo({ top: 0, behavior: 'smooth' });
 });
 
-
 //створення функції для відображення карток стартової сторінки + пагінація
 export async function startPage() {
   try {
-    const movies = getPopMovies(page);
+    const movies = await moviesAPI.getPopMovies(page);
     console.log(movies);
 
     //розраховуємо сторінки
@@ -128,7 +128,7 @@ export async function loadMorePopMovies(event) {
   const currentPage = event.page;
   console.log(currentPage);
   try {
-    getPopMovies(currentPage);
+    await moviesAPI.getPopMovies(currentPage);
     console.log(getPopMovies(currentPage));
   } catch (error) {
     console.log(error);

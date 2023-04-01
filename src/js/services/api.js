@@ -10,6 +10,7 @@ async function getPopMovies(page) {
       `https://api.themoviedb.org/3/trending/movie/day?api_key=${apiKey}&page=${page}&include_adult=false`
     );
     const data = await respons.data;
+    console.log(data);
     return data;
   } catch (error) {
     console.log(error);
