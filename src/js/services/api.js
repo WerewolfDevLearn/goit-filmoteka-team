@@ -49,7 +49,8 @@ async function getMovieDetails(movieId) {
   }
 }
 
-async function getMovieTrailer(movieId) {
+// Returns related videos for movie
+async function getRelatedVideos(movieId) {
   try {
     setLoader(BODY_SELECTOR);
     const respons = await axios.get(
@@ -67,7 +68,7 @@ const moviesAPI = {
   getPopMovies,
   getMovieByKeyword,
   getMovieDetails,
-  getMovieTrailer,
+  getRelatedVideos,
 };
 
 export default moviesAPI;

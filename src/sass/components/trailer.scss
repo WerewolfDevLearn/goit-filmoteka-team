@@ -15,18 +15,9 @@
 
   &__content {
     width: 100%;
-    background-color: #fff;
+    background-color: transparent;
     position: absolute;
-
-    @media screen and (min-width: 768px) {
-      width: 704px;
-      height: 550px;
-    }
-
-    @media screen and (min-width: 1280px) {
-      width: 806px;
-      height: 510px;
-    }
+    max-width: 95vw;
   }
   &__close-btn {
     width: 30px;
@@ -35,14 +26,6 @@
     z-index: 150;
     margin-left: 48vw;
     display: none;
-    // margin-bottom: 55vh;
-    // position: absolute;
-    // top: 0;
-    // right: 0;
-    // width: 30px;
-    // height: 30px;
-    // background-color: #fff;
-    // z-index: 150;
   }
 }
 
@@ -75,12 +58,12 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    width: 710px;
+    width: 700px;
     height: 400px;
   }
 
   @media screen and (min-width: 1280px) {
-    width: 900px;
+    width: 806px;
     height: 510px;
   }
 }
