@@ -1,0 +1,17 @@
+.footer {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    width: 320px;
+    padding-left: 20px;
+    padding-right: 20px;
+    font-size: 14px;
+    line-height: 1.14;
+}
+
+.icon-heart {
+    fill: #FF6B08;
+    width: 14px;
+    height: 13px;
+}
