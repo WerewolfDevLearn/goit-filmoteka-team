@@ -1,4 +1,5 @@
 import moviesAPI from './js/services/api';
+import { startPage, loadMorePopMovies } from './js/utiles/feature_6_7_8';
 import { removeGlobalLoader } from './js/services/loader';
 import { showTrailer } from './js/services/trailer';
 
@@ -13,7 +14,7 @@ async function get() {
   const firestFilmId = date.results[5].id;
   showTrailer(firestFilmId);
 }
-get();
+// get();
 
 // Remove global loader when page loaded
 window.addEventListener('load', removeGlobalLoader);
