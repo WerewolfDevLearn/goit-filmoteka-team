@@ -1,4 +1,6 @@
 @import './base/common';
+@import './base/breakpoints';
+@import './base/containers.scss';
 @import './base/fonts';
 @import './base/global';
 @import './components/header.scss';
@@ -8,3 +10,5 @@
 @import './components/loader.scss';
 @import './base/containers.scss';
 @import './components/pagination.scss';
+@import './components/trailer.scss';
+

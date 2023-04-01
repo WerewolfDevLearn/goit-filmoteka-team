@@ -10,6 +10,7 @@ async function getPopMovies(page) {
       `https://api.themoviedb.org/3/trending/movie/day?api_key=${apiKey}&page=${page}&include_adult=false`
     );
     const data = await respons.data;
+    console.log(data);
     return data;
   } catch (error) {
     console.log(error);
@@ -48,7 +49,8 @@ async function getMovieDetails(movieId) {
   }
 }
 
-async function getMovieTrailer(movieId) {
+// Returns related videos for movie
+async function getRelatedVideos(movieId) {
   try {
     setLoader(BODY_SELECTOR);
     const respons = await axios.get(
@@ -66,7 +68,7 @@ const moviesAPI = {
   getPopMovies,
   getMovieByKeyword,
   getMovieDetails,
-  getMovieTrailer,
+  getRelatedVideos,
 };
 
 export default moviesAPI;
