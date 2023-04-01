@@ -14,7 +14,7 @@ async function get() {
   // const firestFilmId = date.results[0].id;
   // showTrailer(firestFilmId);
 }
-get();
+// get();
 
 // Remove global loader when page loaded
 window.addEventListener('load', removeGlobalLoader);
