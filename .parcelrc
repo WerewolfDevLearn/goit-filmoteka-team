@@ -7,7 +7,8 @@
     "parcel-reporter-clean-dist"
   ],
   "transformers": {
-  "*.hbs": ["parcel-transformer-hbs"]
- }
+    "*.hbs": [
+      "parcel-transformer-hbs"
+    ]
+  }
 }
-
