@@ -1,17 +1,55 @@
 .container {
-  margin: 0 auto;
-  padding: 0 20px;
+  width: 100px;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 20px;
+  padding-right: 20px;
 
-  @media screen and (min-width: $mobile) {
-    width: 320px;
-    padding: 0 20px;
+  @media screen and (min-width: 320px){
+    max-width: 320px;
   }
-  @media screen and (min-width: $tablet) {
-    width: 768px;
-    padding: 0 32px;
+
+  @media screen and (min-width: 768px){
+    max-width: 768px;
+    padding-left: 32px;
+    padding-right: 32px;
   }
-  @media screen and (min-width: $desktop) {
-    width: 1280px;
-    padding: 0 32px;
+
+  @media screen and (min-width: 1280px){
+    max-width: 1280px;
+    padding-left: 32px;
+    padding-right: 32px;
   }
+}
+
+.container-gallery {
+
+  @media screen and (max-width: 767px) {
+      display: grid;
+      justify-content: center;
+      grid-column-gap: 20px;
+      grid-row-gap: 20px;
+      padding-top: 20px;
+      padding-bottom: 40px;
+    }
+
+    @media screen and (min-width: 768px) {
+        display: grid;
+        justify-content: center;
+        grid-template-columns: repeat(2, auto);
+        grid-column-gap: 32px;
+        grid-row-gap: 32px;
+        padding-top: 60px;
+        padding-bottom: 50px;
+      }
+
+    @media screen and (min-width: 1280px) {
+        display: grid;
+        justify-content: center;
+        grid-template-columns: repeat(3, auto);
+        grid-column-gap: 16px;
+        grid-row-gap: 32px;
+        padding-top: 60px;
+        padding-bottom: 50px;
+      }
 }
