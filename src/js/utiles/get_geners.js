@@ -1,7 +1,7 @@
+import genreTable from './geners.json';
+const genre_ids = [878, 12, 28];
 function getGenres(arr) {
-  const arrOfGenres = arr.map(item => item.name);
-  const genreString = arrOfGenres.join(' ');
-  return genreString;
+  return;
 }
 
 export default getGenres;

@@ -2,7 +2,7 @@ import moviesAPI from './js/services/api';
 import { startPage, loadMorePopMovies } from './js/utiles/feature_6_7_8';
 import { removeGlobalLoader } from './js/services/loader';
 import { showTrailer } from './js/services/trailer';
-
+import getGenres from './js/utiles/get_geners';
 async function get() {
   //   const date = await moviesAPI.getMovieByKeyword('cat', 1);
   //   const date = await moviesAPI.getMovieDetails(76600);
@@ -15,6 +15,6 @@ async function get() {
   // showTrailer(firestFilmId);
 }
 // get();
-
+getGenres();
 // Remove global loader when page loaded
 window.addEventListener('load', removeGlobalLoader);
