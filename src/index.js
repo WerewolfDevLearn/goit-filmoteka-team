@@ -7,12 +7,8 @@ async function get() {
   //   const date = await moviesAPI.getMovieTrailer(76600);
   const date = await moviesAPI.getPopMovies(9);
 
- 
+  // Нижче у функції тимчасові
+  // const markup = createCardMarkup(date.results);
+  // appendCardsMarkup(markup);
 }
 get()
-
-
-
-
-
-
