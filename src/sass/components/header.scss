@@ -1,18 +1,32 @@
 .decor {
   background-color: gray;
+  // background-image: url('');
   width: 320;
   margin: auto;
   padding: 40px 20px 92px 20px;
+  @media screen and (min-width: 768px) {
+    width: 768px;
+    background-color: gray;
+  }
+  @media screen and (min-width: 1280px) {
+    width: 1280px;
+    background-color: gray;
+  }
 }
 
 .header {
   margin: auto;
   position: relative;
+
+  @media screen and (min-width: 768px) {
+    width: 768px;
+  }
+  @media screen and (min-width: 1280px) {
+    width: 1280px;
+  }
 }
-// .header-container {
-//   width: 320px;
-//   padding: 40px 20px 92px 20px;
-// }
+.header-container {
+}
 .header-nav {
   display: flex;
   align-items: center;
