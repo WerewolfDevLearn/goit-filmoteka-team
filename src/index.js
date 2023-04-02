@@ -1,6 +1,6 @@
 import { STATE } from './js/components/state';
 import moviesAPI from './js/services/api';
-import { startPage, loadMorePopMovies } from './js/utiles/pagination';
+import { startPage, loadMorePopMovies } from './js/components/pagination';
 import { removeGlobalLoader } from './js/services/loader';
 import { showTrailer } from './js/services/trailer';
 import getGenres from './js/utiles/get_geners';

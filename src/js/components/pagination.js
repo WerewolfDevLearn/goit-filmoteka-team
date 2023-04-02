@@ -1,3 +1,4 @@
+import { STATE } from '../components/state.js';
 import Pagination from 'tui-pagination';
 import 'tui-pagination/dist/tui-pagination.css';
 import moviesAPI from '../services/api';
@@ -74,14 +75,13 @@ const pagination = new Pagination(paginationContainer, options);
 
 //отримання поточної сторінки
 const page = pagination.getCurrentPage();
-console.log(page);
+// console.log(page);
 
 //запуск популярних фільмів за день
-startPage();
+// startPage();
 
 //запускаємо пагінацію
 pagination.on('beforeMove', loadMorePopMovies);
-
 //плавний скрол вгору при кліку на кнопку
 pagination.on('afterMove', () => {
   window.scrollTo({ top: 0, behavior: 'smooth' });
@@ -91,13 +91,13 @@ pagination.on('afterMove', () => {
 export async function startPage() {
   try {
     const movies = await moviesAPI.getPopMovies(page);
-    console.log(movies);
+    // console.log(movies);
 
     //розраховуємо сторінки
     pagination.reset(movies.total_results);
 
     const { results } = movies;
-    console.log(results);
+    // console.log(results);
     results
       .map(movie => {
         return renderMarkup(movie);
@@ -108,20 +108,6 @@ export async function startPage() {
     console.log(error);
   }
 }
-// function startPage() {
-//   getPopMovies(page).then(movies => {
-//     console.log(movies);
-//     pagination.reset(movies.total_results);
-
-//     const markup = movies.results
-//       .map(movie => {
-//         return renderMarkup(movie);
-//       })
-//       .join('');
-//     refs.gallery.innerHTML = markup;
-//   });
-// }
-
 //колбек для пагінації основної сторінки трен
 export async function loadMorePopMovies(event) {
   const currentPage = event.page;
@@ -133,8 +119,3 @@ export async function loadMorePopMovies(event) {
     console.log(error);
   }
 }
-// function loadMorePopMovies(event) {
-//   const currentPage = event.page;
-//   console.log(currentPage);
-//   getPopMovies(currentPage);
-// }
