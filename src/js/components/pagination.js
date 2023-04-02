@@ -1,4 +1,4 @@
-// import Pagination from 'tui-pagination';
+import { STATE } from '../components/state.js';
 import Pagination from 'tui-pagination';
 import 'tui-pagination/dist/tui-pagination.css';
 import moviesAPI from '../services/api';
@@ -74,55 +74,39 @@ if (window.screen.width <= 480) {
 const pagination = new Pagination(paginationContainer, options);
 
 //отримання поточної сторінки
-const page = pagination.getCurrentPage();
-console.log(page);
+// const page = pagination.getCurrentPage();
+// console.log(page);
 
 //запуск популярних фільмів за день
-startPage();
+// startPage();
 
 //запускаємо пагінацію
 pagination.on('beforeMove', loadMorePopMovies);
-
 //плавний скрол вгору при кліку на кнопку
 pagination.on('afterMove', () => {
   window.scrollTo({ top: 0, behavior: 'smooth' });
 });
 
 //створення функції для відображення карток стартової сторінки + пагінація
-export async function startPage() {
-  try {
-    const movies = await moviesAPI.getPopMovies(page);
-    console.log(movies);
-
-    //розраховуємо сторінки
-    pagination.reset(movies.total_results);
-
-    const { results } = movies;
-    console.log(results);
-    results
-      .map(movie => {
-        return renderMarkup(movie);
-      })
-      .join('');
-    refs.gallery.innerHTML = markup;
-  } catch (error) {
-    console.log(error);
-  }
-}
-// function startPage() {
-//   getPopMovies(page).then(movies => {
-//     console.log(movies);
+// export async function startPage() {
+//   try {
+//     const movies = await moviesAPI.getPopMovies(page);
+//     // console.log(movies);
+//     //розраховуємо сторінки
 //     pagination.reset(movies.total_results);
 
-//     const markup = movies.results
+//     const { results } = movies;
+//     console.log(results);
+//     results
 //       .map(movie => {
 //         return renderMarkup(movie);
 //       })
 //       .join('');
 //     refs.gallery.innerHTML = markup;
-//   });
+//   } catch (error) {
+//     console.log(error);
+//   }
 // }
-
 //колбек для пагінації основної сторінки трен
 export async function loadMorePopMovies(event) {
   const currentPage = event.page;
@@ -134,8 +118,9 @@ export async function loadMorePopMovies(event) {
     console.log(error);
   }
 }
-// function loadMorePopMovies(event) {
-//   const currentPage = event.page;
-//   console.log(currentPage);
-//   getPopMovies(currentPage);
-// }
+
+export function startPage(date, getFunc) {
+  console.log(date, getFunc);
+  pagination.reset(date);
+  getFunc(Stapage);
+}
