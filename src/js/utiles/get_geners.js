@@ -1,11 +1,11 @@
-import { genreTable } from './geners';
+import {genreTable} from './geners.js';
 
-function getGenres(genre_ids) {
-  const arr = genre_ids
-    .map(id => genreTable.find(item => id === item.id))
-    .map(item => item.name);
-
-  return arr;
+// Пошук потрібних жанрів по ID
+export function genresSearch(data) {
+  const arrGenres = [];
+  const genre = data.map(element => {
+      return genreTable.filter(el => el.id === element).map(el => el.name);
+    }).join(', ');
+    arrGenres.push(genre)[0];
+    return arrGenres;
 }
-
-export default getGenres;
