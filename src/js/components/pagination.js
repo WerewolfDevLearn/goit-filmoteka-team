@@ -74,7 +74,7 @@ if (window.screen.width <= 480) {
 const pagination = new Pagination(paginationContainer, options);
 
 //отримання поточної сторінки
-const page = pagination.getCurrentPage();
+// const page = pagination.getCurrentPage();
 // console.log(page);
 
 //запуск популярних фільмів за день
@@ -88,26 +88,25 @@ pagination.on('afterMove', () => {
 });
 
 //створення функції для відображення карток стартової сторінки + пагінація
-export async function startPage() {
-  try {
-    const movies = await moviesAPI.getPopMovies(page);
-    // console.log(movies);
+// export async function startPage() {
+//   try {
+//     const movies = await moviesAPI.getPopMovies(page);
+//     // console.log(movies);
+//     //розраховуємо сторінки
+//     pagination.reset(movies.total_results);
 
-    //розраховуємо сторінки
-    pagination.reset(movies.total_results);
-
-    const { results } = movies;
-    // console.log(results);
-    results
-      .map(movie => {
-        return renderMarkup(movie);
-      })
-      .join('');
-    refs.gallery.innerHTML = markup;
-  } catch (error) {
-    console.log(error);
-  }
-}
+//     const { results } = movies;
+//     console.log(results);
+//     results
+//       .map(movie => {
+//         return renderMarkup(movie);
+//       })
+//       .join('');
+//     refs.gallery.innerHTML = markup;
+//   } catch (error) {
+//     console.log(error);
+//   }
+// }
 //колбек для пагінації основної сторінки трен
 export async function loadMorePopMovies(event) {
   const currentPage = event.page;
@@ -118,4 +117,10 @@ export async function loadMorePopMovies(event) {
   } catch (error) {
     console.log(error);
   }
+}
+
+export function startPage(date, getFunc) {
+  console.log(date, getFunc);
+  pagination.reset(date);
+  getFunc(Stapage);
 }
