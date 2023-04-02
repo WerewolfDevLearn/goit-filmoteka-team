@@ -3,7 +3,9 @@ import moviesAPI from './js/services/api';
 import { startPage, loadMorePopMovies } from './js/components/pagination';
 import { removeGlobalLoader } from './js/services/loader';
 import { showTrailer } from './js/services/trailer';
-import getGenres from './js/utiles/get_geners';
+
+import { refs, createFilmModal } from './js/services/modal-film';
+
 
 // console.log(STATE);
 
@@ -27,4 +29,14 @@ async function get2(page) {
   // const firestFilmId = date.results[0].id;
   // showTrailer(firestFilmId);
 }
+
+// get();
+
+// Remove global loader when page loaded
+window.addEventListener('load', removeGlobalLoader);
+
+// Open FilmModal
+refs.filmCardListEl.addEventListener('click', createFilmModal);
+
 get(STATE.page);
+
