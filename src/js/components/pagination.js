@@ -1,8 +1,12 @@
 import { STATE } from '../components/state.js';
 import Pagination from 'tui-pagination';
 import 'tui-pagination/dist/tui-pagination.css';
-import moviesAPI from '../services/api';
-
+import differentFetch from '../services/different-fetchs.js';
+import {
+  createCardMarkup,
+  appendCardsMarkup,
+} from '../services/createCardMarkup';
+const galleryEl = document.querySelector('.gallery');
 const paginationContainer = document.querySelector('#tui-pagination-container');
 
 //опції для пагінації
@@ -69,7 +73,6 @@ if (window.screen.width <= 480) {
 } else {
   options = paginDesktopOptions;
 }
-
 //ініціалізація пагінації
 const pagination = new Pagination(paginationContainer, options);
 
@@ -81,46 +84,23 @@ const pagination = new Pagination(paginationContainer, options);
 // startPage();
 
 //запускаємо пагінацію
-pagination.on('beforeMove', loadMorePopMovies);
+pagination.on('beforeMove', loadMore);
 //плавний скрол вгору при кліку на кнопку
 pagination.on('afterMove', () => {
   window.scrollTo({ top: 0, behavior: 'smooth' });
 });
-
-//створення функції для відображення карток стартової сторінки + пагінація
-// export async function startPage() {
-//   try {
-//     const movies = await moviesAPI.getPopMovies(page);
-//     // console.log(movies);
-//     //розраховуємо сторінки
-//     pagination.reset(movies.total_results);
-
-//     const { results } = movies;
-//     console.log(results);
-//     results
-//       .map(movie => {
-//         return renderMarkup(movie);
-//       })
-//       .join('');
-//     refs.gallery.innerHTML = markup;
-//   } catch (error) {
-//     console.log(error);
-//   }
-// }
-//колбек для пагінації основної сторінки трен
-export async function loadMorePopMovies(event) {
-  const currentPage = event.page;
-  console.log(currentPage);
-  try {
-    await moviesAPI.getPopMovies(currentPage);
-    console.log(getPopMovies(currentPage));
-  } catch (error) {
-    console.log(error);
-  }
+export function startPage(date) {
+  pagination.reset(date);
 }
 
-export function startPage(date, getFunc) {
-  console.log(date, getFunc);
-  pagination.reset(date);
-  getFunc(Stapage);
+async function loadMore(event) {
+  console.log(STATE.movies);
+
+  const currentPage = event.page;
+  STATE.page = currentPage;
+  const date = await differentFetch(STATE.page);
+  STATE.movies = date.results;
+  console.log(STATE.movies);
+  galleryEl.innerHTML = '';
+  appendCardsMarkup(createCardMarkup(STATE.movies));
 }

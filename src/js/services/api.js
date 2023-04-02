@@ -26,6 +26,7 @@ async function getMovieByKeyword(keyword, page) {
       `https://api.themoviedb.org/3/search/movie?api_key=${apiKey}&query=${keyword}&page=${page}&include_adult=false`
     );
     const data = await respons.data;
+    // console.log(data);
     return data;
   } catch (error) {
     console.log(error);
