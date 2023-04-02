@@ -1,6 +1,9 @@
 import { STATE } from './js/components/state';
 import moviesAPI from './js/services/api';
-import { createCardMarkup, appendCardsMarkup } from './js/createCardMarkup';
+import {
+  createCardMarkup,
+  appendCardsMarkup,
+} from './js/utiles/createCardMarkup';
 import { startPage, loadMorePopMovies } from './js/components/pagination';
 import { removeGlobalLoader } from './js/services/loader';
 import { showTrailer } from './js/services/trailer';
