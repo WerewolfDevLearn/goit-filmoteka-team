@@ -6,7 +6,16 @@ import { showTrailer } from './js/services/trailer';
 import getGenres from './js/utiles/get_geners';
 
 // console.log(STATE);
-async function get(page) {
+
+// Remove global loader when page loaded
+window.addEventListener('load', removeGlobalLoader);
+
+function stateModify(date) {
+  STATE.movies = date.results;
+  STATE.totalPages = date.total_pages;
+  console.log('STATE', STATE);
+}
+async function get2(page) {
   //   const date = await moviesAPI.getMovieByKeyword('cat', 1);
   //   const date = await moviesAPI.getMovieDetails(76600);
   //   const date = await moviesAPI.getRelatedVideos(76600);
@@ -19,12 +28,3 @@ async function get(page) {
   // showTrailer(firestFilmId);
 }
 get(STATE.page);
-
-// Remove global loader when page loaded
-window.addEventListener('load', removeGlobalLoader);
-
-function stateModify(date) {
-  STATE.movies = date.results;
-  STATE.totalPages = date.total_pages;
-  console.log('STATE', STATE);
-}
