@@ -2,6 +2,7 @@ import moviesAPI from './js/services/api';
 import { startPage, loadMorePopMovies } from './js/utiles/feature_6_7_8';
 import { removeGlobalLoader } from './js/services/loader';
 import { showTrailer } from './js/services/trailer';
+import { refs, createFilmModal } from './js/services/modal-film';
 
 async function get() {
   //   const date = await moviesAPI.getMovieByKeyword('cat', 1);
@@ -18,3 +19,6 @@ async function get() {
 
 // Remove global loader when page loaded
 window.addEventListener('load', removeGlobalLoader);
+
+// Open FilmModal
+refs.filmCardListEl.addEventListener('click', createFilmModal);

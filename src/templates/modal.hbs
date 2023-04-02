@@ -1,0 +1,105 @@
+<div class='modal' data-modal='modal'>
+  <div class='modal__poster-wrap'>
+    <img
+      class='modal__poster'
+      src='https://image.tmdb.org/t/p/w500/{{poster_path}}'
+      alt='film-poster'
+    />
+  </div>
+  <div class='modal__info-wrap'>
+    <div>
+      <h2 class='modal__title'>{{original_title}}</h2>
+      <div class='modal__table'>
+        <table class='modal__film-info'>
+          <tbody>
+            <tr> <td>Vote / Votes</td> </tr>
+            <tr> <td>Popularity</td> </tr>
+            <tr> <td>Original Title</td> </tr>
+            <tr> <td>Genre</td> </tr>
+          </tbody>
+        </table>
+        <table class='modal__film-data'>
+          <tbody>
+            <tr>
+              <td class='modal__vote'>
+                <span class='modal__vote-average'>{{vote_average}}</span>
+                /
+                <span class='modal__vote-count'>{{vote_count}}</span></td>
+            </tr>
+            <tr> <td>{{popularity}}</td> </tr>
+            <tr>
+              <td>
+                <span class='modal__film-name'>{{original_title}}</span></td>
+            </tr>
+            <tr>
+              <td>
+                {{#each genres}}
+                  {{#unless @last}}
+                    {{this.name}},
+                  {{/unless}}
+                  {{#if @last}}
+                    {{this.name}}
+                  {{/if}}
+                {{/each}}
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <div class='modal__film-about'>
+        <h3 class='modal__film-about-title'>About</h3>
+        <p class='modal__film-overview'>{{overview}}</p>
+      </div>
+    </div>
+    {{! buttons }}
+    <div>
+      <div class='btn__wrap'>
+        <button class='btn__add' data-modal='add-watched' type='submit'>Add to
+          <br />watched</button>
+        <button
+          class='btn__remove'
+          data-modal='remove-watched'
+          type='submit'
+        >Delete from <br />watched</button>
+
+        <button class='btn__add' data-modal='add-queue' type='submit'>Add to
+          <br />queue</button>
+        <button
+          class='btn__remove'
+          data-modal='remove-queue'
+          type='submit'
+        >Delete from <br /> queue</button>
+      </div>
+      <button class='btn__trailer' data-modal='trailer' type='submit'>
+        <svg
+          class='btn__trailer-icon'
+          data-modal='trailer'
+          width='36'
+          height='30'
+          viewBox='0 0 38 34'
+          xmlns='http://www.w3.org/2000/svg'
+        >
+          <path
+            d='m25.363 11.88-8.668-5.818a1.436 1.436 0 0 0-2.038.456l-.004.007c-.129.213-.205.47-.205.745V18.909c0 .551.305 1.03.755 1.279l.008.004a1.433 1.433 0 0 0 1.489-.075l-.005.003 8.669-5.818c.391-.264.644-.706.644-1.206v-.005a1.462 1.462 0 0 0-.639-1.207l-.005-.003zm-8.026 4.311V10l4.621 3.091-4.619 3.1zM34.675 0H2.889C2.124 0 1.386.306.845.851a2.918 2.918 0 0 0-.846 2.058v20.363c0 .772.305 1.512.846 2.058a2.884 2.884 0 0 0 2.044.851h31.786c.765 0 1.503-.306 2.044-.851a2.915 2.915 0 0 0 .846-2.058V2.909c0-.772-.305-1.511-.846-2.058A2.87 2.87 0 0 0 34.675 0zm0 23.272H2.889V2.909h31.786v20.363zm2.89 7.273c0 .387-.153.757-.423 1.03a1.436 1.436 0 0 1-1.022.426H1.446c-.383 0-.751-.153-1.021-.426a1.457 1.457 0 0 1 0-2.058 1.44 1.44 0 0 1 1.021-.426h34.677c.383 0 .751.153 1.021.426.271.273.423.643.423 1.03z'
+          ></path>
+        </svg>
+        <span data-modal='trailer'>View <br /> trailer</span>
+      </button>
+    </div>
+    <button class='modal__close' data-modal='close' type='submit'>
+      <svg
+        width='24'
+        height='24'
+        viewBox='0 0 30 30'
+        xmlns='http://www.w3.org/2000/svg'
+      >
+        <path
+          d='m26.667 7.303-1.97-1.97-7.808 7.808-7.808-7.808-1.97 1.97 7.808 7.808-7.808 7.808 1.97 1.97 7.808-7.808 7.808 7.808 1.97-1.97-7.808-7.808 7.808-7.808z'
+        ></path>
+      </svg>
+      {{! <svg width='30' height='30'>
+          <use href='../img/sprite.svg#modal-close'></use>
+        </svg> }}
+    </button>
+  </div>
+</div>
