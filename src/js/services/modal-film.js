@@ -20,11 +20,18 @@ export const refs = {
   btnAddQueueEl: '',
   btnRemoveWatchedEl: '',
   btnRemoveQueueEl: '',
+  btnViewTrailer: '',
 };
 
 // Const
 let filmId = null;
-const DATA = ['add-watched', 'add-queue', 'remove-watched', 'remove-queue'];
+const DATA = [
+  'add-watched',
+  'add-queue',
+  'remove-watched',
+  'remove-queue',
+  'trailer',
+];
 const KEY_LIBRIARY = ['watched', 'queue'];
 const IS_HIDDEN = 'visually-hidden';
 let youTubePlayer = null;
@@ -38,13 +45,9 @@ export async function createFilmModal(e) {
   // Create Backdrop
   refs.bodyEl.insertAdjacentHTML('beforeend', renderBackdrop());
   refs.filmBackdropEl = document.querySelector('.backdrop');
-
+  // Create Modal
   try {
-    // Fetch MovieDetails
     const data = await moviesAPI.getMovieDetails(filmId);
-    const videos = await moviesAPI.getRelatedVideos(filmId);
-    trailerId = getTrailerId(videos);
-    // Create Modal
     refs.filmBackdropEl.insertAdjacentHTML('afterbegin', renderModal(data));
   } catch (error) {
     console.log(error);
@@ -54,7 +57,14 @@ export async function createFilmModal(e) {
   // Show/Hide Buttons
   btnElShowHide();
   // Create YouTubePlayer
-  createYouTubePlayer(trailerId);
+  try {
+    const videos = await moviesAPI.getRelatedVideos(filmId);
+    trailerId = getTrailerId(videos);
+    createYouTubePlayer(trailerId);
+  } catch (error) {
+    refs.btnViewTrailer.textContent = error;
+    refs.btnViewTrailer.disabled = true;
+  }
   // Add Modal Listners
   refs.filmModalCloseBtnlEl.addEventListener('click', closeFilmModal);
   refs.filmBackdropEl.addEventListener('click', closeFilmModal);
@@ -66,13 +76,13 @@ export async function createFilmModal(e) {
 
 // Select Button Elements
 function btnElSelect() {
-  refs.filmModalCloseBtnlEl = document.querySelector('.modal__close');
   refs.filmModalEl = document.querySelector('[data-modal="modal"]');
-
+  refs.filmModalCloseBtnlEl = document.querySelector('.modal__close');
   refs.btnAddWatchedEl = document.querySelector(`[data-modal=${DATA[0]}]`);
   refs.btnAddQueueEl = document.querySelector(`[data-modal=${DATA[1]}]`);
   refs.btnRemoveWatchedEl = document.querySelector(`[data-modal=${DATA[2]}]`);
   refs.btnRemoveQueueEl = document.querySelector(`[data-modal=${DATA[3]}]`);
+  refs.btnViewTrailer = document.querySelector(`[data-modal=${DATA[4]}]`);
 }
 
 // Show/Hide Buttons
@@ -135,6 +145,7 @@ function onBtnClick(e) {
       refs.youTubePlayerEl.classList.toggle('visually-hidden');
       refs.filmModalEl.classList.toggle('visually-hidden');
       e.target.closest('.btn__trailer').blur();
+      youTubePlayer.on('stateChange', e => refs.youTubePlayerEl.blur());
       break;
   }
 }
@@ -155,7 +166,6 @@ function closeFilmModal(e) {
     refs.filmBackdropEl.removeEventListener('click', hideYouTubePlayer);
     removeEventListener('keydown', closeFilmModal);
     removeEventListener('keydown', hideYouTubePlayer);
-
     // Add FilmCardGallery Listner
     refs.filmCardListEl.addEventListener('click', createFilmModal);
   }
@@ -181,5 +191,5 @@ function getTrailerId(videos) {
   );
   if (trailer) return trailer.key;
   if (videos.length) return videos[0].key;
-  throw new Error('Oops! Trailer not found.');
+  throw new Error('Oops! Trailer not found');
 }
