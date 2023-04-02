@@ -1,8 +1,9 @@
-import getPosterPath from './get_poster_path';
-import { genresSearch } from './get_geners';
+import getPosterPath from '../utiles/get_poster_path';
+import { genresSearch } from '../utiles/get_geners';
 import { cardMarkup } from './cardMarkup';
 
 export function createCardMarkup(array) {
+  // console.log('array: ', array);
   return array
     .map(
       ({ id, genre_ids, title, vote_average, release_date, poster_path }) => {
