@@ -39,14 +39,10 @@ openModalBtn.addEventListener('click', () => {
         } else if (halfStar && i === fullStarCount) {
           star.style.background = `linear-gradient(to right, #ffdd00 50%, transparent 50%)`;
         }
-        // добавляем элемент звезды в родительский элемент ratingStarsContainer.
         ratingStarsContainer.appendChild(star);
       }
-      // добавляем элементы ratingNumber и ratingStarsContainer в родительский элемент ratingElement.
       ratingElement.appendChild(ratingNumber);
       ratingElement.appendChild(ratingStarsContainer);
-
-      // добавляем элемент ratingElement в родительский элемент movieRating.
       movieRating.appendChild(ratingElement);
 
       // устанавливаем display: block для movieRating, чтобы отобразить рейтинг фильма.
@@ -55,8 +51,7 @@ openModalBtn.addEventListener('click', () => {
     .catch(error => console.error(error));
 });
 
-// Функция, добавленная в слушатель событий кнопки closeBtn, вызывается при нажатии на кнопку закрытия
-// модального окна. В этой функции свойство display модального окна устанавливается на none, чтобы скрыть
+// В этой функции свойство display модального окна устанавливается на none, чтобы скрыть
 // модальное окно. Затем контейнер movieRating очищается, чтобы удалить рейтинг фильма.
 closeBtn.addEventListener('click', () => {
   modal.style.display = 'none';
