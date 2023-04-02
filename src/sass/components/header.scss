@@ -1,5 +1,4 @@
 .decor {
-  // background-color: gray;
   background-image: url('../images/headerImg/abstract-background-with-red-lines-320-1x.jpg');
   width: 320;
   margin: 0 auto;
@@ -10,7 +9,7 @@
   @media screen and (min-width: 768px) {
     width: 768px;
     padding: 40px 32px 81px 32px;
-    // background-color: gray;
+
     background-image: url('../images/headerImg/abstract-background-with-red-lines-768-1x.jpg');
     background-repeat: no-repeat;
     background-position: center;
@@ -19,7 +18,7 @@
   @media screen and (min-width: 1280px) {
     width: 1280px;
     padding: 40px 32px 80px 32px;
-    // background-color: gray;
+
     background-image: url('../images/headerImg/abstract-background-with-red-lines-1280-1x.jpg');
     background-repeat: no-repeat;
     background-position: center;
@@ -32,13 +31,13 @@
 
   @media screen and (min-width: 768px) {
     display: flex;
-    // width: 768px;
+
     position: relative;
     width: 704px;
   }
   @media screen and (min-width: 1280px) {
     display: flex;
-    // width: 1280px;
+
     position: relative;
     width: 1216px;
   }
@@ -49,7 +48,7 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  // margin-top: 0px;
+
   width: 280px;
   @media screen and (min-width: 768px) {
     display: flex;
@@ -76,11 +75,7 @@
 // }
 .header-logo {
   display: block;
-  width: 24px;
-  height: 24px;
 
-  // background: black;
-  // margin-right: 112px;
   @media screen and (min-width: 768px) {
     // margin-right: 10px;
     display: flex;
@@ -96,8 +91,8 @@
     outline: none;
   }
 }
-.nav-icon-logo {
-}
+// .nav-icon-logo {
+// }
 // .header-logo::before {
 //   content: '';
 //   display: inline-block;
@@ -115,7 +110,7 @@
   @media screen and (min-width: 768px) {
     // display: none;
     position: absolute;
-    // top: 40px;
+
     left: 34px;
     font-style: normal;
     font-weight: 500;
@@ -126,7 +121,6 @@
     text-align: center;
 
     color: #ffffff;
-    // margin-right: 10px;
   }
   @media screen and (min-width: 1280px) {
     // display: none;
@@ -139,7 +133,6 @@
     text-align: center;
 
     color: #ffffff;
-    // margin-right: 10px;
   }
 }
 .header-menu {
@@ -167,7 +160,7 @@
   text-transform: uppercase;
 
   color: #ffffff;
-  // color: black;
+
   letter-spacing: normal;
   @media screen and (min-width: 768px) {
   }
@@ -227,7 +220,7 @@
   border-width: 0;
   border-bottom: 0.5px solid #ffffff;
   width: 280px;
-  // font-family: 'Roboto';
+
   font-style: normal;
   font-weight: 400;
   font-size: 14px;
@@ -263,16 +256,12 @@
   }
 }
 .header-search::placeholder {
-  // color: black;
   color: inherit;
 }
 .header-search-img {
   position: absolute;
   right: 1.5;
   bottom: 6;
-  // border: 1px solid #FFFFFF;
-  // background-color: white;
-  background-color: black;
   width: 12px;
   height: 12px;
   @media screen and (min-width: 768px) {
@@ -295,18 +284,15 @@
     text-align: center;
 
     color: #ff001b;
-    // bottom: 0px;
-    top: 155px;
+
+    top: 172px;
     overflow: visible;
-    // width: 454px;
+
     letter-spacing: normal;
-    margin-top: 20px;
   }
   @media screen and (min-width: 1280px) {
     letter-spacing: normal;
-    top: 156px;
-    margin-top: 20px;
-    // width: 454px;
+    top: 172px;
   }
 }
 // .visibleFlag {
@@ -342,3 +328,5 @@
   @media screen and (min-width: 1280px) {
   }
 }
+
+//---------- day and night-----------------------------
