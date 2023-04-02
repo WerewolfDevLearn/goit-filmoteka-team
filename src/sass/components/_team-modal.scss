@@ -20,11 +20,11 @@
 
 .team-modal {
   position: absolute;
-  top: 50%;
+  top: 10%;
   left: 50%;
   transform: translate(-50%, 0) scale(1, 1);
   width: 280px;
-  padding: 40px;
+  padding: 26px;
   margin: 20px auto;
 
   background: rgba(229, 229, 229, 1);
@@ -33,10 +33,17 @@
   transition-property: transform;
   transition-duration: 250ms;
   transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
-
-  @media screen and (min-width: 768px) {
-    padding: 140px;
-    width: 700px;
+}
+@media screen and (min-width: 768px) {
+  .team-modal {
+    padding: 40px;
+    width: 573px;
+  }
+}
+@media screen and (min-width: 1280px) {
+  .team-modal {
+    padding: 60px;
+    width: 1126px;
   }
 }
 
@@ -66,12 +73,38 @@
   height: 27px;
   margin-bottom: 22px;
 }
+@media screen and (min-width: 768px) {
+  .team-modal__logo {
+    width: 220px;
+    height: 41px;
+  }
+}
+@media screen and (min-width: 1280px) {
+  .team-modal__logo {
+    width: 228px;
+    height: 44px;
+  }
+}
 
 .team-modal__members {
   display: flex;
   justify-content: center;
   align-items: center;
   flex-direction: column;
+}
+@media screen and (min-width: 768px) {
+  .team-modal__members {
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 37px;
+  }
+}
+@media screen and (min-width: 1280px) {
+  .team-modal__members {
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 30px;
+  }
 }
 
 .team-modal__card {
@@ -81,17 +114,25 @@
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
   width: 228px;
   padding: 32px;
-
-  /* @media screen and (min-width: 768px) {
-    max-width: 700px;
-    margin-top: 0px;
-    padding: 40px;
-    flex-basis: calc((100% - 140px) / 3);
-  } */
+}
+@media screen and (min-width: 768px) {
+  .team-modal__card {
+    max-width: 290px;
+  }
+}
+@media screen and (min-width: 1280px) {
+  .team-modal__card {
+    max-width: 228px;
+  }
 }
 
 .team-modal__card:not(:last-child) {
   margin-bottom: 29px;
+}
+@media screen and (min-width: 768px) {
+  .team-modal__card:not(:last-child) {
+    margin-bottom: 0px;
+  }
 }
 
 .team-modal__photo {
