@@ -1,0 +1,50 @@
+.logo {
+    display: flex;
+    align-items: center;
+    font-weight: 500;
+    font-size: 30px;
+    line-height: calc(35 / 30);
+    color: #ffffff;
+    text-decoration: none;
+    ;
+}
+
+.logo__wrap {
+    display: flex;
+    position: relative;
+    overflow: hidden;
+    height: 23px;
+    width: 24px;
+}
+
+.logo__icon {
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    top: -23px;
+    left: 0px;
+}
+
+.logo__icon--first,
+.logo__icon--second {
+    display: flex;
+    height: 23px;
+    animation-name: logoIconMovie;
+    animation-iteration-count: infinite;
+    animation-timing-function: cubic-bezier(1, 0.7, 0.7, 1);
+    animation-duration: 1500ms;
+}
+
+@keyframes logoIconMovie {
+    0% {
+        transform: translateY(23px);
+    }
+
+    100% {
+        transform: translateY(0px);
+    }
+}
+
+.logo__text {
+    margin-left: 10px;
+}
