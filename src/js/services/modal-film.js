@@ -45,9 +45,7 @@ export async function createFilmModal(e) {
   // Create Modal
   try {
     const data = await moviesAPI.getMovieDetails(filmId);
-
     // Create Modal
-
     refs.filmBackdropEl.insertAdjacentHTML('afterbegin', renderModal(data));
   } catch (error) {
     console.log(error);
@@ -60,8 +58,6 @@ export async function createFilmModal(e) {
   // Create YouTubePlayer
   try {
     const videos = await moviesAPI.getRelatedVideos(filmId);
-    trailerId = getTrailerId(videos);
-    createYouTubePlayer(trailerId);
   } catch (error) {
     refs.btnViewTrailer.textContent = error;
     refs.btnViewTrailer.disabled = true;
@@ -131,16 +127,7 @@ function onBtnClick(e) {
       refs.btnAddQueueEl.classList.toggle(IS_HIDDEN);
       break;
     case 'trailer':
-
-      youTubePlayer.playVideo();
-      refs.youTubePlayerEl = refs.filmBackdropEl.querySelector('iframe');
-      refs.youTubePlayerEl.classList.toggle('visually-hidden');
-      refs.filmModalEl.classList.toggle('visually-hidden');
-      e.target.closest('.btn__trailer').blur();
-      youTubePlayer.on('stateChange', e => refs.youTubePlayerEl.blur());
-
-      //showTrailer(filmId);
-
+      showTrailer(filmId);
       break;
   }
 }
@@ -157,37 +144,7 @@ function closeFilmModal(e) {
     refs.filmModalCloseBtnlEl.removeEventListener('click', closeFilmModal);
     refs.filmBackdropEl.removeEventListener('click', closeFilmModal);
     removeEventListener('keydown', closeFilmModal);
-
-    removeEventListener('keydown', hideYouTubePlayer);
-
-
-
     // Add FilmCardGallery Listner
     refs.filmCardListEl.addEventListener('click', createFilmModal);
   }
 }
-
-
-// // Hide YouTubePlayer
-function hideYouTubePlayer(e) {
-  if (e.code === 'Escape' || e.target.className === 'backdrop') {
-    refs.youTubePlayerEl.classList.add('visually-hidden');
-    refs.filmModalEl.classList.toggle('visually-hidden');
-    youTubePlayer.stopVideo();
-  }
-}
-
-// TrailerId
-function getTrailerId(videos) {
-  const officialTrailer = videos.results.find(el =>
-    el.name.toLowerCase().includes('official trailer')
-  );
-  if (officialTrailer) return officialTrailer.key;
-  const trailer = videos.results.find(el =>
-    el.name.toLowerCase().includes('trailer')
-  );
-  if (trailer) return trailer.key;
-  if (videos.length) return videos[0].key;
-  throw new Error('Oops! Trailer not found');
-}
-
