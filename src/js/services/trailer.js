@@ -4,7 +4,7 @@ import { htmlToElement } from './helpers';
 import { removeLoader, setLoader } from './loader';
 
 const bodyElement = document.querySelector('body');
-
+let youTubePlayer;
 // Finds trailer in the list of movies and returns video key
 function getTrailerKey(videos) {
   const officialTrailer = videos.find(el => {
