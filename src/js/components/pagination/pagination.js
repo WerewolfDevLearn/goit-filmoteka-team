@@ -1,6 +1,7 @@
 import { STATE } from '../state.js';
 import Pagination from 'tui-pagination';
-import 'tui-pagination/dist/tui-pagination.css';
+// import 'tui-pagination/dist/tui-pagination.css';
+import '../../../sass/components/_tui-pagination.scss';
 import {
   paginDesktopOptions,
   paginMobileOptions,
@@ -14,7 +15,9 @@ const galleryEl = document.querySelector('.gallery');
 const paginationContainer = document.querySelector('#tui-pagination-container');
 
 let options = null;
-if (window.screen.width <= 480) {
+console.log(window.innerWidth);
+console.log(window.screen.width);
+if (window.innerWidth <= 480) {
   options = paginMobileOptions;
 } else {
   options = paginDesktopOptions;
