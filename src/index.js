@@ -8,6 +8,9 @@ import { startPage } from './js/components/pagination';
 import { removeGlobalLoader } from './js/services/loader';
 import { showTrailer } from './js/services/trailer';
 import { refs, createFilmModal } from './js/services/modal-film';
+import toggleModal from './js/components/team-modal';
+const teamModalOpen = document.querySelector('[data-open-modal-team]');
+teamModalOpen.addEventListener('click', toggleModal);
 
 // Remove global loader when page loaded
 window.addEventListener('load', removeGlobalLoader);
