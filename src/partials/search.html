@@ -1,4 +1,5 @@
-<div class="blockHome">
+<!-- <div class="blockHome">
+  // div forma
   <div class="search">
     <input
       id="blockHome"
@@ -7,6 +8,8 @@
       placeholder="Movie search"
       autofocus
     />
+
+    // svg > type submit
     <svg class="header-search-img">
       <use href="./images/icons.svg#icon-search"></use>
     </svg>
@@ -16,4 +19,33 @@
       Search result not successful. Enter the correct movie name and try again.
     </p>
   </div>
-</div>
+</div> -->
+<!-- -------------------------------------1------------------------ -->
+<form class="blockHome" name="blockHome" autocomplete="on" novalidate>
+  <div class="blockHome-search-menu">
+    <div class="blockHome-search">
+      <label>
+        <!-- Movie search -->
+        <input
+          type="text"
+          class="header-search"
+          placeholder="Movie search"
+          autofocus
+        />
+      </label>
+      <button class="header-search-btn" type="submit">
+        <svg class="header-search-img">
+          <use href="./images/icons.svg#icon-search"></use>
+        </svg>
+      </button>
+    </div>
+    <div class="header-search-resultNotSuccess visibleFlag">
+      <p>
+        Search result not successful. Enter the correct movie name and try
+        again.
+      </p>
+    </div>
+  </div>
+</form>
+
+<!-- -----------------------------------------2------------------- -->
