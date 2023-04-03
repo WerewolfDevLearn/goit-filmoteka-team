@@ -1,24 +1,37 @@
 .container {
-  width: 100px;
-  margin-left: auto;
-  margin-right: auto;
-  padding-left: 20px;
-  padding-right: 20px;
+  margin: 0 auto;
 
-  @media screen and (min-width: 320px){
-    max-width: 320px;
+  @media screen and (min-width: 320px) {
+    width: 320px;
+    padding-left: 20px;
+    padding-right: 20px;
   }
 
-  @media screen and (min-width: 768px){
-    max-width: 768px;
+  @media screen and (min-width: 768px) {
+    width: 768px;
     padding-left: 32px;
     padding-right: 32px;
   }
 
-  @media screen and (min-width: 1280px){
-    max-width: 1280px;
+  @media screen and (min-width: 1280px) {
+    width: 1280px;
     padding-left: 32px;
     padding-right: 32px;
+  }
+}
+
+// new container-gallery
+ul.gallery {
+  padding-top: 20px;
+  padding-bottom: 40px;
+
+  @media screen and (min-width: 768px) {
+    padding-top: 60px;
+    padding-bottom: 60px;
+  }
+
+  @media screen and (min-width: 1280px) {
+    justify-content: flex-start;
   }
 }
 
