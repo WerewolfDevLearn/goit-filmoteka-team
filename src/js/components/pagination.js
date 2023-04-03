@@ -78,14 +78,9 @@ const pagination = new Pagination(paginationContainer, options);
 
 //отримання поточної сторінки
 // const page = pagination.getCurrentPage();
-// console.log(page);
 
-//запуск популярних фільмів за день
-// startPage();
-
-//запускаємо пагінацію
 pagination.on('beforeMove', loadMore);
-//плавний скрол вгору при кліку на кнопку
+
 pagination.on('afterMove', () => {
   window.scrollTo({ top: 0, behavior: 'smooth' });
 });
