@@ -4,14 +4,9 @@
   top: 0;
   height: 100vh;
   width: 100vw;
-  background-color: rgba(0, 0, 0, 0.5);
   display: flex;
   align-items: center;
   justify-content: center;
-
-  &--hidden {
-    display: none;
-  }
 
   &__content {
     width: 100%;
@@ -42,6 +37,9 @@
   top: 0;
   left: 0;
   transform: translateY(0%) scale(1);
+  &--hidden {
+    display: none;
+  }
 }
 .trailer-player {
   position: absolute;
@@ -49,21 +47,30 @@
   left: 50%;
   transform: translate(-50%, -50%);
   width: 100%;
+  height: 340px;
   padding: 2px;
   background-color: rgba(128, 128, 128, 0.5);
   border-radius: 4px;
   box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.12), 0px 1px 1px rgba(0, 0, 0, 0.14),
     0px 2px 1px rgba(0, 0, 0, 0.2);
+
   @media screen and (min-width: 768px) {
     display: flex;
     justify-content: center;
     align-items: center;
-    width: 700px;
-    height: 400px;
+    width: 704px;
+    height: 396px;
   }
 
   @media screen and (min-width: 1280px) {
     width: 806px;
-    height: 510px;
+    height: 445px;
+  }
+
+  &--not-found {
+    background-image: url('../images/trailer_not_found-1x.jpg');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position-y: 85%;
   }
 }

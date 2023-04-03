@@ -1,22 +1,28 @@
 import { STATE } from './js/components/state';
-import moviesAPI from './js/services/api';
-import { startPage, loadMorePopMovies } from './js/components/pagination';
+import differentFetch from './js/services/different-fetchs';
+import {
+  createCardMarkup,
+  appendCardsMarkup,
+} from './js/services/createCardMarkup';
+import { startPage } from './js/components/pagination';
 import { removeGlobalLoader } from './js/services/loader';
 import { showTrailer } from './js/services/trailer';
-import getGenres from './js/utiles/get_geners';
+import { refs, createFilmModal } from './js/services/modal-film';
 
-console.log(STATE);
-async function get() {
-  //   const date = await moviesAPI.getMovieByKeyword('cat', 1);
-  //   const date = await moviesAPI.getMovieDetails(76600);
-  //   const date = await moviesAPI.getRelatedVideos(76600);
-  // const date = await moviesAPI.getPopMovies(3);
-  // console.log(date);
-  // Remove comment to check trailer modal
-  // const firestFilmId = date.results[0].id;
-  // showTrailer(firestFilmId);
-}
-// get();
-// getGenres();
 // Remove global loader when page loaded
 window.addEventListener('load', removeGlobalLoader);
+get(STATE.page);
+
+refs.filmCardListEl.addEventListener('click', createFilmModal);
+
+async function get(page) {
+  const date = await differentFetch(page);
+  stateModify(date);
+  startPage(STATE.totalResults);
+  appendCardsMarkup(createCardMarkup(STATE.movies));
+}
+
+function stateModify(date) {
+  STATE.movies = date.results;
+  STATE.totalResults = date.total_results;
+}

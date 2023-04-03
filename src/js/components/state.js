@@ -1,8 +1,11 @@
 export const STATE = {
   movies: [],
-  page: 0,
-  logged: true,
-  user: {},
-  totalPages: 0,
+  page: 1,
+  user: {
+    uid: '',
+    movies:[],
+  },
   moviesPerPage: 0,
+  totalResults: 0,
+  keyword: '',
 };
