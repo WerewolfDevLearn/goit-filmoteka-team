@@ -2,7 +2,7 @@
   background-image: url('../images/headerImg/abstract-background-with-red-lines-320-1x.jpg');
   // width: 320;
   margin: 0 auto;
-  padding: 40px 20px 92px 20px;
+  padding: 40px 20px 40px 20px;
   background-repeat: no-repeat;
   background-position: center;
   background-size: cover;
@@ -13,7 +13,7 @@
   }
   @media screen and (min-width: 768px) {
     width: 768px;
-    padding: 40px 32px 81px 32px;
+    padding: 40px 32px 44px 32px;
 
     background-image: url('../images/headerImg/abstract-background-with-red-lines-768-1x.jpg');
     background-repeat: no-repeat;
@@ -22,7 +22,7 @@
   }
   @media screen and (min-width: 1280px) {
     width: 1280px;
-    padding: 40px 32px 80px 32px;
+    padding: 40px 32px 40px 32px;
 
     background-image: url('../images/headerImg/abstract-background-with-red-lines-1280-1x.jpg');
     background-repeat: no-repeat;
@@ -81,8 +81,8 @@
 //--------------------------registration btn------------------------
 .registrationBtn-container {
   position: absolute;
-  right: 32px;
-  bottom: 28px;
+  right: 12px;
+  bottom: 10px;
 
   font-weight: 500;
   font-size: 10px;
@@ -94,6 +94,28 @@
   text-transform: uppercase;
 
   color: #8c8c8c;
+  // display: none;
+  @media screen and (min-width: 768px) {
+    // position: absolute;
+    right: 22px;
+    bottom: 18px;
+
+    // font-weight: 500;
+    // font-size: 10px;
+    // line-height: 1.2;
+
+    // display: flex;
+    // align-items: center;
+    // text-align: right;
+    // text-transform: uppercase;
+
+    // color: #8c8c8c;
+    // display: block;
+  }
+  @media screen and (min-width: 1280px) {
+    right: 32px;
+    bottom: 28px;
+  }
 }
 
 .registration-blockBtn {
@@ -136,7 +158,7 @@
   align-items: center;
   justify-content: space-between;
 
-  width: 280px;
+  // width: 280px;
   @media screen and (min-width: 768px) {
     display: flex;
     width: 704px;
@@ -225,7 +247,10 @@
 }
 .header-menu {
   display: flex;
-  gap: 40px;
+  gap: 10px;
+  @media screen and (min-width: 320px) {
+    gap: 40px;
+  }
   @media screen and (min-width: 768px) {
   }
   @media screen and (min-width: 1280px) {
@@ -274,21 +299,42 @@
 
 // }
 //--------------------------search-------------------
+//
+
+.blockHome-search-menu {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
 .blockHome {
   display: flex;
-  margin-top: 60px;
+  align-items: center;
+  justify-content: center;
+}
+.blockHome-search {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  margin-top: 57px;
+  // width: 280px;
 
+  @media screen and (min-width: 320px) {
+    width: 280px;
+    // justify-content: center;
+  }
   @media screen and (min-width: 768px) {
-    justify-content: center;
+    width: 336px;
+    // justify-content: center;
   }
   @media screen and (min-width: 1280px) {
-    justify-content: center;
+    margin-top: 61px;
+    width: 394px;
+    // justify-content: center;
   }
 }
-
 .search {
-  display: flex;
-  position: relative;
+  // display: flex;
+  // position: relative;
   // align-items: center;
   // justify-content: center;
   // flex-wrap: wrap;
@@ -307,7 +353,7 @@
 
   border-width: 0;
   border-bottom: 0.5px solid #ffffff;
-  width: 280px;
+  // width: 180px;
 
   font-style: normal;
   font-weight: 400;
@@ -320,6 +366,9 @@
     outline: none;
   }
 
+  @media screen and (min-width: 320px) {
+    width: 280px;
+  }
   @media screen and (min-width: 768px) {
     width: 336px;
     font-style: normal;
@@ -347,9 +396,8 @@
   color: inherit;
 }
 .header-search-img {
-  position: absolute;
-  right: 1.5;
-  bottom: 6;
+  // position: absolute;
+  padding: 0;
   width: 12px;
   height: 12px;
   @media screen and (min-width: 768px) {
@@ -357,19 +405,50 @@
   @media screen and (min-width: 1280px) {
   }
 }
-.header-search-resultNotSuccess {
-  display: none;
 
+.header-search-btn {
+  position: absolute;
+  border: 0;
+  background-color: transparent;
+  right: 0%;
+  bottom: 0%;
+  @media screen and (min-width: 320px) {
+    right: 0%;
+    bottom: 0%;
+  }
+  @media screen and (min-width: 768px) {
+    right: 0%;
+    bottom: 0%;
+  }
+  @media screen and (min-width: 1280px) {
+    right: 0%;
+    bottom: 0%;
+  }
+}
+
+.header-search-resultNotSuccess {
+  // display: none;
+  display: flex;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 1.14;
+  align-items: center;
+
+  color: #ff001b;
+  margin-top: 16px;
   @media screen and (min-width: 768px) {
     display: flex;
 
-    position: absolute;
+    // position: absolute;
     font-style: normal;
     font-weight: 400;
     font-size: 14px;
     line-height: 1.14;
     align-items: center;
     text-align: center;
+    // justify-content: center;
+    margin-top: 20px;
 
     color: #ff001b;
 
@@ -380,6 +459,7 @@
   }
   @media screen and (min-width: 1280px) {
     letter-spacing: normal;
+    // justify-content: center;
     top: 172px;
   }
 }
@@ -420,4 +500,62 @@
   background-color: #fff;
 }
 .headerBtn {
+}
+
+//------------------------------decor-my-library-----------------------
+
+.decor-my-library {
+  padding: 40px 20px 60px 20px;
+  background-image: url('../images/headerImg/Rectangle-320-1-1x.jpg');
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  @media screen and (min-width: 768px) {
+    padding: 40px 32px 71px 32px;
+    background-image: url('../images/headerImg/Rectangle-768-1-1x.jpg');
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+  }
+  @media screen and (min-width: 1280px) {
+    padding: 40px 32px 71px 32px;
+    background-image: url('../images/headerImg/Rectangle-1280-1-1x.jpg');
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+  }
+}
+//-----------------------btn my library----------------------
+.btn-container-selector {
+  display: flex;
+  gap: 32px;
+  margin: 0 auto;
+  justify-content: center;
+  margin-top: 60px;
+  // padding-top: 124px;
+  // padding-bottom: 62px;
+  @media screen and (min-width: 768px) {
+    margin-top: 40px;
+  }
+  @media screen and (min-width: 1280px) {
+  }
+}
+.headerBtn {
+  font-style: normal;
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 1.33;
+  width: 129.53px;
+  height: 44px;
+  align-items: center;
+  text-align: center;
+  text-transform: uppercase;
+  color: #ffffff;
+  border: 1px solid #ffffff;
+  border-radius: 5px;
+  background-color: transparent;
+  @media screen and (min-width: 768px) {
+  }
+  @media screen and (min-width: 1280px) {
+  }
 }
