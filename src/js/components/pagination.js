@@ -1,6 +1,7 @@
 import { STATE } from '../components/state.js';
 import Pagination from 'tui-pagination';
-import 'tui-pagination/dist/tui-pagination.css';
+// import 'tui-pagination/dist/tui-pagination.css';
+import '../../sass/components/_tui-pagination.scss'
 import differentFetch from '../services/different-fetchs.js';
 import {
   createCardMarkup,
