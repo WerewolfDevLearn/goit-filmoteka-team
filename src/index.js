@@ -25,15 +25,24 @@ async function get2(page) {
   //   const date = await moviesAPI.getMovieDetails(76600);
   //   const date = await moviesAPI.getRelatedVideos(76600);
   const date = await moviesAPI.getPopMovies(page);
-  stateModify(date);
-  startPage(STATE.totalPages, moviesAPI.getPopMovies);
+// Підключити
+  // stateModify(date);
+  // startPage(STATE.totalPages, moviesAPI.getPopMovies);
+
   // console.log(date);
   // Remove comment to check trailer modal
   // const firestFilmId = date.results[0].id;
   // showTrailer(firestFilmId);
+
+
+  const markup = createCardMarkup(date.results);
+  appendCardsMarkup(markup);
 }
 
 // get();
+
+// моє
+get2(1);
 
 // Remove global loader when page loaded
 window.addEventListener('load', removeGlobalLoader);
@@ -41,4 +50,4 @@ window.addEventListener('load', removeGlobalLoader);
 // Open FilmModal
 refs.filmCardListEl.addEventListener('click', createFilmModal);
 
-get(STATE.page);
+// get(STATE.page);

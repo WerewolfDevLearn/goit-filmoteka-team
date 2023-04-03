@@ -75,3 +75,16 @@
     gap: 15px;
     justify-content: center;
 }
+
+.card__wrap{
+    position: relative;
+    overflow: hidden;
+    height: 23px;
+    width: 24px;
+}
+
+.card__name{
+    position: absolute;
+    top: -23px;
+    left: 0px;
+}
