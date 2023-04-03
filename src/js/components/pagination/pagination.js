@@ -1,6 +1,7 @@
 import { STATE } from '../state.js';
 import Pagination from 'tui-pagination';
-import 'tui-pagination/dist/tui-pagination.css';
+// import 'tui-pagination/dist/tui-pagination.css';
+import '../../sass/components/_tui-pagination.scss';
 import {
   paginDesktopOptions,
   paginMobileOptions,
