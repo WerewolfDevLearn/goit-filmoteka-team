@@ -233,6 +233,18 @@
       color: #ffffff;
       fill: currentColor;
     }
+
+    &:disabled {
+      color: #000000;
+
+      &:hover,
+      &:focus {
+        background-color: #ffffff;
+        border-color: #000000;
+        color: #000000;
+      }
+    }
+
     &-icon {
       margin-right: 8px;
     }
