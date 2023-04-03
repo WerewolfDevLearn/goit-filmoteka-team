@@ -1,8 +1,7 @@
-import YouTubePlayer from 'youtube-player';
-
 import renderBackdrop from '../../templates/backdrop.hbs';
 import renderModal from '../../templates/modal.hbs';
 import moviesAPI from '../../js/services/api';
+import { showTrailer } from '../../js/services/trailer';
 import { addMovieToLocalStorage } from './library-storage';
 import { removeMovieFromLocalStorage } from './library-storage';
 
@@ -34,8 +33,6 @@ const DATA = [
 ];
 const KEY_LIBRIARY = ['watched', 'queue'];
 const IS_HIDDEN = 'visually-hidden';
-let youTubePlayer = null;
-let trailerId = null;
 
 export async function createFilmModal(e) {
   // Get FilmID
@@ -48,6 +45,9 @@ export async function createFilmModal(e) {
   // Create Modal
   try {
     const data = await moviesAPI.getMovieDetails(filmId);
+
+    // Create Modal
+
     refs.filmBackdropEl.insertAdjacentHTML('afterbegin', renderModal(data));
   } catch (error) {
     console.log(error);
@@ -56,6 +56,7 @@ export async function createFilmModal(e) {
   btnElSelect();
   // Show/Hide Buttons
   btnElShowHide();
+
   // Create YouTubePlayer
   try {
     const videos = await moviesAPI.getRelatedVideos(filmId);
@@ -65,12 +66,11 @@ export async function createFilmModal(e) {
     refs.btnViewTrailer.textContent = error;
     refs.btnViewTrailer.disabled = true;
   }
+
   // Add Modal Listners
   refs.filmModalCloseBtnlEl.addEventListener('click', closeFilmModal);
   refs.filmBackdropEl.addEventListener('click', closeFilmModal);
-  refs.filmBackdropEl.addEventListener('click', hideYouTubePlayer);
   addEventListener('keydown', closeFilmModal);
-  addEventListener('keydown', hideYouTubePlayer);
   refs.filmModalEl.addEventListener('click', onBtnClick);
 }
 
@@ -103,15 +103,6 @@ function btnElShowHide() {
   }
 }
 
-// Create YouTubePlayer
-function createYouTubePlayer(trailerId) {
-  youTubePlayer = YouTubePlayer('video-player', {
-    videoId: trailerId,
-    width: refs.filmModalEl.clientWidth,
-    height: refs.filmModalEl.clientHeight,
-  });
-}
-
 // On Button Click
 function onBtnClick(e) {
   switch (e.target.dataset.modal) {
@@ -140,20 +131,22 @@ function onBtnClick(e) {
       refs.btnAddQueueEl.classList.toggle(IS_HIDDEN);
       break;
     case 'trailer':
+
       youTubePlayer.playVideo();
       refs.youTubePlayerEl = refs.filmBackdropEl.querySelector('iframe');
       refs.youTubePlayerEl.classList.toggle('visually-hidden');
       refs.filmModalEl.classList.toggle('visually-hidden');
       e.target.closest('.btn__trailer').blur();
       youTubePlayer.on('stateChange', e => refs.youTubePlayerEl.blur());
+
+      //showTrailer(filmId);
+
       break;
   }
 }
 
 // Close FilmModal
 function closeFilmModal(e) {
-  if (refs.youTubePlayerEl.clientWidth > 1) return;
-
   if (
     e.code === 'Escape' ||
     e.target.className === 'backdrop' ||
@@ -163,13 +156,17 @@ function closeFilmModal(e) {
     refs.filmBackdropEl.remove();
     refs.filmModalCloseBtnlEl.removeEventListener('click', closeFilmModal);
     refs.filmBackdropEl.removeEventListener('click', closeFilmModal);
-    refs.filmBackdropEl.removeEventListener('click', hideYouTubePlayer);
     removeEventListener('keydown', closeFilmModal);
+
     removeEventListener('keydown', hideYouTubePlayer);
+
+
+
     // Add FilmCardGallery Listner
     refs.filmCardListEl.addEventListener('click', createFilmModal);
   }
 }
+
 
 // // Hide YouTubePlayer
 function hideYouTubePlayer(e) {
@@ -193,3 +190,4 @@ function getTrailerId(videos) {
   if (videos.length) return videos[0].key;
   throw new Error('Oops! Trailer not found');
 }
+
