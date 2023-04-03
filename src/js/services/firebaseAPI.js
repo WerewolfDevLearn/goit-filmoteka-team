@@ -7,18 +7,19 @@ import {
   signInWithPopup,
   signOut,
 } from 'firebase/auth';
+import { firebaseConfig } from './firebaseDatabase.js';
 
-const firebaseConfig = {
-  apiKey: 'AIzaSyByAukmJ5Yo4o9t1pc8FBHvkFo0KdjDApc',
-  authDomain: 'filmoteka-project-fs68.firebaseapp.com',
-  databaseURL: 'https://filmoteka-project-fs68-default-rtdb.firebaseio.com',
-  projectId: 'filmoteka-project-fs68',
-  storageBucket: 'filmoteka-project-fs68.appspot.com',
-  messagingSenderId: '1069764300171',
-  appId: '1:1069764300171:web:533bf861599d47020bb38e',
-  measurementId: 'G-M6CDPKFPXK',
-  databaseURL: 'https://filmoteka-project-fs68-default-rtdb.firebaseio.com/',
-};
+// const firebaseConfig = {
+//   apiKey: 'AIzaSyByAukmJ5Yo4o9t1pc8FBHvkFo0KdjDApc',
+//   authDomain: 'filmoteka-project-fs68.firebaseapp.com',
+//   databaseURL: 'https://filmoteka-project-fs68-default-rtdb.firebaseio.com',
+//   projectId: 'filmoteka-project-fs68',
+//   storageBucket: 'filmoteka-project-fs68.appspot.com',
+//   messagingSenderId: '1069764300171',
+//   appId: '1:1069764300171:web:533bf861599d47020bb38e',
+//   measurementId: 'G-M6CDPKFPXK',
+//   databaseURL: 'https://filmoteka-project-fs68-default-rtdb.firebaseio.com/',
+// };
 export const app = initializeApp(firebaseConfig);
 
 function signUpWithGoogle(app) {
@@ -42,15 +43,14 @@ function signUpWithGoogle(app) {
         email: user.email,
         photoURL: user.photoURL,
       }).then(() => {
-        const watchedMoviesRef = ref(database, `watchedMovies/${user.uid}`);
-        set(watchedMoviesRef, {
-          movies: [],
-        });
+        // const watchedMoviesRef = ref(database, `watchedMovies/${user.uid}`);
+        // set(watchedMoviesRef, {
+        //   movies: [],
 
-        const toWatchMoviesRef = ref(database, `toWatchMovies/${user.uid}`);
-        set(toWatchMoviesRef, {
-          movies: [],
-        });
+        // const toWatchMoviesRef = ref(database, `toWatchMovies/${user.uid}`);
+        // set(toWatchMoviesRef, {
+        //   movies: [],
+        // });
 
         location.reload();
       });

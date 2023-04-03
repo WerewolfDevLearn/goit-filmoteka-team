@@ -10,7 +10,7 @@ import {
 } from 'firebase/auth';
 import { getDatabase, ref, set, child, get, update } from 'firebase/database';
 import { STATE } from '../components/state.js';
-const firebaseConfig = {
+export const firebaseConfig = {
   apiKey: 'AIzaSyD1f7-xsDqjaWiOp-IJkjjzcgXg8ipn8oM',
   authDomain: 'learn-firebase-d73bf.firebaseapp.com',
   databaseURL:
