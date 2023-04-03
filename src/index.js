@@ -4,7 +4,7 @@ import {
   createCardMarkup,
   appendCardsMarkup,
 } from './js/services/createCardMarkup';
-import { startPage } from './js/components/pagination';
+import { startPage } from './js/components/pagination/pagination.js';
 import { removeGlobalLoader } from './js/services/loader';
 import { showTrailer } from './js/services/trailer';
 import { refs, createFilmModal } from './js/services/modal-film';
