@@ -1,9 +1,12 @@
 import renderBackdrop from '../../templates/backdrop.hbs';
 import renderModal from '../../templates/modal.hbs';
 import moviesAPI from '../../js/services/api';
+import { normalizeData } from '../utiles/normalize';
 import { showTrailer } from '../../js/services/trailer';
 import { addMovieToLocalStorage } from './library-storage';
 import { removeMovieFromLocalStorage } from './library-storage';
+import { addMovieToStorage, removeMovieToStorage } from './movie-operations';
+import { async } from '@firebase/util';
 
 // Refs
 export const refs = {
@@ -20,6 +23,8 @@ export const refs = {
   btnRemoveWatchedEl: '',
   btnRemoveQueueEl: '',
   btnViewTrailer: '',
+  // Rating
+  ratioContainerEl: '',
 };
 
 // Const
@@ -34,6 +39,7 @@ const DATA = [
 const KEY_LIBRIARY = ['watched', 'queue'];
 const IS_HIDDEN = 'visually-hidden';
 
+// MovieModal
 export async function createFilmModal(e) {
   // Get FilmID
   filmId = e.target.closest('.card__item').id;
@@ -42,24 +48,26 @@ export async function createFilmModal(e) {
   // Create Backdrop
   refs.bodyEl.insertAdjacentHTML('beforeend', renderBackdrop());
   refs.filmBackdropEl = document.querySelector('.backdrop');
-
+  // Create Modal
   try {
-    // Fetch MovieDetails
     const data = await moviesAPI.getMovieDetails(filmId);
-    // Create Modal
-    refs.filmBackdropEl.insertAdjacentHTML('afterbegin', renderModal(data));
+    const normData = normalizeData(data);
+    refs.filmBackdropEl.insertAdjacentHTML('afterbegin', renderModal(normData));
+    // Vote Percentage
+    refs.ratioContainerEl = document.querySelector('.movie-rating');
+    renderRatio(normData.vote_average);
   } catch (error) {
     console.log(error);
   }
+
   // Select Button Elements
   btnElSelect();
   // Show/Hide Buttons
   btnElShowHide();
+  // Create YouTubePlayer
   try {
     const videos = await moviesAPI.getRelatedVideos(filmId);
-    console.log(videos);
     const trailerId = getTrailerId(videos);
-    console.log(trailerId);
   } catch (error) {
     console.log(error);
     refs.btnViewTrailer.textContent = error;
@@ -110,6 +118,9 @@ function onBtnClick(e) {
         e.target.classList.toggle(IS_HIDDEN);
         refs.btnRemoveWatchedEl.classList.toggle(IS_HIDDEN);
       }
+      // MovieData Operation
+      addMovieToStorage(filmId);
+      removeMovieToStorage(filmId);
       break;
     case DATA[1]:
       addMovieToLocalStorage(KEY_LIBRIARY[1], filmId);
@@ -117,16 +128,25 @@ function onBtnClick(e) {
         e.target.classList.toggle(IS_HIDDEN);
         refs.btnRemoveQueueEl.classList.toggle(IS_HIDDEN);
       }
+      // MovieData Operation
+      addMovieToStorage(filmId);
+      removeMovieToStorage(filmId);
       break;
     case DATA[2]:
       removeMovieFromLocalStorage(KEY_LIBRIARY[0], filmId);
       e.target.classList.toggle(IS_HIDDEN);
       refs.btnAddWatchedEl.classList.toggle(IS_HIDDEN);
+      // MovieData Operation
+      addMovieToStorage(filmId);
+      removeMovieToStorage(filmId);
       break;
     case DATA[3]:
       removeMovieFromLocalStorage(KEY_LIBRIARY[1], filmId);
       e.target.classList.toggle(IS_HIDDEN);
       refs.btnAddQueueEl.classList.toggle(IS_HIDDEN);
+      // MovieData Operation
+      addMovieToStorage(filmId);
+      removeMovieToStorage(filmId);
       break;
     case 'trailer':
       showTrailer(filmId);
@@ -164,6 +184,29 @@ function getTrailerId(videos) {
   if (trailer) return trailer.key;
   if (videos.length) return videos[0].key;
   throw new Error('Oops! Trailer is not available');
+}
+
+// Vote Percentage
+function renderRatio(rating) {
+  const ratingStarsContainer = document.createElement('div');
+  ratingStarsContainer.classList.add('rating-stars-container');
+
+  const fullStarCount = Math.floor(rating);
+  const percentage = (rating - fullStarCount) * 100;
+  const halfStar = rating - fullStarCount > 0;
+  for (let i = 0; i < 10; i++) {
+    const star = document.createElement('div');
+    star.classList.add('rating-star');
+    if (i < fullStarCount) {
+      star.classList.add('full');
+    } else if (halfStar && i === fullStarCount) {
+      star.style.background =
+        `linear-gradient(to right, #ff6b01 ${percentage}%,` +
+        `#f7f7f7 ${1 - percentage}%)`;
+    }
+    ratingStarsContainer.appendChild(star);
+  }
+  refs.ratioContainerEl.appendChild(ratingStarsContainer);
 }
 
 // -------------------------------------------------------------------------------------------- //
@@ -220,7 +263,8 @@ function getTrailerId(videos) {
 //   // Create Modal
 //   try {
 //     const data = await moviesAPI.getMovieDetails(filmId);
-//     refs.filmBackdropEl.insertAdjacentHTML('afterbegin', renderModal(data));
+//  const normData = normalizeData(data);
+//     refs.filmBackdropEl.insertAdjacentHTML('afterbegin', renderModal(normData));
 //   } catch (error) {
 //     console.log(error);
 //   }
@@ -364,4 +408,48 @@ function getTrailerId(videos) {
 //   if (trailer) return trailer.key;
 //   if (videos.length) return videos[0].key;
 //   throw new Error('Oops! Trailer is not available');
+// }
+
+// // Normalize Data
+// function normalizeData({
+//   poster_path,
+//   original_title,
+//   vote_average,
+//   vote_count,
+//   popularity,
+//   genres,
+//   overview,
+// }) {
+//   return {
+//     poster_path,
+//     original_title,
+//     vote_average: Number(vote_average).toFixed(1),
+//     vote_count: Number(vote_count),
+//     popularity: Number(popularity).toFixed(0),
+//     genres,
+//     overview,
+//   };
+// }
+
+// // Vote Percentage
+// function renderRatio(rating) {
+//   const ratingStarsContainer = document.createElement('div');
+//   ratingStarsContainer.classList.add('rating-stars-container');
+
+//   const fullStarCount = Math.floor(rating);
+//   const percentage = (rating - fullStarCount) * 100;
+//   const halfStar = rating - fullStarCount > 0;
+//   for (let i = 0; i < 10; i++) {
+//     const star = document.createElement('div');
+//     star.classList.add('rating-star');
+//     if (i < fullStarCount) {
+//       star.classList.add('full');
+//     } else if (halfStar && i === fullStarCount) {
+//       star.style.background =
+//         `linear-gradient(to right, #ff6b01 ${percentage}%,` +
+//         `#f7f7f7 ${1 - percentage}%)`;
+//     }
+//     ratingStarsContainer.appendChild(star);
+//   }
+//   refs.ratioContainerEl.appendChild(ratingStarsContainer);
 // }
