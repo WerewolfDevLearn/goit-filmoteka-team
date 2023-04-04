@@ -1,101 +1,113 @@
 /* стили для рейтинга */
-.movie-rating {
-  display: flex;
-  gap: 20px;
-  align-items: center;
-  margin-top: 20px;
+
+.movie-rating,
+.dummy-rating {
+  display: inline;
 }
 
-.rating-wrapper {
-  display: flex;
-  align-items: center;
-  margin-top: 20px;
-}
+// .rating-wrapper {
+//   display: flex;
+//   align-items: center;
+//   margin-top: 20px;
+// }
 
-.rating-number {
-  font-size: 24px;
-  font-weight: bold;
-}
+// .rating-number {
+// font-size: 24px;
+// font-weight: bold;
+// }
 
-.rating-stars {
-  display: flex;
-}
+// .rating-stars {
+// display: flex;
+// }
 
 .rating-star {
-  width: 16px;
-  height: 16px;
-  border-radius: 50%;
-  margin-right: 5px;
-  border: 1px solid #9c8c14;
-  background-color: transparent;
+  width: 7px;
+  height: 6px;
+
+  @media screen and (min-width: 768px) {
+    width: 12px;
+    height: 8px;
+  }
+
+  border-radius: 3px;
+  margin-right: 2px;
+  border: 1px solid #ff6b01;
+  background-color: #f7f7f7;
+
+  &-transp {
+    border: 1px solid transparent;
+    background-color: transparent;
+  }
 }
 
 .rating-star.full {
-  background-color: #ffdd00;
+  background-color: #ff6b01;
+
   /* border-color: transparent; */
 }
 
 .rating-stars-container {
-  display: flex;
-  align-items: center;
+  display: inline-flex;
+  // align-items: center;
 }
 
 /* стили для экранов с шириной до 320px */
-@media only screen and (max-width: 320px) {
-  .rating-stars-container {
-    margin-left: 0;
-  }
-  .movie-rating {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    /* margin-top: 20px; */
-  }
-  .modal-content {
-    margin: 0 auto;
-    width: 90%;
-    max-width: none;
-  }
-  .close-btn {
-    font-size: 24px;
-  }
-  .rating-stars {
-    flex-wrap: wrap;
-  }
-}
+// @media only screen and (max-width: 320px) {
+//   .rating-stars-container {
+// margin-left: 0;
+// }
+// .movie-rating {
+// display: flex;
+// flex-direction: column;
+// align-items: center;
+/* margin-top: 20px; */
+// }
+// .modal-content {
+//   margin: 0 auto;
+//   width: 90%;
+//   max-width: none;
+// }
+// .close-btn {
+//   font-size: 24px;
+// }
+// .rating-stars {
+// flex-wrap: wrap;
+// }
+// }
 
 /* стили для экранов с шириной от 321px до 768px */
-@media only screen and (min-width: 321px) and (max-width: 768px) {
-  .modal-content {
-    margin: 10% auto;
-    width: 70%;
-    max-width: none;
-  }
-  .close-btn {
-    font-size: 28px;
-  }
-}
+// @media only screen and (min-width: 321px) and (max-width: 768px) {
+//   .modal-content {
+//     margin: 10% auto;
+//     width: 70%;
+//     max-width: none;
+//   }
+//   .close-btn {
+//     font-size: 28px;
+//   }
+// }
 
 /* стили для экранов с шириной от 769px до 1280px */
-@media only screen and (min-width: 769px) and (max-width: 1280px) {
-  .modal-content {
-    margin: 15% auto;
-    width: 60%;
-    max-width: 600px;
-  }
-  .close-btn {
-    font-size: 32px;
-  }
-}
+// @media only screen and (min-width: 769px) and (max-width: 1280px) {
+//   .modal-content {
+//     margin: 15% auto;
+//     width: 60%;
+//     max-width: 600px;
+//   }
+//   .close-btn {
+//     font-size: 32px;
+//   }
+// }
 
 /* стили для экранов с шириной более 1280px */
-@media only screen and (min-width: 1281px) {
-  .modal-content {
-    margin: 15% auto;
-    width: 80%;
-    max-width: 600px;
-  }
-  .close-btn {
-    font-size: 32px;
-  }
-}
+// @media only screen and (min-width: 1281px) {
+//   .modal-content {
+//     margin: 15% auto;
+//     width: 80%;
+//     max-width: 600px;
+//   }
+//   .close-btn {
+//     font-size: 32px;
+//   }
+// }
+
