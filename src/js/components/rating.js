@@ -1,13 +1,12 @@
-// const modal = document.getElementById('modal'); // это запрос на тренировочную модалку
+const modal = document.getElementById('modal');
 const openModalBtn = document.getElementById('open-modal');
 const closeBtn = document.querySelector('.close-btn');
 const movieRating = document.querySelector('.movie-rating');
 const apiKey = '7f0dad748ff7b4eb073bc2aebbf95174';
 
-// В этой функции свойство display модального окна устанавливается на block, чтобы показать модальное окно.
 openModalBtn.addEventListener('click', () => {
   modal.style.display = 'block';
-  const movieId = 125; // Заменить 123 на id фильма, данные которого нужно получить
+  const movieId = 129; // Заменить 123 на id фильма, данные которого нужно получить
 
   fetch(
     `https://api.themoviedb.org/3/movie/${movieId}?api_key=${apiKey}&language=en-US`
@@ -28,31 +27,26 @@ openModalBtn.addEventListener('click', () => {
       const fullStarCount = Math.floor(rating);
       const halfStar = rating - fullStarCount > 0;
 
-      // Проверяем, должна ли звезда быть заполненной или пустой, сравнивая значение переменной i с округленным
-      // значением переменной rating.Если i меньше, чем округленное значение rating, то звезда должна быть
-      // заполнена, и мы добавляем к ней класс full.
       for (let i = 0; i < 10; i++) {
         const star = document.createElement('div');
         star.classList.add('rating-star');
         if (i < fullStarCount) {
           star.classList.add('full');
         } else if (halfStar && i === fullStarCount) {
-          star.style.background = `linear-gradient(to right, #ffdd00 50%, transparent 50%)`;
+          star.style.background = `linear-gradient(to right, #ff6b01 50%, transparent 50%)`;
         }
         ratingStarsContainer.appendChild(star);
       }
-      ratingElement.appendChild(ratingNumber);
+      // ratingElement.appendChild(ratingNumber);   // отображает цифры рядом с кружочками
       ratingElement.appendChild(ratingStarsContainer);
+      movieRating.innerHTML = '';
       movieRating.appendChild(ratingElement);
 
-      // устанавливаем display: block для movieRating, чтобы отобразить рейтинг фильма.
       movieRating.style.display = 'block';
     })
     .catch(error => console.error(error));
 });
 
-// В этой функции свойство display модального окна устанавливается на none, чтобы скрыть
-// модальное окно. Затем контейнер movieRating очищается, чтобы удалить рейтинг фильма.
 closeBtn.addEventListener('click', () => {
   modal.style.display = 'none';
   movieRating.innerHTML = '';
