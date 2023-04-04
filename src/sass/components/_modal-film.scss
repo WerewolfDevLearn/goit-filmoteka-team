@@ -81,11 +81,6 @@
     }
   }
 
-  &__table {
-    margin-top: 20px;
-    display: flex;
-  }
-
   %text-style {
     font-family: 'Roboto';
     font-weight: 500;
@@ -98,18 +93,25 @@
   }
 
   &__film-info {
-    width: 110px;
+    margin-top: 20px;
 
-    @media screen and (min-width: 1280px) {
-      width: 150px;
+    @extend %text-style;
+
+    &-row {
+      display: flex;
+      width: 100%;
+      align-items: center;
     }
 
-    @extend %text-style;
-    color: #8c8c8c;
-  }
+    &-title {
+      min-width: 100px;
 
-  &__film-data {
-    @extend %text-style;
+      @media screen and (min-width: 1280px) {
+        min-width: 150px;
+      }
+
+      color: #8c8c8c;
+    }
   }
 
   %vote-style {
@@ -149,6 +151,33 @@
 
     margin-top: 8px;
     line-height: 1.67;
+  }
+}
+
+.persentage {
+  display: inline-flex;
+
+  &__star {
+    width: 7px;
+    height: 6px;
+
+    @media screen and (min-width: 768px) {
+      width: 12px;
+      height: 8px;
+    }
+
+    border-radius: 3px;
+    margin-right: 2px;
+    border: 1px solid #ff6b01;
+
+    &-transp {
+      border: 1px solid transparent;
+      background-color: transparent;
+    }
+  }
+
+  &__star-full {
+    background-color: #ff6b01;
   }
 }
 

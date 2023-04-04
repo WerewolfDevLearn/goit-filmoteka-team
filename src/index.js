@@ -12,6 +12,11 @@ import { showTrailer } from './js/services/trailer';
 import { refs, createFilmModal } from './js/services/modal-film';
 import './js/components/team-modal';
 
+import {ticker} from './js/components/search_running_line'
+
+
+import './js/services/login';
+
 import {
   userCreation,
   sinInWithEmailPassword,
@@ -26,6 +31,8 @@ import {
 window.addEventListener('load', removeGlobalLoader);
 refs.filmCardListEl.addEventListener('click', createFilmModal);
 get(STATE.page);
+
+ticker();
 
 async function get(page) {
   const date = await differentFetch(page);
@@ -70,3 +77,9 @@ function stateModify(date) {
 // }
 // const uid = '2Gyhw9T2zQaEJGbYLjPemy2zQOw2';
 // getuzer(uid);
+
+// -------------------------------------------------------------------------------------------- //
+// import { btnSwitcher } from './js/services/movie-operations';
+
+// btnSwitcher(true);
+// btnSwitcher(false);
