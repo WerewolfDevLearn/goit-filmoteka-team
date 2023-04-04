@@ -1,4 +1,4 @@
-export const teamRefs = {
+const teamRefs = {
   openModalTeam: document.querySelector('[data-open-modal-team]'),
   closeModalTeam: document.querySelector('[data-close-modal-team]'),
   backdropTeam: document.querySelector('[data-backdrop-team]'),
@@ -19,7 +19,7 @@ export default function toggleModal() {
   teamRefs.backdropTeam.classList.toggle('is-hidden');
 }
 
-export default function logBackdropClick() {
+function logBackdropClick() {
   teamRefs.backdropTeam.classList.add('is-hidden');
   teamRefs.modalTeam.add('is-hidden');
 }
