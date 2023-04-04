@@ -11,9 +11,7 @@ import { removeGlobalLoader } from './js/services/loader';
 import { showTrailer } from './js/services/trailer';
 import { refs, createFilmModal } from './js/services/modal-film';
 import './js/components/team-modal';
-
-import {ticker} from './js/components/search_running_line'
-
+import { ticker } from './js/components/search_running_line';
 
 import './js/services/login';
 
@@ -52,19 +50,20 @@ function stateModify(date) {
 // googleSignUp.addEventListener('click', signUpWithGoogle);
 // googleSignOut.addEventListener('click', signOutFromGoogle);
 
-// const email = 'werewolfdev@gmail.com';
-// const password = 'qwert2';
+const email = 'were@gmail.com';
+const password = 'qwert2';
 
 // // signOut(email, password);
 // // userCreation(email, password);
 //
-
-// async function foo(data) {
-//   await signInWithGoogle();
-//   // console.log(STATE);
-//   writeUserData(data);
-// }
-// foo(STATE.user);
+userCreation;
+async function foo(email, password) {
+  const resp = await userCreation(email, password);
+  // console.log(STATE);
+  console.log(resp);
+  return resp;
+}
+foo(email, password);
 // async function getuzer(uid) {
 //   const gettedUser = await getUserData(uid);
 //   console.log('gettedUser: ', gettedUser);

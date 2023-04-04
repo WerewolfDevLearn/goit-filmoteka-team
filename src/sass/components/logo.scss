@@ -1,4 +1,4 @@
-.logo {
+.header-logo {
     display: flex;
     align-items: center;
     font-weight: 500;
@@ -6,11 +6,9 @@
     line-height: calc(35 / 30);
     color: #ffffff;
     text-decoration: none;
-    ;
 }
 
 .logo__wrap {
-    display: flex;
     position: relative;
     overflow: hidden;
     height: 23px;
@@ -27,11 +25,10 @@
 
 .logo__icon--first,
 .logo__icon--second {
-    display: flex;
     height: 23px;
     animation-name: logoIconMovie;
     animation-iteration-count: infinite;
-    animation-timing-function: cubic-bezier(1, 0.7, 0.7, 1);
+    animation-timing-function: cubic-bezier(0.2, 0.1, 0.4, 1);
     animation-duration: 1500ms;
 }
 
