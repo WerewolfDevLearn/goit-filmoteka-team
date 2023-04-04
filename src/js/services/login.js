@@ -34,6 +34,6 @@ async function oNsubmitHadeler(event) {
   const password = event.currentTarget.password.value;
   console.log('password: ', password);
   if (email && password) {
-    await userCreation((email, password));
+    await userCreation(email, password);
   }
 }
