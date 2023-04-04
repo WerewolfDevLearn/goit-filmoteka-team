@@ -15,8 +15,7 @@ const galleryEl = document.querySelector('.gallery');
 const paginationContainer = document.querySelector('#tui-pagination-container');
 
 let options = null;
-console.log(window.innerWidth);
-console.log(window.screen.width);
+
 if (window.innerWidth <= 480) {
   options = paginMobileOptions;
 } else {
