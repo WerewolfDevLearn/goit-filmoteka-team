@@ -11,7 +11,12 @@ import { removeGlobalLoader } from './js/services/loader';
 import { showTrailer } from './js/services/trailer';
 import { refs, createFilmModal } from './js/services/modal-film';
 import './js/components/team-modal';
+
+import {ticker} from './js/components/search_running_line'
+
+
 import './js/services/login';
+
 import {
   userCreation,
   sinInWithEmailPassword,
@@ -27,6 +32,8 @@ import './js/services/floating-buttons';
 window.addEventListener('load', removeGlobalLoader);
 refs.filmCardListEl.addEventListener('click', createFilmModal);
 get(STATE.page);
+
+ticker();
 
 async function get(page) {
   const date = await differentFetch(page);
