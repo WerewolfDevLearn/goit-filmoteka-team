@@ -1,25 +1,48 @@
-const teamRefs = {
-  openModalTeam: document.querySelector('[data-open-modal-team]'),
-  closeModalTeam: document.querySelector('[data-close-modal-team]'),
-  backdropTeam: document.querySelector('[data-backdrop-team]'),
-  modalTeam: document.querySelector('[data-modal-team]'),
-};
+// const teamRefs = {
+//   openModalTeam: document.querySelector('[data-open-modal-team]'),
+//   closeModalTeam: document.querySelector('[data-close-modal-team]'),
+//   // backdropTeam: document.querySelector('[data-backdrop-team]'),
+//   modalTeam: document.querySelector('[data-modal-team]'),
+// };
 
-teamRefs.openModalTeam.addEventListener('click', toggleModal);
-teamRefs.closeModalTeam.addEventListener('click', toggleModal);
-teamRefs.backdropTeam.addEventListener('click', logBackdropClick);
+const openModalTeam = document.querySelector('[data-open-modal-team]');
+const closeModalTeam = document.querySelector('[data-close-modal-team]');
+const backdropTeam = document.querySelector('[data-backdrop-team]');
+const modalTeam = document.querySelector('[data-modal-team]');
 
-document.addEventListener('keydown', function (e) {
+openModalTeam.addEventListener('click', turnOnModal);
+closeModalTeam.addEventListener('click', closeModalTm);
+backdropTeam.addEventListener('click', closeModalTm);
+backdropTeam.addEventListener('keydown', escapeListTeam);
+
+// const listTeam = document.addEventListener('keydown', function (e) {
+//   if (e.key === 'Escape') {
+//     toggleModal();
+//     document.removeEventListener('listTeam')
+//   }
+// });
+
+function closeModalTm() {
+  document.removeEventListener('keydown', escapeListTeam);
+  document.removeEventListener('click', closeModalTm);
+  backdropTeam.classList.add('is-hidden');
+}
+
+function turnOnModal() {
+  backdropTeam.classList.remove('is-hidden');
+  const listTeam = document.addEventListener('keydown', escapeListTeam);
+}
+
+function escapeListTeam(e) {
   if (e.key === 'Escape') {
-    toggleModal();
+    closeModalTm();
   }
-});
-
-export default function toggleModal() {
-  teamRefs.backdropTeam.classList.toggle('is-hidden');
 }
 
-function logBackdropClick() {
-  teamRefs.backdropTeam.classList.add('is-hidden');
-  teamRefs.modalTeam.add('is-hidden');
-}
+// export default function toggleModal() {
+//   teamRefs.backdropTeam.classList.toggle('is-hidden');
+// }
+
+// function logBackdropClick() {
+//   teamRefs.backdropTeam.classList.add('is-hidden');
+//  }
