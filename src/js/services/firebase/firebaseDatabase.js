@@ -1,30 +1,5 @@
-import { initializeApp } from 'firebase/app';
-import {
-  signOut,
-  getAuth,
-  createUserWithEmailAndPassword,
-  signInWithEmailAndPassword,
-  onAuthStateChanged,
-  GoogleAuthProvider,
-  signInWithPopup,
-} from 'firebase/auth';
 import { getDatabase, ref, set, child, get, update } from 'firebase/database';
-import { STATE } from '../components/state.js';
-const firebaseConfig = {
-  apiKey: 'AIzaSyD1f7-xsDqjaWiOp-IJkjjzcgXg8ipn8oM',
-  authDomain: 'learn-firebase-d73bf.firebaseapp.com',
-  databaseURL:
-    'https://learn-firebase-d73bf-default-rtdb.europe-west1.firebasedatabase.app',
-  projectId: 'learn-firebase-d73bf',
-  storageBucket: 'learn-firebase-d73bf.appspot.com',
-  messagingSenderId: '770423622217',
-  appId: '1:770423622217:web:ab511cd770f16c86e48d98',
-};
-
-const app = initializeApp(firebaseConfig);
-const auth = getAuth();
-const provider = new GoogleAuthProvider();
-const database = getDatabase(app);
+import { STATE } from '../../components/state.js';
 
 onAuthStateChanged(auth, user => {
   if (user) {

@@ -12,11 +12,15 @@ import toggleModal from './js/components/team-modal';
 const teamModalOpen = document.querySelector('[data-open-modal-team]');
 teamModalOpen.addEventListener('click', toggleModal);
 
-// Remove global loader when page loaded
+import {
+  userCreation,
+  sinInWithEmailPassword,
+  signOut,
+  signInWithGoogle,
+} from './js/services/firebase/firebaseAPI.js';
 window.addEventListener('load', removeGlobalLoader);
-get(STATE.page);
-
 refs.filmCardListEl.addEventListener('click', createFilmModal);
+get(STATE.page);
 
 async function get(page) {
   const date = await differentFetch(page);
@@ -24,8 +28,19 @@ async function get(page) {
   startPage(STATE.totalResults);
   appendCardsMarkup(createCardMarkup(STATE.movies));
 }
-
 function stateModify(date) {
   STATE.movies = date.results;
   STATE.totalResults = date.total_results;
 }
+
+// const googleSignUp = document.querySelector('.registration-menu-singBtn');
+// const googleSignOut = document.querySelector('.registration-menu-logBtn');
+
+// googleSignUp.addEventListener('click', signUpWithGoogle);
+// googleSignOut.addEventListener('click', signOutFromGoogle);
+
+const email = 'werewolfdev@gmail.com';
+const password = 'qwert2';
+// signInWithGoogle();
+// userCreation(email, password);
+// signOut(email, password);
