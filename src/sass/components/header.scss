@@ -530,3 +530,16 @@
   background: #ff6b01;
   border-radius: 5px;
 }
+
+.isDisabled-js {
+  color: grey;
+  cursor: not-allowed;
+  opacity: 0.5;
+  text-decoration: none;
+  pointer-events: none;
+}
+
+.isDisplayNone-js {
+  display: none;
+  pointer-events: none;
+}

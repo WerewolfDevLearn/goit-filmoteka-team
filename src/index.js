@@ -1,5 +1,6 @@
 import { STATE } from './js/components/state';
 import './js/components/search';
+import './js/services/swith-buttons';
 import differentFetch from './js/services/different-fetchs';
 import {
   createCardMarkup,
