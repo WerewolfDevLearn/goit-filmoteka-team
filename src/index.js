@@ -1,4 +1,5 @@
 import { STATE } from './js/components/state';
+import './js/components/search';
 import differentFetch from './js/services/different-fetchs';
 import {
   createCardMarkup,
@@ -48,22 +49,24 @@ function stateModify(date) {
 
 // // signOut(email, password);
 // // userCreation(email, password);
-async function foo(data) {
-  await signInWithGoogle();
-  // console.log(STATE);
-  writeUserData(data);
-}
-foo(STATE.user);
-async function getuzer(uid) {
-  const gettedUser = await getUserData(uid);
-  console.log('gettedUser: ', gettedUser);
-  const user = {
-    uid: gettedUser.uid,
-    movies: gettedUser.movies,
-  };
-  console.log('user: ', user);
-  // STATE.user = gettedUser;
-  //   console.log(STATE);
-}
-const uid = '2Gyhw9T2zQaEJGbYLjPemy2zQOw2';
-getuzer(uid);
+//
+
+// async function foo(data) {
+//   await signInWithGoogle();
+//   // console.log(STATE);
+//   writeUserData(data);
+// }
+// foo(STATE.user);
+// async function getuzer(uid) {
+//   const gettedUser = await getUserData(uid);
+//   console.log('gettedUser: ', gettedUser);
+//   const user = {
+//     uid: gettedUser.uid,
+//     movies: gettedUser.movies,
+//   };
+//   console.log('user: ', user);
+//   // STATE.user = gettedUser;
+//   //   console.log(STATE);
+// }
+// const uid = '2Gyhw9T2zQaEJGbYLjPemy2zQOw2';
+// getuzer(uid);
