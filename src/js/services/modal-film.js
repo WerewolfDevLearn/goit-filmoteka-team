@@ -54,7 +54,7 @@ export async function createFilmModal(e) {
     const normData = normalizeData(data);
     refs.filmBackdropEl.insertAdjacentHTML('afterbegin', renderModal(normData));
     // Vote Percentage
-    refs.ratioContainerEl = document.querySelector('.movie-rating');
+    refs.ratioContainerEl = document.querySelector('.persentage');
     renderRatio(normData.vote_average);
   } catch (error) {
     console.log(error);
@@ -188,25 +188,22 @@ function getTrailerId(videos) {
 
 // Vote Percentage
 function renderRatio(rating) {
-  const ratingStarsContainer = document.createElement('div');
-  ratingStarsContainer.classList.add('rating-stars-container');
-
   const fullStarCount = Math.floor(rating);
   const percentage = (rating - fullStarCount) * 100;
   const halfStar = rating - fullStarCount > 0;
-  for (let i = 0; i < 10; i++) {
-    const star = document.createElement('div');
-    star.classList.add('rating-star');
+
+  for (let i = 0; i < 10; i += 1) {
+    const starEl = document.createElement('div');
+    starEl.classList.add('persentage__star');
     if (i < fullStarCount) {
-      star.classList.add('full');
+      starEl.classList.add('persentage__star-full');
     } else if (halfStar && i === fullStarCount) {
-      star.style.background =
+      starEl.style.background =
         `linear-gradient(to right, #ff6b01 ${percentage}%,` +
-        `#f7f7f7 ${1 - percentage}%)`;
+        `#ffffff ${1 - percentage}%)`;
     }
-    ratingStarsContainer.appendChild(star);
+    refs.ratioContainerEl.appendChild(starEl);
   }
-  refs.ratioContainerEl.appendChild(ratingStarsContainer);
 }
 
 // -------------------------------------------------------------------------------------------- //

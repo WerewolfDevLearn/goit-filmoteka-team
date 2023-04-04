@@ -9,47 +9,45 @@
   <div class='modal__info-wrap'>
     <div>
       <h2 class='modal__title'>{{original_title}}</h2>
-      <div class='modal__table'>
-        <table class='modal__film-info'>
-          <tbody>
-            <tr> <td>Vote / Votes</td> </tr>
-            <tr><td><div class='dummy-rating'>
-              <div class="rating-stars-container"><div class='rating-star-transp'></div>
-              </div></td></tr>
-            <tr> <td>Popularity</td> </tr>
-            <tr> <td>Original Title</td> </tr>
-            <tr> <td>Genre</td> </tr>
-          </tbody>
-        </table>
-        <table class='modal__film-data'>
-          <tbody>
-            <tr>
-              <td class='modal__vote'>
-                <span class='modal__vote-average'>{{vote_average}}</span>
-                /
-                <span class='modal__vote-count'>{{vote_count}}</span></td>
-            </tr>
-            <tr><td><div class='movie-rating'></div></td></tr>
-            <tr> <td>{{popularity}}</td> </tr>
-            <tr>
-              <td>
-                <span class='modal__film-name'>{{original_title}}</span></td>
-            </tr>
-            <tr>
-              <td>
-                {{#each genres}}
-                  {{#unless @last}}
-                    {{this.name}},
-                  {{/unless}}
-                  {{#if @last}}
-                    {{this.name}}
-                  {{/if}}
-                {{/each}}
-              </td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
+
+      <table class='modal__film-info'>
+        <tbody>
+          <tr class='modal__film-info-row'>
+            <td class='modal__film-info-title'>Vote / Votes</td>
+            <td class='modal__vote'>
+              <span class='modal__vote-average'>{{vote_average}}</span>
+              /
+              <span class='modal__vote-count'>{{vote_count}}</span>
+            </td>
+          </tr>
+          <tr class='modal__film-info-row'>
+            <td class='modal__film-info-title'></td><td><div
+                class='persentage'
+              ></div></td>
+          </tr>
+          <tr class='modal__film-info-row'>
+            <td class='modal__film-info-title'>Popularity</td>
+            <td>{{popularity}}</td>
+          </tr>
+          <tr class='modal__film-info-row'>
+            <td class='modal__film-info-title'>Original Title</td>
+            <td><span class='modal__film-name'>{{original_title}}</span></td>
+          </tr>
+          <tr class='modal__film-info-row'>
+            <td class='modal__film-info-title'>Genre</td>
+            <td>
+              {{#each genres}}
+                {{#unless @last}}
+                  {{this.name}},
+                {{/unless}}
+                {{#if @last}}
+                  {{this.name}}
+                {{/if}}
+              {{/each}}
+            </td>
+          </tr>
+        </tbody>
+      </table>
       <div class='modal__film-about'>
         <h3 class='modal__film-about-title'>About</h3>
         <p class='modal__film-overview'>{{overview}}</p>
@@ -101,9 +99,6 @@
           d='m26.667 7.303-1.97-1.97-7.808 7.808-7.808-7.808-1.97 1.97 7.808 7.808-7.808 7.808 1.97 1.97 7.808-7.808 7.808 7.808 1.97-1.97-7.808-7.808 7.808-7.808z'
         ></path>
       </svg>
-      {{! <svg width='30' height='30'>
-          <use href='../img/sprite.svg#modal-close'></use>
-        </svg> }}
     </button>
   </div>
 </div>
