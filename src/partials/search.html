@@ -7,17 +7,18 @@
           type="text"
           class="header-search"
           placeholder="Movie search"
+          name="textSearch"
           autofocus
         />
       </label>
-      <button class="header-search-btn" type="submit">
+      <button class="header-search-btn" type="submit" name="buttonSearch">
         <svg class="header-search-img">
           <use href="./images/icons.svg#icon-search"></use>
         </svg>
       </button>
     </div>
     <div class="header-search-resultNotSuccess visibleFlag">
-      <p>
+      <p class="notification">
         Search result not successful. Enter the correct movie name and try
         again.
       </p>
