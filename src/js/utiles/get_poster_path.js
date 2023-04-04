@@ -1,4 +1,5 @@
-import posterPH from '../../images/logo.svg';
+
+import posterPH from '../../images/trailer_not_found-1x.jpg';
 
 const imagePath = 'https://image.tmdb.org/t/p/w500';
 const defaultPath = posterPH;
