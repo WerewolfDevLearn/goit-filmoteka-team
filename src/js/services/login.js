@@ -1,5 +1,5 @@
 import { STATE } from '../components/state';
-import { backdropLogin } from '../../templates/backdrop';
+import backdropLogin from '../../templates/backdrop';
 const inPoint = document.querySelector('body');
 const registrationBtn = document.querySelector('.registrationBtn-container');
 
@@ -16,5 +16,5 @@ function loginChoose(e) {
 }
 
 function insertMarkup() {
-  inPoint.insertAdjacentHTML(backdropLogin());
+  inPoint.insertAdjacentHTML('beforebegin', backdropLogin());
 }
