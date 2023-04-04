@@ -98,10 +98,10 @@
   }
 
   &__film-info {
-    margin-right: 30px;
+    width: 110px;
 
     @media screen and (min-width: 1280px) {
-      margin-right: 80px;
+      width: 150px;
     }
 
     @extend %text-style;
@@ -233,6 +233,19 @@
       color: #ffffff;
       fill: currentColor;
     }
+
+    &:disabled {
+      color: #000000;
+      cursor: default;
+
+      &:hover,
+      &:focus {
+        background-color: #ffffff;
+        border-color: #000000;
+        color: #000000;
+      }
+    }
+
     &-icon {
       margin-right: 8px;
     }

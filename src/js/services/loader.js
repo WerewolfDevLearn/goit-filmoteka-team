@@ -1,11 +1,7 @@
+import { htmlToElement } from './helpers';
+
 const LOADER_TEMPLATE =
   '<div class="loader"><div></div><div></div><div></div><div></div></div>';
-
-function htmlToElement(html) {
-  const template = document.createElement('template');
-  template.innerHTML = html;
-  return template.content.firstChild;
-}
 
 function setLoader(selector) {
   const targetElement = document.querySelector(selector);
