@@ -70,3 +70,9 @@ function stateModify(date) {
 // }
 // const uid = '2Gyhw9T2zQaEJGbYLjPemy2zQOw2';
 // getuzer(uid);
+
+// -------------------------------------------------------------------------------------------- //
+// import { btnSwitcher } from './js/services/movie-operations';
+
+// btnSwitcher(true);
+// btnSwitcher(false);
