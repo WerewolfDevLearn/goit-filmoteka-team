@@ -1,4 +1,5 @@
 import { STATE } from './js/components/state';
+import './js/components/search';
 import differentFetch from './js/services/different-fetchs';
 import {
   createCardMarkup,
@@ -16,6 +17,11 @@ import {
   signOut,
   signInWithGoogle,
 } from './js/services/firebase/firebaseAPI.js';
+
+import {
+  writeUserData,
+  getUserData,
+} from './js/services/firebase/firebaseDatabase';
 window.addEventListener('load', removeGlobalLoader);
 refs.filmCardListEl.addEventListener('click', createFilmModal);
 get(STATE.page);
@@ -37,8 +43,29 @@ function stateModify(date) {
 // googleSignUp.addEventListener('click', signUpWithGoogle);
 // googleSignOut.addEventListener('click', signOutFromGoogle);
 
-const email = 'werewolfdev@gmail.com';
-const password = 'qwert2';
-// signInWithGoogle();
-// userCreation(email, password);
-// signOut(email, password);
+// const email = 'werewolfdev@gmail.com';
+// const password = 'qwert2';
+
+// // signOut(email, password);
+// // userCreation(email, password);
+//
+
+// async function foo(data) {
+//   await signInWithGoogle();
+//   // console.log(STATE);
+//   writeUserData(data);
+// }
+// foo(STATE.user);
+// async function getuzer(uid) {
+//   const gettedUser = await getUserData(uid);
+//   console.log('gettedUser: ', gettedUser);
+//   const user = {
+//     uid: gettedUser.uid,
+//     movies: gettedUser.movies,
+//   };
+//   console.log('user: ', user);
+//   // STATE.user = gettedUser;
+//   //   console.log(STATE);
+// }
+// const uid = '2Gyhw9T2zQaEJGbYLjPemy2zQOw2';
+// getuzer(uid);
