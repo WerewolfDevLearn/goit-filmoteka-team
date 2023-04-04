@@ -1,4 +1,5 @@
 import { STATE } from '../../components/state';
+import { firebaseConfig } from './firebase-config';
 import { initializeApp } from 'firebase/app';
 import {
   getAuth,

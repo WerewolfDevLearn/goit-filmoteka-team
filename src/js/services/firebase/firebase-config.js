@@ -1,4 +1,4 @@
-export default firebaseConfig = {
+export const firebaseConfig = {
   apiKey: 'AIzaSyC8wtxv8aopTdmv849RVQZf3pizXpOe0VM',
   authDomain: 'filmotek-68-goitstudents.firebaseapp.com',
   projectId: 'filmotek-68-goitstudents',
