@@ -37,7 +37,7 @@ openModalBtn.addEventListener('click', () => {
         }
         ratingStarsContainer.appendChild(star);
       }
-      // ratingElement.appendChild(ratingNumber); // отвечает за отображение цифры рядом с кружочками
+      // ratingElement.appendChild(ratingNumber);   // отображает цифры рядом с кружочками
       ratingElement.appendChild(ratingStarsContainer);
       movieRating.innerHTML = '';
       movieRating.appendChild(ratingElement);
