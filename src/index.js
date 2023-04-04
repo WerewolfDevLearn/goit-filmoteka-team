@@ -11,7 +11,11 @@ import { removeGlobalLoader } from './js/services/loader';
 import { showTrailer } from './js/services/trailer';
 import { refs, createFilmModal } from './js/services/modal-film';
 import './js/components/team-modal';
+
 import {ticker} from './js/components/search_running_line'
+
+
+import './js/services/login';
 
 import {
   userCreation,
@@ -73,3 +77,9 @@ function stateModify(date) {
 // }
 // const uid = '2Gyhw9T2zQaEJGbYLjPemy2zQOw2';
 // getuzer(uid);
+
+// -------------------------------------------------------------------------------------------- //
+// import { btnSwitcher } from './js/services/movie-operations';
+
+// btnSwitcher(true);
+// btnSwitcher(false);

@@ -1,0 +1,23 @@
+.signIn-form {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  align-items: center;
+  background-color: white;
+  padding: 20px;
+  border-radius: 5px;
+  border-width: 1px;
+}
+input {
+  background-color: transparent;
+  width: 100%;
+  border-radius: 5px;
+  font-size: 14px;
+  line-height: 1.5;
+  border-width: 1px;
+}
+.signIn-submit-btn {
+  background-color: #ff6b08;
+  border-radius: 5px;
+  border-width: 1px;
+}
