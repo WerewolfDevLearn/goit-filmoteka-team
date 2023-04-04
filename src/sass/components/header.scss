@@ -382,13 +382,15 @@
     bottom: 0%;
   }
 
+  transition: transform 500ms linear;
+
   &:hover,
   &:focus {
+    
     &:hover,
     &:focus {
-      transform: scale(1.5);
+    transform: scale(1.4);
     }
-    border-bottom-color: red;
   }
 }
 
