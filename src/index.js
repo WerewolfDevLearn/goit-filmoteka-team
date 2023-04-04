@@ -11,7 +11,7 @@ import { removeGlobalLoader } from './js/services/loader';
 import { showTrailer } from './js/services/trailer';
 import { refs, createFilmModal } from './js/services/modal-film';
 import './js/components/team-modal';
-
+import './js/services/login';
 import {
   userCreation,
   sinInWithEmailPassword,
