@@ -98,10 +98,10 @@
   }
 
   &__film-info {
-    margin-right: 30px;
+    width: 110px;
 
     @media screen and (min-width: 1280px) {
-      margin-right: 80px;
+      width: 150px;
     }
 
     @extend %text-style;
@@ -236,6 +236,7 @@
 
     &:disabled {
       color: #000000;
+      cursor: default;
 
       &:hover,
       &:focus {

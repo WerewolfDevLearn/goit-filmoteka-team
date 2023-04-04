@@ -1,16 +1,4 @@
-import { STATE } from '../components/state.js';
-import Pagination from 'tui-pagination';
-import 'tui-pagination/dist/tui-pagination.css';
-import differentFetch from '../services/different-fetchs.js';
-import {
-  createCardMarkup,
-  appendCardsMarkup,
-} from '../services/createCardMarkup';
-const galleryEl = document.querySelector('.gallery');
-const paginationContainer = document.querySelector('#tui-pagination-container');
-
-//опції для пагінації
-const paginDesktopOptions = {
+export const paginDesktopOptions = {
   totalItems: 0,
   itemsPerPage: 20,
   visiblePages: 7,
@@ -38,7 +26,7 @@ const paginDesktopOptions = {
   },
 };
 
-const paginMobileOptions = {
+export const paginMobileOptions = {
   totalItems: 0,
   itemsPerPage: 20,
   visiblePages: 3,
@@ -65,37 +53,3 @@ const paginMobileOptions = {
       '</a>',
   },
 };
-
-//опції для адаптиву
-let options = null;
-if (window.screen.width <= 480) {
-  options = paginMobileOptions;
-} else {
-  options = paginDesktopOptions;
-}
-//ініціалізація пагінації
-const pagination = new Pagination(paginationContainer, options);
-
-//отримання поточної сторінки
-// const page = pagination.getCurrentPage();
-
-pagination.on('beforeMove', loadMore);
-
-pagination.on('afterMove', () => {
-  window.scrollTo({ top: 0, behavior: 'smooth' });
-});
-export function startPage(date) {
-  pagination.reset(date);
-}
-
-async function loadMore(event) {
-  console.log(STATE.movies);
-
-  const currentPage = event.page;
-  STATE.page = currentPage;
-  const date = await differentFetch(STATE.page);
-  STATE.movies = date.results;
-  console.log(STATE.movies);
-  galleryEl.innerHTML = '';
-  appendCardsMarkup(createCardMarkup(STATE.movies));
-}
