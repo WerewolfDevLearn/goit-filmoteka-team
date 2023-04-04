@@ -4,7 +4,7 @@ return `<li class="card__item" id="${id}">
                 <img class="card__image" src="${posterPath}" alt="Зображення постера фільму ${title}" loading="lazy"/>
                 <div class="card__wrap">
                   <div class="card__activator ${classStatus}">
-                    <h2 class="card__name" >${title}</h2>
+                    <h2 class="card__name">${title}</h2>
                   </div>
                 </div>
                 <div class="card__info">
