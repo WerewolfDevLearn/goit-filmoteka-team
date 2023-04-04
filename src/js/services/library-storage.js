@@ -2,7 +2,7 @@ import {
   getData,
   sendData,
   updateData,
-} from '../services/firebase/firebase-config';
+} from '../services/firebase/firebaseDatabase';
 import { STATE } from '../components/state.js';
 // function of adding new movie to localStorage
 async function addMovieToLocalStorage(keyLibrary, movieId) {
