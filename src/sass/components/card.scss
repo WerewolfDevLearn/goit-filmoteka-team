@@ -11,17 +11,36 @@
 
 .card__image {
     display: block;
-    width: 395px;
-    height: 574px;
+    height: 100%;
     object-fit: cover;
-    margin-bottom: 12px;
+    margin-bottom: 8px;
     border-radius: 5px;
+    width: 280px;
+
+    @media screen and (min-width: 768px) {
+        width: 336px;
+    }
+
+    @media screen and (min-width: 1280px) {
+        width: 395px;
+        margin-bottom: 12px;
+    }
 }
 
-.card__link {
+.card__container {
     display: block;
     text-decoration: none;
     transition: transform 250ms linear;
+    overflow: hidden;
+    width: 280px;
+
+    @media screen and (min-width: 768px) {
+        width: 336px;
+    }
+
+    @media screen and (min-width: 1280px) {
+        width: 395px;
+    }
 
     &:hover,
     &:focus {
@@ -38,17 +57,29 @@
     font-family: 'Roboto';
     font-style: normal;
     font-weight: 500;
-    font-size: 20px;
-    line-height: calc(24 / 20);
+    font-size: 12px;
+    line-height: calc(16 / 12);
     text-transform: uppercase;
     color: #000000;
-    width: 395px;
+
+    @media screen and (min-width: 1280px) {
+        font-size: 20px;
+        line-height: calc(24 / 20);
+    }
 }
 
 .card__genres {
+    font-size: 12px;
+    line-height: calc(16 / 12);
     justify-content: center;
     color: #FF6B08;
-    max-width: 345px;
+    max-width: 290px;
+
+    @media screen and (min-width: 1280px) {
+        font-size: 20px;
+        line-height: calc(24 / 20);
+        max-width: 345px;
+    }
 }
 
 .card__rating {
@@ -61,17 +92,52 @@
     color: #ffffff;
     background-color: #FF6B08;
     text-align: center;
-    width: 40px;
-    height: 20px;
+    width: 36px;
+    height: 16px;
     margin-left: 8px;
     display: flex;
     align-items: center;
     justify-content: center;
+
+    @media screen and (min-width: 1280px) {
+        width: 40px;
+        height: 20px;
+    }
 }
-// Для тимчасової сітки
-.gallery {
+
+.card__wrap {
+    max-width: 100%;
+    overflow: hidden;
+}
+
+.isActive:hover {
     display: flex;
-    flex-wrap: wrap;
-    gap: 15px;
-    justify-content: center;
+    width: 200%;
+    animation-name: cardNameSlider;
+    animation-iteration-count: once;
+    animation-timing-function: ease-in-out;
+    animation-duration: 7500ms;
+}
+
+.card__wrap h2 {
+    white-space: nowrap;
+    width: 100%;
+}
+
+@keyframes cardNameSlider {
+    0% {
+        transform: translateX(0px);
+    }
+
+    75% {
+        transform: translateX(calc((100% - 130%)));
+    }
+
+    90% {
+        transform: translateX(calc((100% - 130%)));
+    }
+
+    100% {
+        transform: translateX(0px);
+    }
 }
