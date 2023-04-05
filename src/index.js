@@ -15,20 +15,12 @@ import { ticker } from './js/components/search_running_line';
 import './js/services/login';
 import './js/services/islogin';
 import { islogin } from './js/services/islogin';
-
-// import {
-//   userCreation,
-//   sinInWithEmailPassword,
-//   signOut,
-//   signInWithGoogle,
-// } from './js/services/firebase/firebaseAPI.js';
-
-import {
-  writeUserData,
-  getUserData,
-} from './js/services/firebase/firebaseDatabase';
+import { load } from './js/services/library-storage';
+import { switchBTNs } from './js/services/swith-buttons';
 window.addEventListener('load', removeGlobalLoader);
 refs.filmCardListEl.addEventListener('click', createFilmModal);
+getStateFromLS();
+
 get(STATE.page);
 
 ticker();
@@ -43,7 +35,14 @@ function stateModify(date) {
   STATE.movies = date.results;
   STATE.totalResults = date.total_results;
 }
+function getStateFromLS() {
+  const lsState = load('STATE');
+  console.log('lsState: ', lsState);
+  STATE.user.uid = lsState.user.uid;
+  console.log('STATE: ', STATE);
 
+  switchBTNs(islogin(STATE.user.uid));
+}
 // -------------------------------------------------------------------------------------------- //
 // import { btnSwitcher } from './js/services/movie-operations';
 

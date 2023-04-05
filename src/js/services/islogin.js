@@ -1,8 +1,5 @@
-import { STATE } from '../components/state';
-
-export function islogin() {
-  console.log('STATE.user.uid: ', STATE.user.uid);
-  if (STATE.user.uid) {
+export function islogin(state) {
+  if (state) {
     return true;
   }
   return false;
