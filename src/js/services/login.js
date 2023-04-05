@@ -7,6 +7,7 @@ import {
   // onAuthStateChanged,
   app,
   auth,
+  provider
 } from './firebase/firebaseAPI';
 import {
   getAuth,
@@ -87,7 +88,6 @@ function closeAuthModal() {
 // ----------------------- ↓↓↓↓↓ Зачем эти костыли? За объяснениями к Павлу
 import icons from '../../images/icons.svg';
 import closeIcon from '../../images/close.svg';
-import { createUserWithEmailAndPassword } from 'firebase/auth';
 // -----------------------
 
 function showSignupForm() {
@@ -116,7 +116,7 @@ function showSignupForm() {
 			placeholder="Password"
 		>
 		<svg class="password-icon">
-							<use href="${icons}#icon-password"></use>
+							<use href="${icons}#icon-password-form"></use>
 						</svg>
 		<svg class="show-password-icon">
 			<use href="${icons}#icon-not-show-password"></use>
@@ -166,7 +166,7 @@ function showLoginForm() {
 							placeholder="Password"
 						/>
 						<svg class="password-icon">
-							<use href="${icons}#icon-password"></use>
+							<use href="${icons}#icon-password-form"></use>
 						</svg>
 						<svg class="show-password-icon">
 			<use href="${icons}#icon-not-show-password"></use>
@@ -178,9 +178,7 @@ function showLoginForm() {
 					</button>
           <p class="form__text">
             Don't have account?
-            <a href="#" class="form__link" id="linkCreateAccount"
-              >Create account</a
-            > or
+            <a href="#" class="form__link" id="linkCreateAccount">Create account</a> 
           </p>
 				</form>`;
   loginForm = document.getElementById('login');
@@ -204,9 +202,7 @@ function onLoginSubmit(e) {
         STATE.user.uid = auth.currentUser.uid;
         save('STATE', STATE);
         switchBTNs(islogin(STATE.user.uid));
-        console.log('STATE: ', STATE)
-        loginForm.reset();
-        signupForm.reset();
+        console.log('STATE: ', STATE);
         closeAuthModal();
       })
       .catch(err => {
@@ -216,7 +212,7 @@ function onLoginSubmit(e) {
         ) {
           loginMsgError.textContent = 'Incorrect email or password';
         }
-        console.log(err)
+        console.log(err);
       });
   }
 }
@@ -252,8 +248,8 @@ function onSignupSubmit(e) {
 
 function signinWithGoogle() {
   // signInWithPopup(auth, provider)
-  signInWithPopup()
-    .then(result => {
+  signInWithPopup(auth, provider)
+    .then(() => {
       Notify.info(`You are signed in with Google`);
       console.log(auth.currentUser);
       STATE.user.uid = auth.currentUser.uid;
