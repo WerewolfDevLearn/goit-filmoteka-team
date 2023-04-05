@@ -9,8 +9,11 @@ import {
   signInWithPopup,
   signOut,
 } from 'firebase/auth';
-const app = initializeApp(firebaseConfig);
-const auth = getAuth(app);
+import { islogin } from '../islogin';
+import { switchBTNs } from '../swith-buttons';
+import { save } from '../library-storage';
+export const app = initializeApp(firebaseConfig);
+export const auth = getAuth(app);
 
 export async function userCreation(email, password) {
   try {
@@ -22,7 +25,10 @@ export async function userCreation(email, password) {
     const user = userCredential.user;
     console.log('user: ', user);
     STATE.user.uid = userCredential.user.uid;
+    save('STATE', STATE);
     console.log('STATE: ', STATE);
+    switchBTNs(islogin(STATE.user.uid));
+    return STATE;
   } catch (error) {
     const errorCode = error.code;
     console.log('userCreation errorCode: ', errorCode);
@@ -40,7 +46,9 @@ export async function sinInWithEmailPassword(email, password) {
     );
     console.log(userCredential.user.uid);
     STATE.user.uid = userCredential.user.uid;
-    console.log('STATE: ', STATE);
+    save('STATE', STATE);
+    switchBTNs(islogin(STATE.user.uid));
+    return STATE;
   } catch (error) {
     const errorCode = error.code;
     console.log('sinInWithEmailPassword errorCode: ', errorCode);
@@ -55,6 +63,9 @@ export async function signInWithGoogle() {
     const userCredential = await signInWithPopup(auth, provider);
     STATE.user.uid = userCredential.user.uid;
     console.log('STATE: ', STATE);
+    save('STATE', STATE);
+    switchBTNs(islogin(STATE.user.uid));
+    return STATE;
   } catch (error) {
     const errorCode = error.code;
     console.log('userCreation errorCode: ', errorCode);
@@ -67,7 +78,9 @@ export async function signOut() {
   try {
     const response = await signOut(auth);
     STATE.user = { uid: '', movies: [] };
+    switchBTNs(islogin(STATE.user.uid));
     console.log('STATE: ', STATE);
+    return STATE;
   } catch (error) {
     const errorCode = error.code;
     console.log('signOut errorCode: ', errorCode);
@@ -75,4 +88,3 @@ export async function signOut() {
     console.log('signOut errorMessage: ', errorMessage);
   }
 }
-console.log('ura');
