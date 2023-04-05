@@ -37,7 +37,7 @@ const DATA = [
   'remove-queue',
   'trailer',
 ];
-const KEY_LIBRIARY = ['watched', 'queue'];
+
 const IS_HIDDEN = 'visually-hidden';
 
 // MovieModal
@@ -225,12 +225,12 @@ function removeMovieFromLocalStorageWathced(filmId) {
   save('STATE', STATE);
 }
 function addMovieToLocalStorageQeue() {
-  STATE.user.movies.watched.push(STATE.currentMovie);
+  STATE.user.movies.qeue.push(STATE.currentMovie);
   console.log(STATE);
   save('STATE', STATE);
 }
 function removeMovieFromLocalStorageQeue(filmId) {
-  STATE.user.movies.watched.sort(elem => elem.id !== filmId);
+  STATE.user.movies.qeue.sort(elem => elem.id !== filmId);
   console.log(STATE);
   save('STATE', STATE);
 }
