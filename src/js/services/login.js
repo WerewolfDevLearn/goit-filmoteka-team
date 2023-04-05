@@ -1,14 +1,24 @@
 import { STATE } from '../components/state';
 import { Notify } from 'notiflix/build/notiflix-notify-aio';
 import {
-  sinInWithEmailPassword,
-  userCreation,
-  signInWithGoogle,
-  onAuthStateChanged,
+  // sinInWithEmailPassword,
+  // userCreation,
+  // signInWithGoogle,
+  // onAuthStateChanged,
   app,
   auth,
 } from './firebase/firebaseAPI';
+import {
+  getAuth,
+  createUserWithEmailAndPassword,
+  signInWithEmailAndPassword,
+  GoogleAuthProvider,
+  signInWithPopup,
+  signOut,
+} from 'firebase/auth';
 import { save } from './library-storage';
+import { islogin } from './islogin';
+import { switchBTNs } from './swith-buttons';
 import backdropLogin from '../../templates/backdrop';
 
 let backdrop = null;
@@ -183,29 +193,32 @@ function onLoginSubmit(e) {
   loginForm = document.getElementById('login');
   loginMsgError = document.querySelector('.login-form__message-error');
   const { email, password } = loginForm.elements;
-  if (email && password) {
+  if (email.value && password.value) {
     console.log(email.value, password.value.trim());
 
-  console.log(email.value, password.value.trim());
-
-  // signInWithEmailAndPassword(auth, email.value, password.value.trim())
-  sinInWithEmailPassword()
-    .then(() => {
-      Notify.success('You are logged in.');
-      closeAuthModal();
-      loginMsgError.textContent = '';
-      loginForm.reset();
-      signupForm.reset();
-    })
-    .catch(err => {
-      if (
-        err.code === 'auth/wrong-password' ||
-        err.code === 'auth/user-not-found'
-      ) {
-        loginMsgError.textContent = 'Incorrect email or password';
-      }
-      // console.log(err)
-    });
+    // signInWithEmailAndPassword(auth, email.value, password.value.trim())
+    signInWithEmailAndPassword(auth, email.value, password.value)
+      .then(() => {
+        Notify.success('You are logged in.');
+        console.log(auth.currentUser);
+        STATE.user.uid = auth.currentUser.uid;
+        save('STATE', STATE);
+        switchBTNs(islogin(STATE.user.uid));
+        console.log('STATE: ', STATE)
+        loginForm.reset();
+        signupForm.reset();
+        closeAuthModal();
+      })
+      .catch(err => {
+        if (
+          err.code === 'auth/wrong-password' ||
+          err.code === 'auth/user-not-found'
+        ) {
+          loginMsgError.textContent = 'Incorrect email or password';
+        }
+        console.log(err)
+      });
+  }
 }
 
 function onSignupSubmit(e) {
@@ -221,10 +234,11 @@ function onSignupSubmit(e) {
       const user = userCredential.user;
       Notify.success('User created!');
       console.log('user: ', user);
-      STATE.user.uid = userCredential.user.uid;
+      STATE.user.uid = auth.currentUser.uid;
       console.log('STATE: ', STATE);
+      save('STATE', STATE);
+      switchBTNs(islogin(STATE.user.uid));
       closeAuthModal();
-      signupMsgError.textContent = '';
     })
     .catch(err => {
       if (err.code === 'auth/email-already-in-use')
@@ -232,15 +246,20 @@ function onSignupSubmit(e) {
       if (err.code === 'auth/weak-password') {
         signupMsgError.textContent = 'Password should be at least 6 characters';
       }
-      console.log(err.code)
+      console.log(err.code);
     });
 }
 
 function signinWithGoogle() {
   // signInWithPopup(auth, provider)
-  signInWithGoogle()
+  signInWithPopup()
     .then(result => {
       Notify.info(`You are signed in with Google`);
+      console.log(auth.currentUser);
+      STATE.user.uid = auth.currentUser.uid;
+      console.log('STATE: ', STATE);
+      save('STATE', STATE);
+      switchBTNs(islogin(STATE.user.uid));
       closeAuthModal();
     })
     .catch(err => {
