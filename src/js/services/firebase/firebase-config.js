@@ -11,3 +11,4 @@ export const firebaseConfig = {
 };
 
 // export default { auth, provider, database, app };
+//FIREBASE_TOKEN 1//0cyNIkNer_olaCgYIARAAGAwSNQF-L9IrNPtXMZGH_zACdBTM5etNkF4OXqq2zrXav_b3WMtYsSFu3XIT_T8Ttd4FhhUPCmK4
