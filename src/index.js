@@ -17,18 +17,6 @@ import './js/services/islogin';
 import { islogin } from './js/services/islogin';
 import { load } from './js/services/library-storage';
 import { switchBTNs } from './js/services/swith-buttons';
-
-// import {
-//   userCreation,
-//   sinInWithEmailPassword,
-//   signOut,
-//   signInWithGoogle,
-// } from './js/services/firebase/firebaseAPI.js';
-
-import {
-  writeUserData,
-  getUserData,
-} from './js/services/firebase/firebaseDatabase';
 import './js/services/floating-buttons';
 window.addEventListener('load', removeGlobalLoader);
 refs.filmCardListEl.addEventListener('click', createFilmModal);
@@ -51,7 +39,7 @@ function stateModify(date) {
 function getStateFromLS() {
   const lsState = load('STATE');
   console.log('lsState: ', lsState);
-  STATE.user.uid = lsState.user.uid;
+  STATE.user.uid = lsState?.user?.uid || '';
   console.log('STATE: ', STATE);
 
   switchBTNs(islogin(STATE.user.uid));
