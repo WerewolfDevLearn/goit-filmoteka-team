@@ -59,7 +59,8 @@
   fill: #ff001b;
 }
 
-.team-modal__logo {
+.team-modal__logolight,
+.team-modal__logodark {
   display: flex;
   justify-content: flex-start;
   align-items: center;
@@ -68,13 +69,15 @@
   margin-bottom: 22px;
 }
 @media screen and (min-width: 768px) {
-  .team-modal__logo {
+  .team-modal__logolight,
+  .team-modal__logodark {
     width: 220px;
     height: 41px;
   }
 }
 @media screen and (min-width: 1280px) {
-  .team-modal__logo {
+  .team-modal__logolight,
+  .team-modal__logodark {
     width: 228px;
     height: 44px;
   }

@@ -246,29 +246,10 @@ function signinWithGoogle() {
 		})
 }
 
-function renderUserProfile(user) {
-	authList.classList.add('is-hidden')
-	userProfile = document.querySelector('.user-info')
-	userProfile.classList.remove('is-hidden')
-	userProfile.innerHTML = `
-	<button class="btn-signout">Sign out</button>
-	<p class="user-email">Email: ${auth.currentUser.email}</p>
-	<p class="user-email">Email: ${auth.currentUser.uid}</p>`
-	signoutBtn = document.querySelector('.btn-signout')
-	signoutBtn.addEventListener('click', () => {
-		signOut(auth)
-			.then(() => {
-				console.log('Ты вышел🐷. А куда?🤓 А зачем?')
-				window.location.reload()
-			})
-			.catch((err) => console.log(err))
-	})
-}
-
-onAuthStateChanged(auth, (user) => {
-	if (user) {
-		renderUserProfile(user)
-	} else {
-		console.log('Ты не вошел🤡')
-	}
-})
+// onAuthStateChanged(auth, (user) => {
+// 	if (user) {
+// 		renderUserProfile(user)
+// 	} else {
+// 		console.log('Ты не вошел🤡')
+// 	}
+// })

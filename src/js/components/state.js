@@ -1,21 +1,13 @@
 export const STATE = {
   movies: [],
+  currentMovie: {},
   page: 1,
   user: {
     uid: '',
-    movies: [
-      {
-        wathched: true,
-        movie: {
-          id: '',
-          posterPath: '',
-          movieFullname: '',
-          geners: '',
-          year: 0,
-          ratio: 0,
-        },
-      },
-    ],
+    movies: {
+      qeue: [],
+      watched: [],
+    },
   },
   totalResults: 0,
   keyword: '',

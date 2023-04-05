@@ -11,7 +11,10 @@ import { removeGlobalLoader } from './js/services/loader';
 import { showTrailer } from './js/services/trailer';
 import { refs, createFilmModal } from './js/services/modal-film';
 import './js/components/team-modal';
+import './js/services/theme';
+
 import { ticker } from './js/components/search_running_line';
+
 import './js/services/login';
 import './js/services/islogin';
 import { islogin } from './js/services/islogin';
@@ -38,9 +41,8 @@ function stateModify(date) {
 }
 function getStateFromLS() {
   const lsState = load('STATE');
-  console.log('lsState: ', lsState);
+
   STATE.user.uid = lsState?.user?.uid || '';
-  console.log('STATE: ', STATE);
 
   switchBTNs(islogin(STATE.user.uid));
 }
