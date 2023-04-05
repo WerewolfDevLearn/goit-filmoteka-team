@@ -1,5 +1,6 @@
 import { STATE } from './state';
 import differentFetch from '../services/different-fetchs';
+import { toggleNotification } from '../services/togle-notification';
 import {
   appendCardsMarkup,
   createCardMarkup,
@@ -12,9 +13,15 @@ searchForm.addEventListener('submit', handlerSearch);
 
 async function handlerSearch(e) {
   e.preventDefault();
-  STATE.keyword = inputQuere.value;
-  const respons = await differentFetch(STATE.page);
-  STATE.movies = respons.results;
-  galleryEl.innerHTML = '';
-  appendCardsMarkup(createCardMarkup(STATE.movies));
+  try {
+    STATE.keyword = inputQuere.value;
+    const respons = await differentFetch(STATE.page);
+
+    STATE.movies = respons.results;
+    console.log(STATE);
+    galleryEl.innerHTML = '';
+    appendCardsMarkup(createCardMarkup(STATE.movies));
+  } catch (error) {
+    console.log(error);
+  }
 }

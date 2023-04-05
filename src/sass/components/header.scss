@@ -315,6 +315,7 @@
   color: #ffffff;
   &:focus {
     outline: none;
+    background-color: transparent;
   }
 
   @media screen and (min-width: 320px) {

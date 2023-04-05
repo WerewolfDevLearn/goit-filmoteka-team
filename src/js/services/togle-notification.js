@@ -1,11 +1,13 @@
-function toggleNotification(successful) {
+export function toggleNotification(boolean) {
   const notifyEl = document.querySelector('.notification');
 
-  if (successful) {
-    notifyEl.classList.add('is-hidden');
+  if (boolean) {
+    notifyEl.classList.add('opacityZero');
     return;
   }
-  notifyEl.classList.remove('is-hidden');
+  notifyEl.classList.remove('opacityZero');
+  setTimeout(() => {
+    notifyEl.classList.add('opacityZero');
+  }, 5000);
+  return;
 }
-
-export { toggleNotification };

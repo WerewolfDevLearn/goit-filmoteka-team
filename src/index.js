@@ -13,13 +13,15 @@ import { refs, createFilmModal } from './js/services/modal-film';
 import './js/components/team-modal';
 import { ticker } from './js/components/search_running_line';
 import './js/services/login';
+import './js/services/islogin';
+import { islogin } from './js/services/islogin';
 
-import {
-  userCreation,
-  sinInWithEmailPassword,
-  signOut,
-  signInWithGoogle,
-} from './js/services/firebase/firebaseAPI.js';
+// import {
+//   userCreation,
+//   sinInWithEmailPassword,
+//   signOut,
+//   signInWithGoogle,
+// } from './js/services/firebase/firebaseAPI.js';
 
 import {
   writeUserData,
