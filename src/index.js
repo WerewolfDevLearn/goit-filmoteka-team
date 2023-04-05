@@ -27,6 +27,7 @@ import {
   writeUserData,
   getUserData,
 } from './js/services/firebase/firebaseDatabase';
+import './js/services/floating-buttons';
 window.addEventListener('load', removeGlobalLoader);
 refs.filmCardListEl.addEventListener('click', createFilmModal);
 get(STATE.page);
