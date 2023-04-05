@@ -1,20 +1,31 @@
-let changeThemeButtons = document.querySelectorAll('.theme-change');
+const bodyRef = document.querySelector('body');
+const switchRef = document.querySelector('input#theme-switch-control');
 
-changeThemeButtons.forEach(button => {
-  button.addEventListener('click', function () {
-    applyTheme(this.dataset.theme);
-    localStorage.setItem('theme', this.dataset.theme);
-  });
-});
+const savedTheme = localStorage.getItem('theme');
+const savedChecked = localStorage.getItem('checked');
 
-function applyTheme(themeName) {
-  let themeUrl = `css/_${themeName}-theme.css`;
-  document.querySelector('[title="theme"]').setAttribute('href', themeUrl);
+if (savedTheme) {
+  bodyRef.classList.add(savedTheme);
+  switchRef.checked = JSON.parse(savedChecked);
 }
 
-let activeTheme = localStorage.getItem('theme');
-if (activeTheme === null) {
-  applyTheme('light');
-} else {
-  applyTheme(activeTheme);
+switchRef.addEventListener('change', event => {
+  if (event.target.checked) {
+    swithedDarkTheme();
+  } else {
+    swithedWhiteTheme();
+  }
+});
+
+function swithedWhiteTheme() {
+  bodyRef.classList.add('light-theme');
+  bodyRef.classList.remove('dark-theme');
+  localStorage.setItem('theme', 'light-theme');
+  localStorage.setItem('checked', 'false');
+}
+function swithedDarkTheme() {
+  bodyRef.classList.add('dark-theme');
+  bodyRef.classList.remove('light-theme');
+  localStorage.setItem('theme', 'dark-theme');
+  localStorage.setItem('checked', 'true');
 }
