@@ -71,24 +71,87 @@
 }
 
 //---------- day and night-----------------------------
-
-.theme-change {
+.theme-switch {
   display: flex;
-  justify-content: space-between;
+  position: absolute;
+  right: 20px;
+  top: 14px;
   align-items: center;
-  transition: opacity 250ms linear;
+  transition: color 150ms ease-in 0;
 }
-.theme-change__light {
-  position: absolute;
-  z-index: 10;
-  right: 32px;
-  top: 14px;
+
+.theme-switch__icon {
+  color: #000000;
+  height: 16px;
+  margin-right: 6px;
+  margin-left: 6px;
 }
-.theme-change__dark {
+
+.switch {
+  display: flex;
+  flex-shrink: 0;
+  align-items: center;
+  position: relative;
+  width: 40px;
+  height: 20px;
+  border-radius: 50em;
+  padding: 3px 0;
+}
+
+.switch__input,
+.switch__label {
   position: absolute;
-  z-index: 0;
-  right: 32px;
-  top: 14px;
+  left: 0;
+  top: 0;
+}
+
+.switch__input {
+  margin: 0;
+  padding: 0;
+  opacity: 0;
+  height: 0;
+  width: 0;
+  pointer-events: none;
+}
+
+.switch__input:checked + .switch__label {
+  background-color: #d3d3d4;
+}
+
+.switch__input:checked + .switch__label + .switch__marker {
+  left: calc(100% - 20px);
+}
+
+.switch__input:focus + .switch__label,
+.switch__input:active + .switch__label {
+  box-shadow: 0 0 0 3px #c0212933;
+}
+
+.switch__label {
+  width: 100%;
+  height: 100%;
+  color: transparent;
+  user-select: none;
+  background-color: #464646;
+  border-radius: inherit;
+  z-index: 1;
+  transition: background-color 150ms;
+  cursor: pointer;
+}
+
+.switch__marker {
+  position: relative;
+  background-color: #fff;
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  z-index: 2;
+  pointer-events: none;
+  box-shadow: 0 1px 1px rgba(0, 0, 0, 0.25);
+  left: 3px;
+  right: 3px;
+  transition: left 200ms;
+  will-change: left;
 }
 
 //--------------------------registration btn------------------------

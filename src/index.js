@@ -11,9 +11,9 @@ import { removeGlobalLoader } from './js/services/loader';
 import { showTrailer } from './js/services/trailer';
 import { refs, createFilmModal } from './js/services/modal-film';
 import './js/components/team-modal';
+import './js/services/theme';
 
-import {ticker} from './js/components/search_running_line'
-
+import { ticker } from './js/components/search_running_line';
 
 import './js/services/login';
 

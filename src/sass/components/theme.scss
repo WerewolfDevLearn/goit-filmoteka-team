@@ -1,0 +1,482 @@
+// -----LIGHT-THEME-----
+body.light-theme {
+  background-color: #fff;
+  // -----theme-----
+  .theme-switch__icon {
+    color: #ffffff;
+  }
+
+  // -----rating-----
+  .rating-star {
+    border: 0.5px solid #ff6b01;
+    background-color: #fff;
+  }
+
+  .rating-star.full {
+    background-color: #ff6b01;
+  }
+
+  // -----loader-----
+  .loader,
+  .global-loader {
+    background: rgba(255, 255, 255, 0.7);
+    div {
+      border: 8px solid #fff;
+      border-color: #ff6b01 transparent transparent transparent;
+    }
+  }
+
+  // -----footer-----
+  .footer {
+    color: #545454;
+    background-color: #f7f7f7;
+  }
+
+  .icon-heart {
+    fill: #ff6b08;
+  }
+
+  .footer-link {
+    color: #545454;
+    &:hover,
+    &:focus {
+      color: #ff6b08;
+    }
+  }
+
+  // -----cards-----
+  .card-item {
+    box-shadow: 0px 1px 3px 0px #00000033, 0px 1px 1px 0px rgba(0, 0, 0, 0.14),
+      0px 2px 1px -1px rgba(0, 0, 0, 0.12);
+  }
+
+  .card__name {
+    color: #000000;
+  }
+
+  .card__genres {
+    color: #ff6b08;
+  }
+
+  .card__rating {
+    color: #ffffff;
+    background-color: #ff6b08;
+  }
+
+  // -----pagination-----
+  div.tui-pagination .tui-page-btn {
+    color: #000000;
+
+    &.tui-last {
+      background-color: #f7f7f7;
+    }
+    &.tui-next {
+      background-color: #f7f7f7;
+    }
+    &.tui-prev {
+      background-color: #f7f7f7;
+    }
+    &.tui-first {
+      background-color: #f7f7f7;
+    }
+    &:hover,
+    &:focus {
+      color: #ffffff;
+      background-color: #ff6b08;
+    }
+  }
+
+  div.tui-pagination .tui-is-selected,
+  div.tui-pagination strong {
+    background-color: #ff6b08;
+    color: #ffffff;
+  }
+
+  // -----modal-film----
+  .backdrop {
+    background-color: rgba(0, 0, 0, 0.2);
+  }
+
+  .modal {
+    background-color: #ffffff;
+    &__film-info {
+      color: #8c8c8c;
+    }
+
+    &__vote-average {
+      background-color: #ff6b01;
+      color: #ffffff;
+    }
+
+    &__vote-count {
+      background-color: #f7f7f7;
+    }
+  }
+
+  .persentage {
+    &__star {
+      border: 1px solid #ff6b01;
+    }
+
+    &__star-full {
+      background-color: #ff6b01;
+    }
+  }
+
+  %text-style {
+    &-title {
+      color: #8c8c8c;
+    }
+  }
+
+  .persentage {
+    &__star {
+      border: 1px solid #ff6b01;
+    }
+
+    &__star-full {
+      background-color: #ff6b01;
+    }
+  }
+
+  // Buttons
+  .modal__close {
+    &:hover,
+    &:focus {
+      fill: #ff001b;
+    }
+  }
+
+  %btn-styles {
+    border: 1px solid #000000;
+  }
+
+  .btn {
+    &__add {
+      @extend %btn-styles;
+
+      &:hover,
+      &:focus {
+        background-color: #ff6b01;
+        border-color: #ff6b01;
+        color: #ffffff;
+      }
+    }
+
+    &__remove {
+      @extend %btn-styles;
+
+      &:hover,
+      &:focus {
+        background-color: #ff6b01;
+        border-color: #ff6b01;
+        color: #ffffff;
+      }
+    }
+
+    &__trailer {
+      @extend %btn-styles;
+
+      &:hover,
+      &:focus {
+        background-color: #ff6b01;
+        border-color: #ff6b01;
+        color: #ffffff;
+        fill: currentColor;
+      }
+
+      &:disabled {
+        color: #000000;
+
+        &:hover,
+        &:focus {
+          background-color: #ffffff;
+          border-color: #000000;
+          color: #000000;
+        }
+      }
+    }
+  }
+
+  // ----team-modal----
+  .team-modal {
+    background: rgba(229, 229, 229, 1);
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  }
+
+  .team-modal__card {
+    background-color: #ffffff;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  }
+
+  .team-modal__logodark {
+    display: none;
+  }
+
+  .team-modal__name {
+    color: #000000;
+  }
+
+  .team-modal__position {
+    color: #000000;
+  }
+
+  .team-modal__contacts {
+    color: #000000;
+  }
+
+  .team-modal__link {
+    border-color: #000000;
+  }
+}
+
+// -----DARK-THEME-----
+
+body.dark-theme {
+  background-color: #21282e;
+
+  // -----theme-----
+
+  .theme-switch__icon {
+    color: #ffffff;
+  }
+
+  // -----rating-----
+  .rating-star {
+    background-color: #000000;
+  }
+
+  // -----loader-----
+  .loader,
+  .global-loader {
+    background: rgba(255, 255, 255, 0.7);
+    div {
+      border: 8px solid #000000;
+    }
+  }
+
+  // -----footer-----
+  .footer {
+    color: #ffffff;
+    background-color: #272e34;
+  }
+
+  .footer-link {
+    color: #ffffff;
+
+    &:hover,
+    &:focus {
+      color: #ff6b08;
+    }
+  }
+
+  // -----cards-----
+  .card__container {
+    background-color: #1e1c22;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  }
+
+  .card-item {
+    box-shadow: 0px 1px 3px 0px #00000033, 0px 1px 1px 0px rgba(0, 0, 0, 0.14),
+      0px 2px 1px -1px rgba(0, 0, 0, 0.12);
+  }
+
+  .card__name {
+    color: #ffffff;
+  }
+
+  .card__rating {
+    color: #000000;
+  }
+
+  // -----pagination-----
+  div.tui-pagination .tui-page-btn {
+    color: #ffffff;
+
+    &.tui-last {
+      background-color: #1e1c22;
+    }
+    &.tui-next {
+      background-color: #1e1c22;
+    }
+    &.tui-prev {
+      background-color: #1e1c22;
+    }
+    &.tui-first {
+      background-color: #1e1c22;
+    }
+    &:hover,
+    &:focus {
+      color: #000000;
+    }
+  }
+
+  div.tui-pagination .tui-is-selected,
+  div.tui-pagination strong {
+    color: #000000;
+  }
+
+  // -----modal-film----
+  .backdrop {
+    background-color: rgba(0, 0, 0, 0.2);
+  }
+
+  .modal {
+    background-color: #1e1c22;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    &__film-info {
+      color: #8c8c8c;
+    }
+
+    &__vote-average {
+      background-color: #ff6b01;
+      color: #000000;
+    }
+
+    &__vote-count {
+      background-color: #f7f7f7;
+    }
+
+    &__title {
+      color: #ffffff;
+    }
+
+    %text-style {
+      &-title {
+        color: #8c8c8c;
+      }
+    }
+    &__film-about {
+      color: #ffffff;
+
+      &-title {
+        color: #ffffff;
+      }
+
+      &__film-overview {
+        color: #ffffff;
+      }
+    }
+  }
+
+  .persentage {
+    &__star {
+      border: 1px solid #ff6b01;
+      background-color: #ffffff;
+    }
+
+    &__star-full {
+      background-color: #ff6b01;
+    }
+  }
+
+  // Buttons
+
+  .modal__close {
+    fill: #ffffff;
+
+    &:hover,
+    &:focus {
+      fill: #ff001b;
+    }
+  }
+
+  %btn-styles {
+    border: 1px solid #ffffff;
+  }
+
+  .btn {
+    &__add {
+      @extend %btn-styles;
+      color: #ffffff;
+
+      &:hover,
+      &:focus {
+        background-color: #ff6b01;
+        border-color: #ff6b01;
+        color: #ffffff;
+      }
+    }
+
+    &__remove {
+      @extend %btn-styles;
+
+      &:hover,
+      &:focus {
+        background-color: #ff6b01;
+        border-color: #ff6b01;
+        color: #000000;
+      }
+    }
+
+    &__trailer {
+      @extend %btn-styles;
+      color: #ffffff;
+      fill: #ffffff;
+
+      &:hover,
+      &:focus {
+        background-color: #ff6b01;
+        border-color: #ff6b01;
+        color: #ffffff;
+        fill: #ffffff;
+      }
+
+      &:disabled {
+        color: #ffffff;
+
+        &:hover,
+        &:focus {
+          background-color: #000000;
+          border-color: #ffffff;
+          color: #ffffff;
+        }
+      }
+    }
+  }
+
+  // ----team-modal----
+  .team-modal {
+    background: #161622;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  }
+
+  .team-modal__button {
+    fill: #ffffff;
+  }
+
+  .team-modal__button:hover,
+  .team-modal__button:focus {
+    fill: #ff001b;
+  }
+
+  .team-modal__card {
+    background-color: #1f1f29;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  }
+
+  .team-modal__logolight {
+    display: none;
+  }
+
+  .team-modal__name {
+    color: #ffffff;
+  }
+
+  .team-modal__position {
+    color: #ffffff;
+  }
+
+  .team-modal__contacts {
+    color: #ffffff;
+  }
+
+  .team-modal__link {
+    fill: #ffffff;
+  }
+
+  .team-modal__link:hover,
+  .team-modal__link:focus {
+    fill: #ff001b;
+  }
+}
