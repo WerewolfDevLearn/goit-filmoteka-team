@@ -1,7 +1,8 @@
-export function toggleNotification(boolean) {
+export function toggleNotification(flag) {
   const notifyEl = document.querySelector('.notification');
-
-  if (boolean) {
+  console.log('notifyEl: ', notifyEl);
+  console.log(flag);
+  if (flag) {
     notifyEl.classList.add('opacityZero');
     return;
   }
