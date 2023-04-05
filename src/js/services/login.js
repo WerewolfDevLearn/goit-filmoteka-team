@@ -28,6 +28,8 @@ let signupForm = null;
 let signoutBtn = null;
 let userProfile = null;
 let loginMsgError = null;
+// ↓↓↓ Это для текста ошибки в модалке Sign up
+let signupMsgError = null
 
 const inPoint = document.querySelector('body');
 const registrationBtn = document.querySelector('.registrationBtn-container');
@@ -134,6 +136,7 @@ function showSignupForm() {
       >Log In</a>
       </p>
 	</form>`;
+  
   signupForm = document.getElementById('signup');
   signupForm.addEventListener('submit', onSignupSubmit);
 }
