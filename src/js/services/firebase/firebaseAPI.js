@@ -14,6 +14,8 @@ import { switchBTNs } from '../swith-buttons';
 import { save } from '../library-storage';
 export const app = initializeApp(firebaseConfig);
 export const auth = getAuth(app);
+// ↓↓↓ Это для гугл авторизации
+export const provider = new GoogleAuthProvider()
 
 export async function userCreation(email, password) {
   try {
@@ -80,6 +82,7 @@ export async function signOut() {
     STATE.user = { uid: '', movies: [] };
     switchBTNs(islogin(STATE.user.uid));
     console.log('STATE: ', STATE);
+    localStorage.removeItem('STATE')
     return STATE;
   } catch (error) {
     const errorCode = error.code;
