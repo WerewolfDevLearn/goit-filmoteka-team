@@ -38,9 +38,8 @@ function stateModify(date) {
 }
 function getStateFromLS() {
   const lsState = load('STATE');
-  console.log('lsState: ', lsState);
+
   STATE.user.uid = lsState?.user?.uid || '';
-  console.log('STATE: ', STATE);
 
   switchBTNs(islogin(STATE.user.uid));
 }
