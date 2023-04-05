@@ -76,7 +76,7 @@ export async function signInWithGoogle() {
   }
 }
 
-export async function signOut() {
+export async function signOutFunc() {
   try {
     const response = await signOut(auth);
     STATE.user = { uid: '', movies: [] };
