@@ -58,6 +58,7 @@ export async function createFilmModal(e) {
     const data = await moviesAPI.getMovieDetails(filmId);
     const normData = normalizeData(data);
     // Add data to state
+
     STATE.currentMovie = { ...normData, id: filmId };
 
     // Add data to state
