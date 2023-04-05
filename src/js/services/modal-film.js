@@ -41,9 +41,10 @@ const IS_HIDDEN = 'visually-hidden';
 
 // MovieModal
 export async function createFilmModal(e) {
-  const respons = load('STATE').user.movies;
-
-  STATE.user.movies = { ...respons };
+  if (load('SATE')) {
+    const respons = load('STATE').user.movies;
+    STATE.user.movies = { ...respons };
+  }
 
   // Get FilmID
   filmId = e.target.closest('.card__item').id;
