@@ -52,5 +52,26 @@ async function removeMovieFromLocalStorage(keyLibrary, movieId) {
 function setState(obj) {
   STATE.user.movies.push(obj);
 }
+const save = (key, value) => {
+  try {
+    const serializedState = JSON.stringify(value);
+    localStorage.setItem(key, serializedState);
+  } catch (error) {
+    console.error('Set state error: ', error.message);
+  }
+};
 
-export { addMovieToLocalStorage, removeMovieFromLocalStorage };
+const load = key => {
+  console.log('key: ', key);
+  try {
+    const serializedState = localStorage.getItem(key);
+    const storegObj =
+      serializedState === null ? undefined : JSON.parse(serializedState);
+    console.log('toregObj: ', storegObj);
+    return storegObj;
+  } catch (error) {
+    console.error('Get state error: ', error.message);
+  }
+};
+
+export { addMovieToLocalStorage, removeMovieFromLocalStorage, save, load };

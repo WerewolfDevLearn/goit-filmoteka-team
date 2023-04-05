@@ -1,4 +1,5 @@
 import { STATE } from '../components/state';
+import { Notify } from 'notiflix/build/notiflix-notify-aio';
 import {
   sinInWithEmailPassword,
   userCreation,
@@ -7,6 +8,7 @@ import {
   app,
   auth,
 } from './firebase/firebaseAPI';
+import { save } from './library-storage';
 import backdropLogin from '../../templates/backdrop';
 
 let backdrop = null;
@@ -176,27 +178,28 @@ function onLoginSubmit(e) {
   loginForm = document.getElementById('login');
   loginMsgError = document.querySelector('.login-form__message-error');
   const { email, password } = loginForm.elements;
+  if (email && password) {
+    console.log(email.value, password.value.trim());
 
-  console.log(email.value, password.value.trim());
-
-  // signInWithEmailAndPassword(auth, email.value, password.value.trim())
-  sinInWithEmailPassword()
-    .then(() => {
-      alert(`You are logged in.`);
-      closeAuthModal();
-      loginMsgError.textContent = '';
-      loginForm.reset();
-      signupForm.reset();
-    })
-    .catch(err => {
-      if (
-        err.code === 'auth/wrong-password' ||
-        err.code === 'auth/user-not-found'
-      ) {
-        loginMsgError.textContent = 'Incorrect email or password';
-      }
-      // console.log(err)
-    });
+    // signInWithEmailAndPassword(auth, email.value, password.value.trim())
+    sinInWithEmailPassword()
+      .then(() => {
+        Notify.info(`You are logged in.`);
+        closeAuthModal();
+        loginMsgError.textContent = '';
+        loginForm.reset();
+        signupForm.reset();
+      })
+      .catch(err => {
+        if (
+          err.code === 'auth/wrong-password' ||
+          err.code === 'auth/user-not-found'
+        ) {
+          loginMsgError.textContent = 'Incorrect email or password';
+        }
+        // console.log(err)
+      });
+  }
 }
 
 function onSignupSubmit(e) {
@@ -205,29 +208,30 @@ function onSignupSubmit(e) {
   signupForm = document.getElementById('signup');
   signupMsgError = document.querySelector('.signup-form__message-error');
   const { email, password } = signupForm.elements;
-  console.log(email.value, password.value.trim());
-
-  userCreation(email.value, password.value)
-    .then(() => {
-      alert(`User created!`);
-      closeAuthModal();
-      signupMsgError.textContent = '';
-    })
-    .catch(err => {
-      if (err.code === 'auth/email-already-in-use')
-        signupMsgError.textContent = 'Email Already in use';
-      if (err.code === 'auth/weak-password') {
-        signupMsgError.textContent = 'Password should be at least 6 characters';
-      }
-      // console.log(err)
-    });
+  if (email && password) {
+    userCreation(email.value, password.value)
+      .then(() => {
+        Notify.info(`User created!`);
+        closeAuthModal();
+        signupMsgError.textContent = '';
+      })
+      .catch(err => {
+        if (err.code === 'auth/email-already-in-use')
+          signupMsgError.textContent = 'Email Already in use';
+        if (err.code === 'auth/weak-password') {
+          signupMsgError.textContent =
+            'Password should be at least 6 characters';
+        }
+        // console.log(err)
+      });
+  }
 }
 
 function signinWithGoogle() {
   // signInWithPopup(auth, provider)
   signInWithGoogle()
     .then(result => {
-      alert(`You are signed in with Google`);
+      Notify.info(`You are signed in with Google`);
       closeAuthModal();
     })
     .catch(err => {
@@ -237,7 +241,7 @@ function signinWithGoogle() {
       ) {
         return;
       }
-      alert(err.code);
+      Notify.info(err.code);
       console.log(err);
     });
 }
