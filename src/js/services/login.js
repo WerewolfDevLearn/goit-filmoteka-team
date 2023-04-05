@@ -28,7 +28,7 @@ let signupForm = null;
 let signoutBtn = null;
 let userProfile = null;
 let loginMsgError = null;
-// ↓↓↓ Это для текста ошиби в мадалке Sign up
+// ↓↓↓ Это для текста ошибки в модалке Sign up
 let signupMsgError = null
 
 const inPoint = document.querySelector('body');
