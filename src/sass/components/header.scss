@@ -313,8 +313,16 @@
   display: flex;
   align-items: center;
   color: #ffffff;
+
+  transition: border-bottom-color 500ms linear;
+
+  &:hover {
+    border-bottom-color: red;
+  }
+
   &:focus {
     outline: none;
+    background-color: transparent;
   }
 
   @media screen and (min-width: 320px) {
@@ -373,6 +381,17 @@
   @media screen and (min-width: 1280px) {
     right: 0%;
     bottom: 0%;
+  }
+
+  transition: transform 500ms linear;
+
+  &:hover,
+  &:focus {
+    
+    &:hover,
+    &:focus {
+    transform: scale(1.4);
+    }
   }
 }
 

@@ -34,6 +34,7 @@ function createYouTubePlayer(trailerId) {
   });
   youTubePlayer.playVideo();
   youTubePlayer.on('stateChange', event => {
+    window.focus();
     removeLoader('body');
   });
 }

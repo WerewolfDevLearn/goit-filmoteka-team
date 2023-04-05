@@ -1,7 +1,7 @@
 <form class="blockHome" name="blockHome" autocomplete="on" novalidate>
   <div class="blockHome-search-menu">
     <div class="blockHome-search">
-      <label>
+      <label class="blockHome-label">
         <!-- Movie search -->
         <input
           type="text"
@@ -9,6 +9,7 @@
           placeholder="Movie search"
           name="textSearch"
           autofocus
+          autocomplete="off"
         />
       </label>
       <button class="header-search-btn" type="submit" name="buttonSearch">
@@ -18,7 +19,7 @@
       </button>
     </div>
     <div class="header-search-resultNotSuccess visibleFlag">
-      <p class="notification is-hidden">
+      <p class="notification opacityZero">
         Search result not successful. Enter the correct movie name and try
         again.
       </p>

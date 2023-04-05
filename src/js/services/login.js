@@ -1,5 +1,5 @@
 import { STATE } from '../components/state';
-import { Notify } from 'notiflix';
+import { Notify } from 'notiflix/build/notiflix-notify-aio';
 import {
   sinInWithEmailPassword,
   userCreation,
@@ -8,6 +8,7 @@ import {
   app,
   auth,
 } from './firebase/firebaseAPI';
+import { save } from './library-storage';
 import backdropLogin from '../../templates/backdrop';
 
 let backdrop = null;
@@ -182,6 +183,8 @@ function onLoginSubmit(e) {
   loginForm = document.getElementById('login');
   loginMsgError = document.querySelector('.login-form__message-error');
   const { email, password } = loginForm.elements;
+  if (email && password) {
+    console.log(email.value, password.value.trim());
 
   console.log(email.value, password.value.trim());
 
@@ -237,7 +240,7 @@ function signinWithGoogle() {
   // signInWithPopup(auth, provider)
   signInWithGoogle()
     .then(result => {
-      alert(`You are signed in with Google`);
+      Notify.info(`You are signed in with Google`);
       closeAuthModal();
     })
     .catch(err => {
@@ -247,7 +250,7 @@ function signinWithGoogle() {
       ) {
         return;
       }
-      alert(err.code);
+      Notify.info(err.code);
       console.log(err);
     });
 }
