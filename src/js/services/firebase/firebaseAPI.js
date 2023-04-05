@@ -9,6 +9,8 @@ import {
   signInWithPopup,
   signOut,
 } from 'firebase/auth';
+import { islogin } from '../islogin';
+import { switchBTNs } from '../swith-buttons';
 export const app = initializeApp(firebaseConfig);
 export const auth = getAuth(app);
 
@@ -23,6 +25,7 @@ export async function userCreation(email, password) {
     console.log('user: ', user);
     STATE.user.uid = userCredential.user.uid;
     console.log('STATE: ', STATE);
+    switchBTNs(islogin());
   } catch (error) {
     const errorCode = error.code;
     console.log('userCreation errorCode: ', errorCode);
@@ -41,6 +44,7 @@ export async function sinInWithEmailPassword(email, password) {
     console.log(userCredential.user.uid);
     STATE.user.uid = userCredential.user.uid;
     console.log('STATE: ', STATE);
+    switchBTNs(islogin());
   } catch (error) {
     const errorCode = error.code;
     console.log('sinInWithEmailPassword errorCode: ', errorCode);
@@ -55,6 +59,7 @@ export async function signInWithGoogle() {
     const userCredential = await signInWithPopup(auth, provider);
     STATE.user.uid = userCredential.user.uid;
     console.log('STATE: ', STATE);
+    switchBTNs(islogin());
   } catch (error) {
     const errorCode = error.code;
     console.log('userCreation errorCode: ', errorCode);
@@ -67,6 +72,7 @@ export async function signOut() {
   try {
     const response = await signOut(auth);
     STATE.user = { uid: '', movies: [] };
+    switchBTNs(islogin());
     console.log('STATE: ', STATE);
   } catch (error) {
     const errorCode = error.code;
@@ -75,4 +81,3 @@ export async function signOut() {
     console.log('signOut errorMessage: ', errorMessage);
   }
 }
-console.log('ura');
