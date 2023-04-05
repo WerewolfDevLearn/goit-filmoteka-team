@@ -1,0 +1,45 @@
+.floating-buttons {
+  position: fixed;
+  z-index: 1;
+  right: 12px;
+  bottom: 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  &--hidden {
+    display: none;
+  }
+
+  &__top-btn {
+    svg {
+      transform: rotate(90deg);
+    }
+  }
+
+  &__home-btn,
+  &__top-btn {
+    height: 40px;
+    width: 40px;
+    background-color: #ff6b08;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    transition: background-color 250ms, transform 250ms;
+
+    &:hover {
+      cursor: pointer;
+      background-color: #ff6b08ee;
+      transform: scale(1.05);
+    }
+  }
+  @media screen and (min-width: 768px) {
+    flex-direction: row;
+
+    &__home-btn,
+    &__top-btn {
+      height: 60px;
+      width: 60px;
+    }
+  }
+}
