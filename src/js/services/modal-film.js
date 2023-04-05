@@ -4,8 +4,7 @@ import moviesAPI from '../../js/services/api';
 import { normalizeData } from '../utiles/normalize';
 import { showTrailer } from '../../js/services/trailer';
 import { addMovieToLocalStorage } from './library-storage';
-import { removeMovieFromLocalStorage } from './library-storage';
-import { save, removeMovieToStorage } from './movie-operations';
+import { save, load } from './library-storage';
 import { async } from '@firebase/util';
 import { STATE } from '../components/state';
 
@@ -42,6 +41,11 @@ const IS_HIDDEN = 'visually-hidden';
 
 // MovieModal
 export async function createFilmModal(e) {
+  if (load('SATE')) {
+    const respons = load('STATE').user.movies;
+    STATE.user.movies = { ...respons };
+  }
+
   // Get FilmID
   filmId = e.target.closest('.card__item').id;
   // Remove FilmCardGallery Listner
@@ -54,8 +58,8 @@ export async function createFilmModal(e) {
     const data = await moviesAPI.getMovieDetails(filmId);
     const normData = normalizeData(data);
     // Add data to state
-    STATE.currentMovie = data;
-    console.log(STATE);
+    STATE.currentMovie = { ...normData, id: filmId };
+
     // Add data to state
     refs.filmBackdropEl.insertAdjacentHTML('afterbegin', renderModal(normData));
     // Vote Percentage
@@ -99,15 +103,14 @@ function btnElSelect() {
 // Show/Hide Buttons
 
 function btnElShowHide() {
-  console.log(STATE.user.movies);
-  if (STATE.user.movies.watched.includes(filmId)) {
+  if (STATE.user.movies.watched.find(i => i.id === STATE.currentMovie.id)) {
     refs.btnAddWatchedEl.classList.add(IS_HIDDEN);
     refs.btnRemoveWatchedEl.classList.remove(IS_HIDDEN);
   } else {
     refs.btnRemoveWatchedEl.classList.add(IS_HIDDEN);
     refs.btnAddWatchedEl.classList.remove(IS_HIDDEN);
   }
-  if (STATE.user.movies.qeue.includes(filmId)) {
+  if (STATE.user.movies.qeue.find(i => i.id === STATE.currentMovie.id)) {
     refs.btnAddQueueEl.classList.add(IS_HIDDEN);
     refs.btnRemoveQueueEl.classList.remove(IS_HIDDEN);
   } else {
@@ -121,28 +124,27 @@ function onBtnClick(e) {
   switch (e.target.dataset.modal) {
     case DATA[0]:
       // { watched: true };
-      console.log(e.target.dataset.modal === DATA[0]);
-      if (STATE.user.movies.watched.includes(filmId)) {
-        addMovieToLocalStorageWathced();
-        e.target.classList.toggle(IS_HIDDEN);
-        refs.btnRemoveWatchedEl.classList.toggle(IS_HIDDEN);
-      }
+
+      addMovieToLocalStorageWathced();
+      e.target.classList.toggle(IS_HIDDEN);
+      refs.btnRemoveWatchedEl.classList.toggle(IS_HIDDEN);
+
       // MovieData Operation
       // addMovieToStorage(filmId);
       // removeMovieToStorage(filmId);
       break;
     case DATA[1]:
       // { queue : true };
-      if (STATE.user.movies.qeue.includes(filmId)) {
-        addMovieToLocalStorageQeue();
-        e.target.classList.toggle(IS_HIDDEN);
-        refs.btnRemoveQueueEl.classList.toggle(IS_HIDDEN);
-      }
+
+      addMovieToLocalStorageQeue();
+      e.target.classList.toggle(IS_HIDDEN);
+      refs.btnRemoveQueueEl.classList.toggle(IS_HIDDEN);
+
       // MovieData Operation
 
       break;
     case DATA[2]:
-      removeMovieFromLocalStorage();
+      removeMovieFromLocalStorageWathced();
       e.target.classList.toggle(IS_HIDDEN);
       refs.btnAddWatchedEl.classList.toggle(IS_HIDDEN);
 
@@ -153,7 +155,8 @@ function onBtnClick(e) {
       removeMovieFromLocalStorageQeue();
       e.target.classList.toggle(IS_HIDDEN);
       refs.btnAddQueueEl.classList.toggle(IS_HIDDEN);
-      // MovieData Operation
+
+      // MovieData Operation}
 
       break;
     case 'trailer':
@@ -216,22 +219,29 @@ function renderRatio(rating) {
 
 function addMovieToLocalStorageWathced() {
   STATE.user.movies.watched.push(STATE.currentMovie);
-  console.log(STATE);
-  save('STATE', STATE);
-}
-function removeMovieFromLocalStorageWathced(filmId) {
-  STATE.user.movies.watched.sort(elem => elem.id !== filmId);
-  console.log(STATE);
+
   save('STATE', STATE);
 }
 function addMovieToLocalStorageQeue() {
   STATE.user.movies.qeue.push(STATE.currentMovie);
-  console.log(STATE);
   save('STATE', STATE);
 }
-function removeMovieFromLocalStorageQeue(filmId) {
-  STATE.user.movies.qeue.sort(elem => elem.id !== filmId);
-  console.log(STATE);
+function removeMovieFromLocalStorageWathced() {
+  const finalarr = STATE.user.movies.watched.filter(
+    i => i.id !== STATE.currentMovie.id
+  );
+
+  STATE.user.movies.watched = [...finalarr];
+
+  save('STATE', STATE);
+}
+function removeMovieFromLocalStorageQeue() {
+  const finalarr = STATE.user.movies.qeue.filter(
+    i => i.id !== STATE.currentMovie.id
+  );
+  console.log('finalarr: ', finalarr);
+  STATE.user.movies.qeue = [...finalarr];
+
   save('STATE', STATE);
 }
 
