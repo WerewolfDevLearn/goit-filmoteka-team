@@ -59,7 +59,7 @@ export async function createFilmModal(e) {
     const normData = normalizeData(data);
     // Add data to state
 
-    STATE.currentMovie = { ...normData, id: filmId };
+    STATE.currentMovie = { ...data };
 
     // Add data to state
     refs.filmBackdropEl.insertAdjacentHTML('afterbegin', renderModal(normData));
@@ -104,6 +104,7 @@ function btnElSelect() {
 // Show/Hide Buttons
 
 function btnElShowHide() {
+  console.log(STATE);
   if (STATE.user.movies.watched.find(i => i.id === STATE.currentMovie.id)) {
     refs.btnAddWatchedEl.classList.add(IS_HIDDEN);
     refs.btnRemoveWatchedEl.classList.remove(IS_HIDDEN);

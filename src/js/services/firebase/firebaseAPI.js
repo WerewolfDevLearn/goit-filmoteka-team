@@ -15,7 +15,7 @@ import { save } from '../library-storage';
 export const app = initializeApp(firebaseConfig);
 export const auth = getAuth(app);
 // ↓↓↓ Это для гугл авторизации
-export const provider = new GoogleAuthProvider()
+export const provider = new GoogleAuthProvider();
 
 export async function userCreation(email, password) {
   try {
@@ -79,10 +79,10 @@ export async function signInWithGoogle() {
 export async function signOutFunc() {
   try {
     const response = await signOut(auth);
-    STATE.user = { uid: '', movies: [] };
+    STATE.user = { uid: '', movies: { watched: [], qeue: [] } };
     switchBTNs(islogin(STATE.user.uid));
     console.log('STATE: ', STATE);
-    localStorage.removeItem('STATE')
+    localStorage.removeItem('STATE');
     return STATE;
   } catch (error) {
     const errorCode = error.code;

@@ -2,7 +2,7 @@ import { removeGlobalLoader } from '../services/loader';
 window.addEventListener('load', removeGlobalLoader);
 
 import { islogin } from '../services/islogin';
-import { genresSearch } from '../utiles/get_geners';
+import { genresSearch, genresSearchBig } from '../utiles/get_geners';
 import { cardMarkup } from '../services/cardMarkup';
 
 import getPosterPath from '../utiles/get_poster_path';
@@ -30,48 +30,46 @@ qeueBTN.addEventListener('click', qeueHandler);
 refs.filmCardListEl.addEventListener('click', createFilmModal);
 function watchHandler() {
   const loaded = load('STATE');
-  const watchedMV = loaded.user.movies.watched;
-  createbigCardMarkup(watchedMV);
-  console.log(
-    'createbigCardMarkup(watchedMV);: ',
-    createbigCardMarkup(watchedMV)
-  );
+  console.log('loaded: ', loaded);
 
-  //   if (load('STATE')) {
-  //     const response = load('STATE');
-  //     const watchARR = response.user.movies.wathed;
-  //     console.log(watchARR);
-  //   }
-  //   console.log('STATE: ', STATE);
+  const watchedMV = loaded.user.movies.watched;
+  console.log('watchedMV: ', watchedMV);
+
+  gallery.insertAdjacentHTML('afterbegin', createbigCardMarkup(watchedMV));
 }
 function qeueHandler() {
-  createbigCardMarkup(STATE.user.movies.qeue);
+  const loaded = load('STATE');
+  console.log('loaded: ', loaded);
+
+  const qeueMV = loaded.user.movies.qeue;
+  console.log('watchedMV: ', qeueMV);
+
+  gallery.insertAdjacentHTML('afterbegin', createbigCardMarkup(qeueMV));
 }
 
-function createbigCardMarkup(array) {
-  //   // console.log('array: ', array);
-  console.log(array);
+export function createbigCardMarkup(array) {
+  // console.log('array: ', array);
   return array
     .map(
       ({
         id,
-        genre_ids,
+        genres,
         title,
         vote_average,
         vote_count,
+        release_date,
         popularity,
         original_title,
         overview,
         poster_path,
       }) => {
-        title;
-        // const stringLength = title;
-        // const classStatus = quantityLetterOfString(stringLength);
+        const stringLength = title.split('');
+        const classStatus = quantityLetterOfString(stringLength);
         const posterPath = getPosterPath(poster_path);
-        // const releaseFullYear = release_date.split('-')[0];
-        // const rating = vote_average.toFixed(1);
-        // const genreString = genresSearch(genre_ids);
-        return bigCard_Markup({
+        const releaseFullYear = release_date.split('-')[0];
+        const rating = vote_average.toFixed(1);
+        const genreString = genresSearchBig(genres);
+        return cardMarkup({
           id,
           genreString,
           title,
@@ -88,17 +86,19 @@ function createbigCardMarkup(array) {
     )
     .join('');
 }
-// function quantityLetterOfString(stringLength) {
-//   if (stringLength.length <= 33) {
-//     const classStatus = 'isNoActive';
-//     return classStatus;
-//   } else {
-//     const classStatus = 'isActive';
-//     return classStatus;
-//   }
-// }
+function quantityLetterOfString(stringLength) {
+  if (stringLength.length <= 33) {
+    const classStatus = 'isNoActive';
+    return classStatus;
+  } else {
+    const classStatus = 'isActive';
+    return classStatus;
+  }
+}
 
-function bigCard_Markup({
+// Тимчасово
+
+export function bigCardMarkup({
   id,
   genreString,
   title,
