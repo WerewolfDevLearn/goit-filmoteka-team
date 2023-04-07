@@ -21,26 +21,26 @@
 }
 
 // new container-gallery
-ul.gallery {
-  padding-top: 20px;
-  padding-bottom: 40px;
+// .gallery {
+//   padding-top: 20px;
+//   padding-bottom: 40px;
 
-  @media screen and (min-width: 768px) {
-    padding-top: 60px;
-    padding-bottom: 60px;
-  }
+//   @media screen and (min-width: 768px) {
+//     padding-top: 60px;
+//     padding-bottom: 60px;
+//   }
 
-  @media screen and (min-width: 1280px) {
-    justify-content: flex-start;
-  }
-}
+//   @media screen and (min-width: 1280px) {
+//     justify-content: flex-start;
+//   }
+// }
 
 #tui-pagination-container {
   padding-left: 0px;
   padding-right: 0px;
 }
 
-.container-gallery {
+.gallery {
 
   @media screen and (max-width: 767px) {
       display: grid;
@@ -58,7 +58,7 @@ ul.gallery {
         grid-column-gap: 32px;
         grid-row-gap: 32px;
         padding-top: 60px;
-        padding-bottom: 50px;
+        padding-bottom: 60px;
       }
 
     @media screen and (min-width: 1280px) {
@@ -68,6 +68,6 @@ ul.gallery {
         grid-column-gap: 16px;
         grid-row-gap: 32px;
         padding-top: 60px;
-        padding-bottom: 50px;
+        padding-bottom: 60px;
       }
 }
