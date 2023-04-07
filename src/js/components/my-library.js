@@ -17,6 +17,10 @@ import { refs, createFilmModal } from '../services/modal-film';
 const library = document.querySelector('.isDisabled-js');
 library.classList.remove('isDisabled-js');
 
+import '../components/team-modal';
+import '../services/swith-buttons';
+import '../services/theme';
+
 const gallery = document.querySelector('.gallery');
 const watchBTN = document.querySelector("[data-action='watched']");
 const qeueBTN = document.querySelector("[data-action='queue']");

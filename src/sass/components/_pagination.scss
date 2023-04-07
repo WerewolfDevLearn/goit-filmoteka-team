@@ -19,6 +19,10 @@ div.tui-pagination .tui-page-btn {
   font-size: 12px;
   line-height: 1.33;
   transition: all 250ms cubic-bezier(0.4, 0, 0.2, 1);
+  @media screen and (max-width: 767px) {
+    height: 35px;
+    width: 35px;
+  }
   &.tui-last {
     background-color: #f7f7f7;
   }

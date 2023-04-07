@@ -9,15 +9,17 @@
   background-color: rgba(0, 0, 0, 0.2);
   opacity: 1;
   transition: opacity 250ms;
+  z-index: 2;
+  overflow-y: scroll;
 }
 
 .modal {
   position: absolute;
-  top: 50%;
+  top: 70%;
   left: 50%;
   padding: 48px 20px 40px;
   width: calc(100% - 2 * 20px);
-
+  
   @media screen and (min-width: 320px) {
     max-width: 280px;
   }
@@ -25,6 +27,7 @@
   @media screen and (min-width: 768px) {
     padding: 40px 36px 40px 36px;
     max-width: 704px;
+    top: 50%;
     // height: 552px;
     display: flex;
   }
@@ -158,15 +161,15 @@
   display: inline-flex;
 
   &__star {
-    width: 7px;
+    width: 8px;
     height: 6px;
 
     @media screen and (min-width: 768px) {
-      width: 12px;
+      width: 11px;
       height: 8px;
     }
 
-    border-radius: 3px;
+    border-radius: 2px;
     margin-right: 2px;
     border: 1px solid #ff6b01;
 
