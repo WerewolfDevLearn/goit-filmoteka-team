@@ -22,7 +22,9 @@ import '../services/swith-buttons';
 import '../services/theme';
 
 const gallery = document.querySelector('.gallery');
-const galleryLibraryBG = document.querySelector('.library_background_contsiner')
+const galleryLibraryBG = document.querySelector(
+  '.library_background_contsiner'
+);
 const watchBTN = document.querySelector("[data-action='watched']");
 const qeueBTN = document.querySelector("[data-action='queue']");
 
@@ -32,25 +34,21 @@ refs.filmCardListEl.addEventListener('click', createFilmModal);
 
 function watchHandler() {
   const loaded = load('STATE');
-  console.log('loaded: ', loaded);
-  
   const watchedMV = loaded.user.movies.watched;
-  console.log('watchedMV: ', watchedMV);
   if (watchedMV) {
     galleryLibraryBG.classList.add('visually-hidden');
   }
+  gallery.innerHTML = '';
   gallery.insertAdjacentHTML('afterbegin', createbigCardMarkup(watchedMV));
 }
+
 function qeueHandler() {
   const loaded = load('STATE');
-  console.log('loaded: ', loaded);
-
   const qeueMV = loaded.user.movies.qeue;
-  console.log('watchedMV: ', qeueMV);
   if (qeueMV) {
     galleryLibraryBG.classList.add('visually-hidden');
   }
-
+  gallery.innerHTML = '';
   gallery.insertAdjacentHTML('afterbegin', createbigCardMarkup(qeueMV));
 }
 
