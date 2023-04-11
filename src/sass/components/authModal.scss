@@ -82,6 +82,30 @@ $button-active-blue: #1669f2;
   display: flex;
   align-items: center;
   justify-content: center;
+
+  animation: auth-backdrop-open 200ms;
+}
+
+.auth__backdrop-closing {
+  animation: auth-backdrop-closing 200ms;
+}
+
+@keyframes auth-backdrop-open {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes auth-backdrop-closing {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+  }
 }
 
 .auth__wrap {
@@ -91,6 +115,30 @@ $button-active-blue: #1669f2;
   padding-bottom: 30px;
   border-radius: 4px;
   text-align: center;
+
+  animation: open-auth-modal 200ms;
+}
+
+.auth__wrap-closing {
+  animation: close-auth-modal 200ms;
+}
+
+@keyframes close-auth-modal {
+  from {
+    transform: scale(1);
+  }
+  to {
+    transform: scale(0);
+  }
+}
+
+@keyframes open-auth-modal {
+  from {
+    transform: scale(0);
+  }
+  to {
+    transform: scale(1);
+  }
 }
 
 .close-btn {
@@ -197,7 +245,7 @@ $button-active-blue: #1669f2;
 
 .form__text {
   margin-top: 30px;
-	margin-bottom: 0px;
+  margin-bottom: 0px;
 }
 
 .form__link {

@@ -85,8 +85,12 @@ function toggleShowPassword() {
 }
 
 function closeAuthModal() {
-  backdrop.remove();
-  backdrop.removeEventListener('click', authModalEvents);
+  backdrop.firstElementChild.classList.add('auth__wrap-closing');
+  backdrop.classList.add('auth__backdrop-closing');
+  setTimeout(() => {
+    backdrop.remove();
+    backdrop.removeEventListener('click', authModalEvents);
+  }, 190);
 }
 
 // ----------------------- ↓↓↓↓↓ Зачем эти костыли? За объяснениями к Павлу
@@ -193,12 +197,18 @@ function showLoginForm() {
 }
 
 function changePasswordIcon(e) {
-  let inputPasswordIcon = document.querySelector('.password-icon')
+  let inputPasswordIcon = document.querySelector('.password-icon');
   if (e.target.getAttribute('name') === 'password') {
     if (e.target.value !== '') {
-      inputPasswordIcon.firstElementChild.setAttribute('href', `${icons}#icon-lock-password`)
+      inputPasswordIcon.firstElementChild.setAttribute(
+        'href',
+        `${icons}#icon-lock-password`
+      );
     } else {
-      inputPasswordIcon.firstElementChild.setAttribute('href', `${icons}#icon-unlock-password`)
+      inputPasswordIcon.firstElementChild.setAttribute(
+        'href',
+        `${icons}#icon-unlock-password`
+      );
     }
   }
 }
