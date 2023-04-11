@@ -95,12 +95,14 @@ function closeAuthModal() {
 
 // ----------------------- ↓↓↓↓↓ Зачем эти костыли? За объяснениями к Павлу
 import icons from '../../images/icons.svg';
-import closeIcon from '../../images/close.svg';
+// import closeIcon from '../../images/close.svg';
 // -----------------------
 
 function showSignupForm() {
   backdrop.firstElementChild.innerHTML = `<button class="close-btn">
-	<img src="${closeIcon}" alt="" />
+	<svg class="close-icon">
+    <use href="${icons}#icon-close"></use>
+  </svg>
 </button>
 <form class="auth__form" id="signup">
 	<h1 class="form__title">Sign Up</h1>
@@ -151,7 +153,9 @@ function showSignupForm() {
 function showLoginForm() {
   backdrop.firstElementChild.innerHTML = `
 	<button class="close-btn">
-    <img src="${closeIcon}">
+  <svg class="close-icon">
+  <use href="${icons}#icon-close"></use>
+</svg>
 				</button>
 				<form class="auth__form" id="login">
 					<h1 class="form__title">Log In</h1>
