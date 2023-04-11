@@ -479,4 +479,50 @@ body.dark-theme {
   .team-modal__link:focus {
     fill: #ff001b;
   }
+
+  // ----auth-modal----
+
+  .auth__wrap {
+    background-color: #1f1f29;
+  }
+
+  .login-with-google-btn {
+    color: #fff;
+
+    &:hover {
+      box-shadow: 0 -1px 0 rgba(0, 0, 0, 0.466), 0 2px 4px rgba(0, 0, 0, 0.671);
+    }
+  }
+
+  .close-icon {
+    fill: #fff;
+  }
+
+  .form__input {
+    border-color: #575768;
+    color: #fff;
+
+    &::placeholder {
+      color: #575768b2;
+    }
+
+    &:focus {
+      outline: none;
+      border-color: #f06400;
+    }
+  }
+
+  .email-icon,
+  .password-icon,
+  .show-password-icon {
+    fill: #575768;
+  }
+
+  .form__title {
+    color: #fff;
+  }
+
+  .form__text {
+    color: #fff;
+  }
 }

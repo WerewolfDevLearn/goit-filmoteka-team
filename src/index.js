@@ -34,15 +34,13 @@ async function get(page) {
   stateModify(date);
   startPage(STATE.totalResults);
   appendCardsMarkup(createCardMarkup(STATE.movies));
-
-// Велика картка
-
-  // appendCardsMarkup(createBigCardMarkup(STATE.movies));
 }
+
 function stateModify(date) {
   STATE.movies = date.results;
   STATE.totalResults = date.total_results;
 }
+
 function getStateFromLS() {
   const lsState = load('STATE');
 

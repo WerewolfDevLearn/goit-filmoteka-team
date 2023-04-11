@@ -7,7 +7,7 @@ import {
   // onAuthStateChanged,
   app,
   auth,
-  provider
+  provider,
 } from './firebase/firebaseAPI';
 import {
   getAuth,
@@ -29,7 +29,9 @@ let signoutBtn = null;
 let userProfile = null;
 let loginMsgError = null;
 // ↓↓↓ Это для текста ошибки в модалке Sign up
-let signupMsgError = null
+let signupMsgError = null;
+// ↓↓↓ Это для смены иконки в инпуте пароля
+let stateIconPassword = 'icon-lock-password';
 
 const inPoint = document.querySelector('body');
 const registrationBtn = document.querySelector('.registrationBtn-container');
@@ -83,18 +85,24 @@ function toggleShowPassword() {
 }
 
 function closeAuthModal() {
-  backdrop.remove();
-  backdrop.removeEventListener('click', authModalEvents);
+  backdrop.firstElementChild.classList.add('auth__wrap-closing');
+  backdrop.classList.add('auth__backdrop-closing');
+  setTimeout(() => {
+    backdrop.remove();
+    backdrop.removeEventListener('click', authModalEvents);
+  }, 190);
 }
 
 // ----------------------- ↓↓↓↓↓ Зачем эти костыли? За объяснениями к Павлу
 import icons from '../../images/icons.svg';
-import closeIcon from '../../images/close.svg';
+// import closeIcon from '../../images/close.svg';
 // -----------------------
 
 function showSignupForm() {
   backdrop.firstElementChild.innerHTML = `<button class="close-btn">
-	<img src="${closeIcon}" alt="" />
+	<svg class="close-icon">
+    <use href="${icons}#icon-close"></use>
+  </svg>
 </button>
 <form class="auth__form" id="signup">
 	<h1 class="form__title">Sign Up</h1>
@@ -118,7 +126,7 @@ function showSignupForm() {
 			placeholder="Password"
 		>
 		<svg class="password-icon">
-							<use href="${icons}#icon-password-form"></use>
+							<use href="${icons}#icon-unlock-password"></use>
 						</svg>
 		<svg class="show-password-icon">
 			<use href="${icons}#icon-not-show-password"></use>
@@ -136,15 +144,18 @@ function showSignupForm() {
       >Log In</a>
       </p>
 	</form>`;
-  
+
   signupForm = document.getElementById('signup');
   signupForm.addEventListener('submit', onSignupSubmit);
+  signupForm.addEventListener('input', changePasswordIcon);
 }
 
 function showLoginForm() {
   backdrop.firstElementChild.innerHTML = `
 	<button class="close-btn">
-    <img src="${closeIcon}">
+    <svg class="close-icon">
+      <use href="${icons}#icon-close"></use>
+    </svg>
 				</button>
 				<form class="auth__form" id="login">
 					<h1 class="form__title">Log In</h1>
@@ -169,7 +180,7 @@ function showLoginForm() {
 							placeholder="Password"
 						/>
 						<svg class="password-icon">
-							<use href="${icons}#icon-password-form"></use>
+							<use href="${icons}#icon-unlock-password"></use>
 						</svg>
 						<svg class="show-password-icon">
 			<use href="${icons}#icon-not-show-password"></use>
@@ -186,6 +197,24 @@ function showLoginForm() {
 				</form>`;
   loginForm = document.getElementById('login');
   loginForm.addEventListener('submit', onLoginSubmit);
+  loginForm.addEventListener('input', changePasswordIcon);
+}
+
+function changePasswordIcon(e) {
+  let inputPasswordIcon = document.querySelector('.password-icon');
+  if (e.target.getAttribute('name') === 'password') {
+    if (e.target.value !== '') {
+      inputPasswordIcon.firstElementChild.setAttribute(
+        'href',
+        `${icons}#icon-lock-password`
+      );
+    } else {
+      inputPasswordIcon.firstElementChild.setAttribute(
+        'href',
+        `${icons}#icon-unlock-password`
+      );
+    }
+  }
 }
 
 function onLoginSubmit(e) {

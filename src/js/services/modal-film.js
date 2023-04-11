@@ -41,7 +41,7 @@ const IS_HIDDEN = 'visually-hidden';
 
 // MovieModal
 export async function createFilmModal(e) {
-  if (load('SATE')) {
+  if (load('STATE')) {
     const respons = load('STATE').user.movies;
     STATE.user.movies = { ...respons };
   }
@@ -58,9 +58,7 @@ export async function createFilmModal(e) {
     const data = await moviesAPI.getMovieDetails(filmId);
     const normData = normalizeData(data);
     // Add data to state
-
     STATE.currentMovie = { ...data };
-
     // Add data to state
     refs.filmBackdropEl.insertAdjacentHTML('afterbegin', renderModal(normData));
     // Vote Percentage
@@ -69,7 +67,6 @@ export async function createFilmModal(e) {
   } catch (error) {
     console.log(error);
   }
-
   // Select Button Elements
   btnElSelect();
   // Show/Hide Buttons
