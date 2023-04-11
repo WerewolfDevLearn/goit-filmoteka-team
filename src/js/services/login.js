@@ -153,9 +153,9 @@ function showSignupForm() {
 function showLoginForm() {
   backdrop.firstElementChild.innerHTML = `
 	<button class="close-btn">
-  <svg class="close-icon">
-  <use href="${icons}#icon-close"></use>
-</svg>
+    <svg class="close-icon">
+      <use href="${icons}#icon-close"></use>
+    </svg>
 				</button>
 				<form class="auth__form" id="login">
 					<h1 class="form__title">Log In</h1>
