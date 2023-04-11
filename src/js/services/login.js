@@ -7,7 +7,7 @@ import {
   // onAuthStateChanged,
   app,
   auth,
-  provider
+  provider,
 } from './firebase/firebaseAPI';
 import {
   getAuth,
@@ -29,7 +29,9 @@ let signoutBtn = null;
 let userProfile = null;
 let loginMsgError = null;
 // ↓↓↓ Это для текста ошибки в модалке Sign up
-let signupMsgError = null
+let signupMsgError = null;
+// ↓↓↓ Это для смены иконки в инпуте пароля
+let stateIconPassword = 'icon-lock-password';
 
 const inPoint = document.querySelector('body');
 const registrationBtn = document.querySelector('.registrationBtn-container');
@@ -118,7 +120,7 @@ function showSignupForm() {
 			placeholder="Password"
 		>
 		<svg class="password-icon">
-							<use href="${icons}#icon-password-form"></use>
+							<use href="${icons}#icon-unlock-password"></use>
 						</svg>
 		<svg class="show-password-icon">
 			<use href="${icons}#icon-not-show-password"></use>
@@ -136,9 +138,10 @@ function showSignupForm() {
       >Log In</a>
       </p>
 	</form>`;
-  
+
   signupForm = document.getElementById('signup');
   signupForm.addEventListener('submit', onSignupSubmit);
+  signupForm.addEventListener('input', changePasswordIcon);
 }
 
 function showLoginForm() {
@@ -169,7 +172,7 @@ function showLoginForm() {
 							placeholder="Password"
 						/>
 						<svg class="password-icon">
-							<use href="${icons}#icon-password-form"></use>
+							<use href="${icons}#icon-unlock-password"></use>
 						</svg>
 						<svg class="show-password-icon">
 			<use href="${icons}#icon-not-show-password"></use>
@@ -186,6 +189,18 @@ function showLoginForm() {
 				</form>`;
   loginForm = document.getElementById('login');
   loginForm.addEventListener('submit', onLoginSubmit);
+  loginForm.addEventListener('input', changePasswordIcon);
+}
+
+function changePasswordIcon(e) {
+  let inputPasswordIcon = document.querySelector('.password-icon')
+  if (e.target.getAttribute('name') === 'password') {
+    if (e.target.value !== '') {
+      inputPasswordIcon.firstElementChild.setAttribute('href', `${icons}#icon-lock-password`)
+    } else {
+      inputPasswordIcon.firstElementChild.setAttribute('href', `${icons}#icon-unlock-password`)
+    }
+  }
 }
 
 function onLoginSubmit(e) {
