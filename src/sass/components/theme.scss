@@ -502,6 +502,10 @@ body.dark-theme {
     border-color: #575768;
     color: #fff;
 
+    &::placeholder {
+      color: #575768b2;
+    }
+
     &:focus {
       outline: none;
       border-color: #f06400;
