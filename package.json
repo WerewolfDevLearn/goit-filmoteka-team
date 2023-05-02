@@ -2,14 +2,14 @@
   "name": "parcel-project-template",
   "version": "2.0.0",
   "description": "",
-  "homepage": "https://WerewolfDevLearn.github.io/goit-filmoteka-team",
+  "homepage": "https://TarasKachmar2022/filmoteka-team",
   "scripts": {
     "start": "parcel src/*.html",
     "build": "parcel build src/*.html --public-url /goit-filmoteka-team/"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/WerewolfDevLearn/goit-filmoteka-team.git"
+    "url": "git+https://github.com/TarasKachmar2022/filmoteka-team.git"
   },
   "keywords": [],
   "author": "Alexander Repeta <alexander.repeta@gmail.com>",
