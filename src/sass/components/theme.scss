@@ -36,7 +36,8 @@ body.light-theme {
     fill: #ff6b08;
   }
 
-  .footer-link {
+  .footer-btn {
+    background-color: #f7f7f7;
     color: #545454;
     &:hover,
     &:focus {
@@ -261,7 +262,8 @@ body.dark-theme {
     background-color: #272e34;
   }
 
-  .footer-link {
+  .footer-btn {
+    background-color: #272e34;
     color: #ffffff;
 
     &:hover,
