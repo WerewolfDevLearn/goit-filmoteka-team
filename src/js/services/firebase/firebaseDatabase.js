@@ -1,8 +1,7 @@
 import { STATE } from '../../components/state.js';
 import { firebaseConfig } from './firebase-config.js';
 import { initializeApp } from 'firebase/app';
-import { getAuth } from 'firebase/auth';
-import { getDatabase, ref, set, child, get, update } from 'firebase/database';
+import { getDatabase, ref, set, child, get, onValue } from 'firebase/database';
 const app = initializeApp(firebaseConfig);
 
 const database = getDatabase(app);
@@ -10,6 +9,7 @@ const database = getDatabase(app);
 export async function writeUserData(data) {
   try {
     const setdata = await set(ref(database, `users/${data.uid}`), data);
+    console.log(setdata);
   } catch (error) {
     const errorCode = error.code;
     console.log('writeUserData errorCode: ', errorCode);
@@ -19,9 +19,14 @@ export async function writeUserData(data) {
 }
 export async function getUserData(userId) {
   try {
-    return (respons = await get(ref(database, 'users/' + userId)).then(
-      snapshot => snapshot.val()
-    ));
+    const database = getDatabase(app);
+
+    console.log('userId: ', userId);
+    const data = await get(ref(database, 'users/' + userId));
+    onValue(data, snapshot => {
+      const resp = snapshot.val();
+      console.log(resp);
+    });
   } catch (error) {
     const errorCode = error.code;
     console.log('getUserData errorCode: ', errorCode);
