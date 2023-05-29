@@ -3,7 +3,6 @@ import renderModal from '../../templates/modal.hbs';
 import moviesAPI from '../../js/services/api';
 import { normalizeData } from '../utiles/normalize';
 import { showTrailer } from '../../js/services/trailer';
-import { addMovieToLocalStorage } from './library-storage';
 import { save, load } from './library-storage';
 import { async } from '@firebase/util';
 import { STATE } from '../components/state';
@@ -238,7 +237,6 @@ function removeMovieFromLocalStorageQeue() {
   const finalarr = STATE.user.movies.qeue.filter(
     i => i.id !== STATE.currentMovie.id
   );
-  console.log('finalarr: ', finalarr);
   STATE.user.movies.qeue = [...finalarr];
 
   save('STATE', STATE);
