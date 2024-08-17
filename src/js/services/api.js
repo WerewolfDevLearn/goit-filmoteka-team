@@ -1,6 +1,6 @@
 import axios from 'axios';
 import { setLoader, removeLoader } from './loader';
-const apiKey = '7f0dad748ff7b4eb073bc2aebbf95174';
+const apiKey = '3af9b2d15b1fb731418850df80c58ba5';
 const BODY_SELECTOR = 'body';
 
 async function getPopMovies(page) {
